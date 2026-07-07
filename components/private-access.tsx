@@ -1,11 +1,27 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
-import { Download, LockKeyhole, Phone, ShieldCheck, UnlockKeyhole, UserRound } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Download, LockKeyhole, ShieldCheck } from "lucide-react";
 import { education } from "@/lib/profile-data";
 
 const ACCESS_STORAGE_KEY = "eacon-profile-access-unlocked";
 const ACCESS_EVENT_NAME = "eacon-profile-access-change";
+const TALLY_FORM_ID = "vGbEd8";
+const TALLY_EMBED_SRC = `https://tally.so/embed/${TALLY_FORM_ID}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`;
+const TALLY_WIDGET_SCRIPT = "https://tally.so/widgets/embed.js";
+
+type TallyWindow = Window & {
+  Tally?: {
+    loadEmbeds: () => void;
+  };
+};
+
+type TallyMessage = {
+  event?: string;
+  payload?: {
+    formId?: string;
+  };
+};
 
 function hasStoredAccess() {
   if (typeof window === "undefined") return false;
@@ -27,82 +43,93 @@ function usePrivateAccess() {
   return unlocked;
 }
 
-type AccessFormProps = {
+function unlockAccess() {
+  window.localStorage.setItem(ACCESS_STORAGE_KEY, "true");
+  window.dispatchEvent(new Event(ACCESS_EVENT_NAME));
+}
+
+function parseTallyMessage(data: unknown): TallyMessage | null {
+  if (typeof data === "string") {
+    if (!data.includes("Tally.")) return null;
+
+    try {
+      return JSON.parse(data) as TallyMessage;
+    } catch {
+      return { event: data };
+    }
+  }
+
+  if (data && typeof data === "object" && "event" in data) {
+    return data as TallyMessage;
+  }
+
+  return null;
+}
+
+type TallyAccessFormProps = {
   tone?: "light" | "dark";
-  submitLabel: string;
 };
 
-function AccessForm({ tone = "light", submitLabel }: AccessFormProps) {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [error, setError] = useState("");
+function TallyAccessForm({ tone = "light" }: TallyAccessFormProps) {
   const isDark = tone === "dark";
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  useEffect(() => {
+    const tallyWindow = window as TallyWindow;
+    const loadTallyEmbeds = () => {
+      if (typeof tallyWindow.Tally !== "undefined") {
+        tallyWindow.Tally.loadEmbeds();
+        return;
+      }
 
-    const cleanName = name.trim();
-    const phoneDigits = phone.replace(/\D/g, "");
+      document.querySelectorAll<HTMLIFrameElement>("iframe[data-tally-src]:not([src])").forEach((iframe) => {
+        iframe.src = iframe.dataset.tallySrc ?? "";
+      });
+    };
 
-    if (cleanName.length < 2) {
-      setError("请输入姓名");
-      return;
+    if (typeof tallyWindow.Tally !== "undefined") {
+      loadTallyEmbeds();
+    } else if (!document.querySelector(`script[src="${TALLY_WIDGET_SCRIPT}"]`)) {
+      const script = document.createElement("script");
+      script.src = TALLY_WIDGET_SCRIPT;
+      script.async = true;
+      script.onload = loadTallyEmbeds;
+      script.onerror = loadTallyEmbeds;
+      document.body.appendChild(script);
+    } else {
+      loadTallyEmbeds();
     }
 
-    if (phoneDigits.length < 7 || phoneDigits.length > 15) {
-      setError("请输入有效手机号");
-      return;
-    }
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== "https://tally.so") return;
 
-    window.localStorage.setItem(ACCESS_STORAGE_KEY, "true");
-    window.dispatchEvent(new Event(ACCESS_EVENT_NAME));
-  };
+      const message = parseTallyMessage(event.data);
+      if (message?.event !== "Tally.FormSubmitted") return;
+      if (message.payload?.formId && message.payload.formId !== TALLY_FORM_ID) return;
 
-  const inputClass = isDark
-    ? "w-full rounded-2xl border border-white/[0.12] bg-white/[0.08] px-4 py-3 text-sm font-semibold text-white outline-none transition focus:border-mint/70"
-    : "w-full rounded-2xl border border-black/[0.10] bg-white px-4 py-3 text-sm font-semibold text-black outline-none transition focus:border-violet/60";
+      unlockAccess();
+    };
+
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-3">
-      <label className="grid gap-2">
-        <span className={isDark ? "flex items-center gap-2 text-xs font-semibold text-white/[0.50]" : "flex items-center gap-2 text-xs font-semibold text-black/[0.50]"}>
-          <UserRound className="h-3.5 w-3.5" aria-hidden="true" />
-          姓名
-        </span>
-        <input
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          className={inputClass}
-          autoComplete="name"
-          placeholder="请输入姓名"
-        />
-      </label>
-      <label className="grid gap-2">
-        <span className={isDark ? "flex items-center gap-2 text-xs font-semibold text-white/[0.50]" : "flex items-center gap-2 text-xs font-semibold text-black/[0.50]"}>
-          <Phone className="h-3.5 w-3.5" aria-hidden="true" />
-          手机号
-        </span>
-        <input
-          value={phone}
-          onChange={(event) => setPhone(event.target.value)}
-          className={inputClass}
-          autoComplete="tel"
-          inputMode="tel"
-          placeholder="请输入手机号"
-        />
-      </label>
-      {error ? <p className={isDark ? "text-xs font-semibold text-mint" : "text-xs font-semibold text-violet"}>{error}</p> : null}
-      <button
-        type="submit"
-        className={isDark
-          ? "magnetic-button mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-mint px-5 py-3 text-sm font-semibold text-black hover:bg-white"
-          : "magnetic-button mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white hover:bg-[#111]"
-        }
-      >
-        <UnlockKeyhole className="h-4 w-4" aria-hidden="true" />
-        {submitLabel}
-      </button>
-    </form>
+    <div className="grid gap-3">
+      <iframe
+        data-tally-src={TALLY_EMBED_SRC}
+        loading="lazy"
+        width="100%"
+        height="332"
+        frameBorder={0}
+        marginHeight={0}
+        marginWidth={0}
+        title="查看教育背景申请"
+        className={isDark ? "rounded-2xl bg-white" : "rounded-2xl bg-transparent"}
+      />
+      <p className={isDark ? "text-xs leading-5 text-white/[0.42]" : "text-xs leading-5 text-black/[0.46]"}>
+        提交后会自动显示教育背景和 PDF 下载入口。
+      </p>
+    </div>
   );
 }
 
@@ -122,11 +149,11 @@ export function ProtectedEducation() {
                 </div>
                 <h2 className="mt-6 text-2xl font-semibold leading-tight text-black sm:text-3xl">教育背景已隐藏</h2>
                 <p className="mt-4 max-w-xl text-sm leading-7 text-black/[0.62]">
-                  请填写姓名与手机号查看教育背景。解锁状态只保存在当前浏览器。
+                  请提交姓名与手机号查看教育背景。信息会进入 Tally，解锁状态保存在当前浏览器。
                 </p>
               </div>
               <div className="rounded-[26px] border border-black/[0.10] bg-white/[0.72] p-5 backdrop-blur">
-                <AccessForm submitLabel="查看教育背景" />
+                <TallyAccessForm />
               </div>
             </div>
           </div>
@@ -184,7 +211,7 @@ export function ProtectedResumeDownload({ href }: ProtectedResumeDownloadProps) 
         <LockKeyhole className="h-4 w-4 text-mint" aria-hidden="true" />
         Resume Access
       </div>
-      <AccessForm tone="dark" submitLabel="解锁 PDF 下载" />
+      <TallyAccessForm tone="dark" />
     </div>
   );
 }
