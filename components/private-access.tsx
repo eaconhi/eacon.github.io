@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Download, LockKeyhole, ShieldCheck } from "lucide-react";
 import { education } from "@/lib/profile-data";
 
-const ACCESS_STORAGE_KEY = "eacon-profile-access-unlocked";
+const ACCESS_STORAGE_KEY = "eacon-profile-tally-access-unlocked-v1";
 const ACCESS_EVENT_NAME = "eacon-profile-access-change";
 const TALLY_FORM_ID = "vGbEd8";
 const TALLY_EMBED_SRC = `https://tally.so/embed/${TALLY_FORM_ID}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`;
