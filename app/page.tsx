@@ -2,7 +2,6 @@ import type { CSSProperties } from "react";
 import {
   ArrowUpRight,
   CheckCircle2,
-  Download,
   ExternalLink,
   Mail,
   MapPin,
@@ -12,12 +11,12 @@ import {
 import { CopyEmail } from "@/components/copy-email";
 import { CountValue } from "@/components/count-value";
 import { Hero } from "@/components/hero";
+import { ProtectedEducation, ProtectedResumeDownload } from "@/components/private-access";
 import { ScrollEffects } from "@/components/scroll-effects";
 import { SectionHeading } from "@/components/section-heading";
 import { SiteHeader } from "@/components/site-header";
 import {
   capabilities,
-  education,
   experiences,
   methodIcon,
   methods,
@@ -318,21 +317,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="education" className="relative bg-white py-20 sm:py-20">
-        <div className="section-shell">
-          <div className="rounded-[30px] border border-black/[0.10] bg-[#FAFAF7] p-6 sm:rounded-[34px] sm:p-8" data-reveal>
-            <p className="section-kicker">Education</p>
-            <div className="mt-4 grid gap-5 md:grid-cols-[0.72fr_1.28fr] md:items-center">
-              <div>
-                <h2 className="text-2xl font-semibold leading-tight text-black sm:text-3xl">{education.school}</h2>
-                <p className="mt-3 text-sm font-semibold text-black/[0.60]">{education.degree}</p>
-                <p className="mt-2 text-sm text-black/[0.44]">{education.period}</p>
-              </div>
-              <p className="text-sm leading-7 text-black/[0.64]">{education.body}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProtectedEducation />
 
       <section id="contact" className="relative overflow-hidden bg-black py-24 text-white sm:py-28">
         <div className="accent-band opacity-70" />
@@ -375,14 +360,7 @@ export default function Home() {
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/[0.42]">WeChat ID</p>
                   <p className="mt-2 text-lg font-semibold text-white">{person.wechat}</p>
                 </div>
-                <a
-                  href={`${basePath}/eacon-jing-resume.pdf`}
-                  download
-                  className="magnetic-button mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-mint px-5 py-3 text-sm font-semibold text-black hover:bg-white"
-                >
-                  <Download className="h-4 w-4" aria-hidden="true" />
-                  下载 PDF 简历
-                </a>
+                <ProtectedResumeDownload href={`${basePath}/eacon-jing-resume.pdf`} />
               </div>
             </div>
           </div>
