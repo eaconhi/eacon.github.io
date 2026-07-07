@@ -1,4 +1,7 @@
+"use client";
+
 import type { CSSProperties } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowUpRight,
   CheckCircle2,
@@ -15,65 +18,70 @@ import { ProtectedEducation, ProtectedResumeDownload } from "@/components/privat
 import { ScrollEffects } from "@/components/scroll-effects";
 import { SectionHeading } from "@/components/section-heading";
 import { SiteHeader } from "@/components/site-header";
-import {
-  capabilities,
-  experiences,
-  methodIcon,
-  methods,
-  person,
-  projects,
-  publicMetrics,
-  skills,
-  sourceLinks
-} from "@/lib/profile-data";
-
-const phraseSeparators = [
-  "expert membership network.",
-  "AI-assisted workflow.",
-  "global academic operations.",
-  "bilingual institutional systems."
-];
+import { localizedProfile, type Language } from "@/lib/profile-data";
 
 const delay = (value: number) => ({ "--delay": `${value}ms` }) as CSSProperties;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const LANGUAGE_STORAGE_KEY = "eacon-profile-language-v1";
 
 export default function Home() {
-  const MethodIcon = methodIcon;
+  const [language, setLanguage] = useState<Language>("zh");
+  const profile = localizedProfile[language];
+  const MethodIcon = profile.methodIcon;
+  const { person, sections } = profile;
+
+  useEffect(() => {
+    const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (storedLanguage === "zh" || storedLanguage === "en") {
+      setLanguage(storedLanguage);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+    document.documentElement.lang = language === "en" ? "en" : "zh-CN";
+    document.title = profile.metaTitle;
+  }, [language, profile.metaTitle]);
 
   return (
     <main className="relative z-10">
-      <ScrollEffects />
+      <ScrollEffects watchKey={language} />
       <div className="noise-layer" />
-      <SiteHeader />
-      <Hero />
+      <SiteHeader
+        language={language}
+        navItems={profile.navItems}
+        person={person}
+        copy={profile.header}
+        onLanguageChange={setLanguage}
+      />
+      <Hero profile={profile} />
 
-      <section id="about" className="relative bg-[#FAFAF7] py-24 sm:py-28">
+      <section id="about" className="section-gradient-lift relative py-24 sm:py-28">
         <div className="section-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div data-reveal="fade-left">
             <SectionHeading
-              kicker="About"
-              title="从教育、内容到国际机构运营的复合型路径"
-              copy="I work across academic institutions, international cultural programs, bilingual communication and AI-assisted operational workflows."
+              kicker={sections.about.kicker}
+              title={sections.about.title}
+              copy={sections.about.copy}
             />
           </div>
           <div className="grid gap-5" data-reveal="fade-right">
             <div className="glass-card rounded-[28px] p-6 sm:rounded-[32px] sm:p-7">
               <p className="text-base leading-8 text-black/[0.72] sm:text-lg sm:leading-9">
-                我从英语教育一线出发，先后经历中学教学、教育内容运营、教育科技机构管理，并进入国际学术与文化项目运营领域。
-                这条职业路径让我同时理解三件事：教育如何发生，内容如何传播，机构如何运转。
+                {sections.about.intro}
               </p>
             </div>
             <div className="grid gap-5 md:grid-cols-2">
               <div className="rounded-[28px] border border-black/[0.10] bg-white/[0.72] p-6 backdrop-blur">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/[0.45]">Current Work</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/[0.45]">{sections.about.currentLabel}</p>
                 <p className="mt-4 text-sm leading-7 text-black/[0.68]">
-                  参与 NAAI 及相关国际文化奖项项目运营，负责会员拓展、学术审核、官网运营、国际合作、证书发放、邮件沟通与奖项评审流程支持。
+                  {sections.about.currentBody}
                 </p>
               </div>
               <div className="rounded-[28px] border border-black/[0.10] bg-white/[0.72] p-6 backdrop-blur">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/[0.45]">AI Operating Mode</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/[0.45]">{sections.about.aiLabel}</p>
                 <p className="mt-4 text-sm leading-7 text-black/[0.68]">
-                  将多种 AI 工具和 vibe coding 工作流用于官网原型、双语资料、邮件模板、运营流程和项目文档的快速迭代。
+                  {sections.about.aiBody}
                 </p>
               </div>
             </div>
@@ -81,10 +89,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-white py-20 sm:py-24">
+      <section className="section-gradient-mist relative overflow-hidden py-20 sm:py-24">
         <div className="section-shell">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {publicMetrics.map((metric, index) => {
+            {profile.publicMetrics.map((metric, index) => {
               const Icon = metric.icon;
               return (
                 <div key={metric.label} data-reveal style={delay(index * 80)} className="neo-card rounded-[28px] p-5">
@@ -99,22 +107,22 @@ export default function Home() {
             })}
           </div>
           <p className="mt-6 max-w-3xl text-xs leading-6 text-black/[0.46]" data-reveal>
-            Public metrics were checked against thenaai.org public data on July 7, 2026.
+            {sections.metricsFootnote}
           </p>
         </div>
       </section>
 
-      <section id="capabilities" className="relative bg-[#FAFAF7] py-24 sm:py-28">
+      <section id="capabilities" className="section-gradient-field relative py-24 sm:py-28">
         <div className="section-shell">
           <div data-reveal>
             <SectionHeading
-              kicker="What I Do"
-              title="核心能力"
-              copy="围绕国际项目、学术机构、奖项体系、AI 工作流和双语表达建立可执行的运营系统。"
+              kicker={sections.capabilities.kicker}
+              title={sections.capabilities.title}
+              copy={sections.capabilities.copy}
             />
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {capabilities.map((item, index) => {
+            {profile.capabilities.map((item, index) => {
               const Icon = item.icon;
               return (
                 <article key={item.title} data-reveal style={delay(index * 80)} className="neo-card rounded-[30px] p-6">
@@ -131,24 +139,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" className="relative bg-white py-24 sm:py-28">
+      <section id="experience" className="section-gradient-mist relative py-24 sm:py-28">
         <div className="section-shell">
           <div data-reveal>
             <SectionHeading
-              kicker="Experience"
-              title="工作经历"
-              copy="A timeline of project operations, organization management, content strategy and education."
+              kicker={sections.experience.kicker}
+              title={sections.experience.title}
+              copy={sections.experience.copy}
             />
           </div>
           <div className="relative mt-14 pl-8 sm:mt-16 sm:pl-10" data-timeline>
             <div className="timeline-line" />
             <div className="space-y-7">
-              {experiences.map((item, index) => (
+              {profile.experiences.map((item, index) => (
                 <article
                   key={item.organization}
                   data-reveal
                   style={delay(index * 100)}
-                  className="relative rounded-[30px] border border-black/[0.10] bg-[#FAFAF7] p-5 shadow-[0_20px_70px_rgba(5,5,5,0.06)] sm:rounded-[34px] sm:p-6"
+                  className="relative rounded-[30px] border border-black/[0.10] bg-white/[0.78] p-5 shadow-[0_20px_70px_rgba(5,5,5,0.06)] backdrop-blur sm:rounded-[34px] sm:p-6"
                 >
                   <span className="timeline-node absolute -left-[31px] top-7 h-4 w-4 rounded-full bg-black ring-1 ring-white sm:-left-[35px]" />
                   <div className="grid gap-6 md:grid-cols-[230px_1fr]">
@@ -188,27 +196,27 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#FAFAF7] py-8 sm:py-10">
+      <section className="section-gradient-ribbon py-8 sm:py-10">
         <div className="section-shell overflow-hidden border-y border-black/[0.10] py-5">
           <div className="marquee-track flex w-max gap-10 text-sm font-semibold uppercase tracking-[0.18em] text-black/[0.38]">
-            {[...phraseSeparators, ...phraseSeparators].map((phrase, index) => (
+            {[...profile.phraseSeparators, ...profile.phraseSeparators].map((phrase, index) => (
               <span key={`${phrase}-${index}`}>{phrase}</span>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="projects" className="relative bg-[#FAFAF7] py-24 sm:py-28">
+      <section id="projects" className="section-gradient-lift relative py-24 sm:py-28">
         <div className="section-shell">
           <div data-reveal>
             <SectionHeading
-              kicker="Selected Projects"
-              title="代表性项目方向"
-              copy="可后续扩展为独立案例页、证书样本页、项目说明页或媒体资料页。"
+              kicker={sections.projects.kicker}
+              title={sections.projects.title}
+              copy={sections.projects.copy}
             />
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {projects.map((project, index) => {
+            {profile.projects.map((project, index) => {
               const Icon = project.icon;
               return (
                 <article key={project.title} data-reveal style={delay(index * 110)} className="neo-card group rounded-[34px] p-7">
@@ -218,7 +226,7 @@ export default function Home() {
                         <Icon className="h-6 w-6" aria-hidden="true" />
                       </div>
                       <span className="inline-flex items-center gap-2 text-xs font-semibold text-black/[0.44] transition-colors group-hover:text-black">
-                        View details
+                        {sections.projects.viewDetails}
                         <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                       </span>
                     </div>
@@ -260,23 +268,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="skills" className="overflow-hidden bg-white py-24 sm:py-28">
+      <section id="skills" className="section-gradient-field overflow-hidden py-24 sm:py-28">
         <div className="section-shell grid gap-12 lg:grid-cols-[0.78fr_1.22fr]">
           <div data-reveal="fade-left">
             <SectionHeading
-              kicker="Skills"
-              title="技能矩阵"
-              copy="简洁呈现可被项目、机构和合作方直接理解的工作能力。"
+              kicker={sections.skills.kicker}
+              title={sections.skills.title}
+              copy={sections.skills.copy}
             />
           </div>
           <div data-reveal="fade-right">
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {skills.map((skill, index) => (
+              {profile.skills.map((skill, index) => (
                 <div
                   key={skill}
                   style={delay(index * 45)}
                   data-reveal
-                  className="skill-pill rounded-full border border-black/[0.10] bg-[#FAFAF7] px-4 py-3 text-sm font-semibold text-black/[0.68]"
+                  className="skill-pill rounded-full border border-black/[0.10] bg-white/[0.72] px-4 py-3 text-sm font-semibold text-black/[0.68] shadow-sm backdrop-blur"
                 >
                   {skill}
                 </div>
@@ -284,9 +292,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="mt-16 overflow-hidden border-y border-black/[0.10] bg-[#FAFAF7]/70 py-4">
+        <div className="mt-16 overflow-hidden border-y border-black/[0.10] bg-white/[0.42] py-4 backdrop-blur">
           <div className="marquee-track flex w-max gap-3 px-5">
-            {[...skills, ...skills].map((skill, index) => (
+            {[...profile.skills, ...profile.skills].map((skill, index) => (
               <span key={`${skill}-${index}`} className="rounded-full border border-black/[0.08] bg-white px-4 py-2 text-xs font-semibold text-black/[0.42]">
                 {skill}
               </span>
@@ -295,17 +303,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#FAFAF7] py-24 sm:py-28">
+      <section className="section-gradient-mist py-24 sm:py-28">
         <div className="section-shell">
           <div data-reveal>
             <SectionHeading
-              kicker="Working Method"
-              title="工作方法"
-              copy="方法不是口号，而是将项目持续交付的操作方式。"
+              kicker={sections.methods.kicker}
+              title={sections.methods.title}
+              copy={sections.methods.copy}
             />
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-            {methods.map((method, index) => (
+            {profile.methods.map((method, index) => (
               <article key={method.title} data-reveal style={delay(index * 90)} className="neo-card rounded-[30px] p-6">
                 <MethodIcon className="h-5 w-5 text-electric" aria-hidden="true" />
                 <h3 className="mt-5 text-xl font-semibold text-black">{method.title}</h3>
@@ -317,18 +325,18 @@ export default function Home() {
         </div>
       </section>
 
-      <ProtectedEducation />
+      <ProtectedEducation education={profile.education} copy={profile.privateAccess} language={language} />
 
-      <section id="contact" className="relative overflow-hidden bg-black py-24 text-white sm:py-28">
+      <section id="contact" className="section-gradient-night relative overflow-hidden py-24 text-white sm:py-28">
         <div className="accent-band opacity-70" />
         <div className="section-shell grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-center">
           <div data-reveal="fade-left">
-            <p className="section-kicker text-mint">Contact & Resume</p>
+            <p className="section-kicker text-mint">{sections.contact.kicker}</p>
             <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
-              欢迎就学术机构运营、国际文化项目、教育科技合作、AI 工作流与双语内容建设交流。
+              {sections.contact.title}
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-8 text-white/[0.64]">
-              For academic institution operations, cultural programs, awards systems, AI-assisted workflows or bilingual institutional communication, reach out directly.
+              {sections.contact.copy}
             </p>
             <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/[0.72]">
               <a href={`mailto:${person.email}`} className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] px-4 py-2 hover:border-mint/60">
@@ -337,7 +345,7 @@ export default function Home() {
               </a>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] px-4 py-2">
                 <MessageCircle className="h-4 w-4 text-mint" aria-hidden="true" />
-                WeChat: {person.wechat}
+                {sections.contact.wechatPrefix} {person.wechat}
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] px-4 py-2">
                 <MapPin className="h-4 w-4 text-mint" aria-hidden="true" />
@@ -351,32 +359,32 @@ export default function Home() {
                 <div className="mb-5 flex items-center justify-between border-b border-white/[0.10] pb-4">
                   <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-white/[0.44]">
                     <Sparkles className="h-4 w-4 text-mint" aria-hidden="true" />
-                    Open Channel
+                    {sections.contact.openChannel}
                   </div>
                   <span className="h-2 w-2 rounded-full bg-mint shadow-[0_0_18px_rgba(125,255,201,0.9)]" />
                 </div>
-                <CopyEmail email={person.email} />
+                <CopyEmail email={person.email} labels={profile.copyEmail} />
                 <div className="mt-3 rounded-[24px] border border-white/[0.12] bg-white/[0.05] px-5 py-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/[0.42]">WeChat ID</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/[0.42]">{sections.contact.wechatIdLabel}</p>
                   <p className="mt-2 text-lg font-semibold text-white">{person.wechat}</p>
                 </div>
-                <ProtectedResumeDownload href={`${basePath}/eacon-jing-resume.pdf`} />
+                <ProtectedResumeDownload href={`${basePath}/eacon-jing-resume.pdf`} copy={profile.privateAccess} language={language} />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-black/[0.10] bg-white py-10">
+      <footer className="section-gradient-ribbon border-t border-black/[0.10] py-10">
         <div className="section-shell flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-sm font-semibold text-black">
-              {person.chineseName} / {person.englishName}
-            </p>
-            <p className="mt-1 text-xs text-black/[0.48]">International Project Operations · Academic & Cultural Institutions · AI-assisted Workflow</p>
-          </div>
-          <div className="flex flex-wrap gap-4">
-            {sourceLinks.map((link) => (
+            {sections.footer.name}
+          </p>
+          <p className="mt-1 text-xs text-black/[0.48]">{sections.footer.description}</p>
+        </div>
+        <div className="flex flex-wrap gap-4">
+          {profile.sourceLinks.map((link) => (
               <a key={link.href} href={link.href} target="_blank" rel="noreferrer" className="underline-slide inline-flex items-center gap-1 text-xs font-semibold text-black/[0.54]">
                 {link.label}
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />

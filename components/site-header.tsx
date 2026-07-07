@@ -2,12 +2,23 @@
 
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Mail, Menu, X } from "lucide-react";
-import { navItems, person } from "@/lib/profile-data";
+import type { Language, localizedProfile } from "@/lib/profile-data";
 
-export function SiteHeader() {
+type LocalizedProfile = (typeof localizedProfile)[Language];
+
+type SiteHeaderProps = {
+  language: Language;
+  navItems: LocalizedProfile["navItems"];
+  person: LocalizedProfile["person"];
+  copy: LocalizedProfile["header"];
+  onLanguageChange: (language: Language) => void;
+};
+
+export function SiteHeader({ language, navItems, person, copy, onLanguageChange }: SiteHeaderProps) {
   const [active, setActive] = useState("#about");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const nextLanguage: Language = language === "zh" ? "en" : "zh";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -45,19 +56,20 @@ export function SiteHeader() {
               : "border-black/[0.08] bg-white/[0.62] backdrop-blur-md"
           }`}
         >
-          <a href="#top" className="group flex items-center gap-3 rounded-full pr-2" aria-label="Back to top">
+          <a href="#top" className="group flex items-center gap-3 rounded-full pr-2" aria-label={copy.backToTop}>
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-xs font-semibold text-white ring-1 ring-black/[0.08]">
               EJ
             </span>
             <span className="hidden leading-tight sm:block">
               <span className="block text-sm font-semibold text-black">{person.englishName}</span>
-              <span className="block text-[11px] text-black/[0.50]">{person.chineseName} / {person.alias}</span>
+              <span className="block text-[11px] text-black/[0.50]">{copy.brandSubline}</span>
             </span>
           </a>
 
-          <nav className="hidden items-center rounded-full bg-black/[0.035] p-1 lg:flex" aria-label="Primary navigation">
+          <nav className="hidden items-center rounded-full bg-black/[0.035] p-1 lg:flex" aria-label={copy.navAria}>
             {navItems.map((item) => {
               const isActive = active === item.href;
+              const secondary = item.english && item.english !== item.label ? item.english : "";
               return (
                 <a
                   key={item.href}
@@ -69,27 +81,32 @@ export function SiteHeader() {
                   }`}
                 >
                   <span>{item.label}</span>
-                  <span className="ml-1 text-[10px] opacity-60">{item.english}</span>
+                  {secondary ? <span className="ml-1 text-[10px] opacity-60">{secondary}</span> : null}
                 </a>
               );
             })}
           </nav>
 
           <div className="flex items-center gap-2">
-            <span className="hidden rounded-full border border-black/[0.10] px-3 py-2 text-[11px] font-semibold text-black/[0.58] lg:inline-flex">
-              CN / EN
-            </span>
+            <button
+              type="button"
+              onClick={() => onLanguageChange(nextLanguage)}
+              aria-label={copy.languageToggleAria}
+              className="hidden rounded-full border border-black/[0.10] px-3 py-2 text-[11px] font-semibold text-black/[0.58] transition-colors hover:border-violet/50 hover:bg-white lg:inline-flex"
+            >
+              {copy.languageToggle}
+            </button>
             <a
               href={`mailto:${person.email}`}
               className="magnetic-button hidden h-10 items-center gap-2 rounded-full bg-black px-4 text-xs font-semibold text-white hover:bg-[#111] sm:inline-flex"
             >
               <Mail className="h-4 w-4" aria-hidden="true" />
-              联系
+              {copy.contact}
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </a>
             <button
               type="button"
-              aria-label={open ? "Close menu" : "Open menu"}
+              aria-label={open ? copy.menuClose : copy.menuOpen}
               aria-expanded={open}
               onClick={() => setOpen((value) => !value)}
               className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.10] text-black lg:hidden"
@@ -101,6 +118,17 @@ export function SiteHeader() {
 
         {open ? (
           <nav className="mt-3 rounded-[28px] border border-black/[0.10] bg-white/[0.92] p-2 shadow-[0_18px_60px_rgba(5,5,5,0.10)] backdrop-blur-xl lg:hidden">
+            <button
+              type="button"
+              onClick={() => {
+                onLanguageChange(nextLanguage);
+                setOpen(false);
+              }}
+              className="mb-1 flex w-full items-center justify-between rounded-full px-4 py-3 text-sm font-semibold text-black/[0.72] hover:bg-black hover:text-white"
+            >
+              {copy.languageToggle}
+              <span className="text-xs opacity-55">{language === "zh" ? "English" : "Chinese"}</span>
+            </button>
             {navItems.map((item) => (
               <a
                 key={item.href}

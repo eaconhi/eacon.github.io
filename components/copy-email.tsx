@@ -5,9 +5,13 @@ import { Check, Copy, Mail } from "lucide-react";
 
 type CopyEmailProps = {
   email: string;
+  labels: {
+    copy: string;
+    copied: string;
+  };
 };
 
-export function CopyEmail({ email }: CopyEmailProps) {
+export function CopyEmail({ email, labels }: CopyEmailProps) {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
@@ -35,7 +39,7 @@ export function CopyEmail({ email }: CopyEmailProps) {
         className="magnetic-button mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-mint"
       >
         {copied ? <Check className="h-4 w-4" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
-        {copied ? "已复制邮箱" : "复制邮箱"}
+        {copied ? labels.copied : labels.copy}
       </button>
     </div>
   );

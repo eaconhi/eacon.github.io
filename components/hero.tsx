@@ -1,12 +1,18 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { ArrowDown, ArrowRight, Mail, MapPin, Sparkles } from "lucide-react";
-import { heroKeywords, person } from "@/lib/profile-data";
+import type { Language, localizedProfile } from "@/lib/profile-data";
 
-const floatingLabels = ["Academic Ops", "Expert Members", "AI Workflow", "Bilingual Docs"];
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+type LocalizedProfile = (typeof localizedProfile)[Language];
 
-export function Hero() {
+type HeroProps = {
+  profile: LocalizedProfile;
+};
+
+export function Hero({ profile }: HeroProps) {
+  const { hero, heroKeywords, person } = profile;
+
   return (
     <section id="top" className="relative isolate overflow-hidden bg-[#FAFAF7] pt-28 lg:pt-32">
       <div className="accent-band" />
@@ -22,14 +28,14 @@ export function Hero() {
             </a>
             <div className="inline-flex items-center gap-2 rounded-full border border-black/[0.10] bg-white/[0.70] px-3 py-2 text-xs font-semibold text-black/[0.60] backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-mint shadow-[0_0_18px_rgba(125,255,201,0.95)]" />
-              International Institution Operations
+              {hero.badge}
             </div>
           </div>
 
           <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[0.94] tracking-normal text-black min-[420px]:text-6xl sm:text-7xl lg:text-8xl">
-            {person.chineseName}
+            {hero.primaryName}
             <span className="mt-4 block bg-[linear-gradient(90deg,#050505_0%,#8A5CF6_52%,#2B7BFF_100%)] bg-clip-text pb-2 text-transparent">
-              {person.englishName}
+              {hero.secondaryName}
             </span>
           </h1>
 
@@ -40,12 +46,14 @@ export function Hero() {
           </div>
 
           <p className="mt-8 max-w-2xl text-[1.55rem] font-medium leading-snug text-black sm:text-3xl">
-            专注于学术与文化机构的
-            <span className="text-violet">系统化</span>、
-            <span className="text-electric">国际化</span>建设。
+            {hero.leadStart}
+            <span className="text-violet">{hero.leadAccentOne}</span>
+            {hero.leadMiddle}
+            <span className="text-electric">{hero.leadAccentTwo}</span>
+            {hero.leadEnd}
           </p>
           <p className="mt-6 max-w-2xl text-base leading-8 text-black/[0.62]">
-            从英语教育、教育内容运营到国际学术与文化项目管理，我长期关注机构如何通过清晰的流程、专业的表达和稳定的国际协作建立可信度。
+            {hero.body}
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-3 lg:flex lg:flex-wrap">
@@ -53,21 +61,21 @@ export function Hero() {
               href="#experience"
               className="magnetic-button inline-flex h-12 items-center justify-center gap-2 rounded-full bg-black px-5 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(5,5,5,0.20)]"
             >
-              查看经历
+              {hero.ctaExperience}
               <ArrowDown className="h-4 w-4" aria-hidden="true" />
             </a>
             <a
               href="#projects"
               className="magnetic-button inline-flex h-12 items-center justify-center gap-2 rounded-full border border-black/[0.12] bg-white/[0.70] px-5 text-sm font-semibold text-black backdrop-blur hover:border-violet/60"
             >
-              查看项目
+              {hero.ctaProjects}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </a>
             <a
               href={`mailto:${person.email}`}
               className="magnetic-button inline-flex h-12 items-center justify-center gap-2 rounded-full border border-black/[0.12] bg-white/[0.70] px-5 text-sm font-semibold text-black backdrop-blur hover:border-mint/80"
             >
-              联系我
+              {hero.ctaContact}
               <Mail className="h-4 w-4" aria-hidden="true" />
             </a>
           </div>
@@ -93,7 +101,7 @@ export function Hero() {
 
         <div className="relative min-h-[620px]" data-reveal="fade-right">
           <div className="absolute left-3 top-7 hidden rounded-full border border-black/[0.10] bg-white/[0.70] px-4 py-2 text-xs font-semibold text-black/[0.62] shadow-soft backdrop-blur md:block">
-            Clean but Cool
+            {hero.cornerLabel}
           </div>
 
           <div className="pulse-ring float-soft absolute right-4 top-3 h-[520px] w-[74%] rounded-[44px] border border-mint/70 bg-white/[0.72] shadow-[0_34px_100px_rgba(5,5,5,0.16)] backdrop-blur lg:right-0 lg:w-[82%]">
@@ -101,7 +109,7 @@ export function Hero() {
             <div className="absolute inset-5 overflow-hidden rounded-[34px] bg-[#F4F5F0]">
               <Image
                 src={`${basePath}/eacon-portrait.jpg`}
-                alt="江奕坤 Eacon Jing portrait"
+                alt={hero.portraitAlt}
                 width={1086}
                 height={1448}
                 priority
@@ -112,7 +120,7 @@ export function Hero() {
             </div>
           </div>
 
-          {floatingLabels.map((label, index) => (
+          {hero.floatingLabels.map((label, index) => (
             <div
               key={label}
               data-reveal
@@ -134,19 +142,19 @@ export function Hero() {
           <div className="glass-card absolute bottom-5 left-0 w-[250px] rounded-[28px] p-5" data-reveal style={{ "--delay": "640ms" } as CSSProperties}>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-black/[0.45]">
               <Sparkles className="h-4 w-4 text-violet" aria-hidden="true" />
-              Current Focus
+              {hero.focusLabel}
             </div>
             <p className="mt-3 text-sm font-semibold leading-6 text-black">
-              International academic & cultural project operations
+              {hero.focusText}
             </p>
           </div>
 
           <div className="glass-card absolute bottom-0 right-0 w-[268px] rounded-[28px] p-5" data-reveal style={{ "--delay": "760ms" } as CSSProperties}>
             <div className="text-xs font-semibold uppercase tracking-[0.16em] text-black/[0.45]">
-              Working Mode
+              {hero.modeLabel}
             </div>
             <p className="mt-3 text-sm font-semibold leading-6 text-black">
-              AI-assisted · Vibe Coding · Bilingual · Global
+              {hero.modeText}
             </p>
           </div>
         </div>

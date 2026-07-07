@@ -2,7 +2,11 @@
 
 import { useEffect } from "react";
 
-export function ScrollEffects() {
+type ScrollEffectsProps = {
+  watchKey?: string;
+};
+
+export function ScrollEffects({ watchKey }: ScrollEffectsProps) {
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const revealItems = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
@@ -25,7 +29,7 @@ export function ScrollEffects() {
 
     revealItems.forEach((item) => revealObserver.observe(item));
     return () => revealObserver.disconnect();
-  }, []);
+  }, [watchKey]);
 
   useEffect(() => {
     const timeline = document.querySelector<HTMLElement>("[data-timeline]");

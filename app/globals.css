@@ -96,6 +96,40 @@ a {
   color: var(--muted);
 }
 
+.section-gradient-mist {
+  background:
+    linear-gradient(125deg, rgba(125, 255, 201, 0.16) 0%, rgba(125, 255, 201, 0) 34%),
+    linear-gradient(305deg, rgba(138, 92, 246, 0.12) 0%, rgba(138, 92, 246, 0) 38%),
+    linear-gradient(180deg, #ffffff 0%, #fbfbf8 48%, #f6f9ff 100%);
+}
+
+.section-gradient-lift {
+  background:
+    linear-gradient(140deg, rgba(43, 123, 255, 0.11) 0%, rgba(43, 123, 255, 0) 36%),
+    linear-gradient(315deg, rgba(125, 255, 201, 0.13) 0%, rgba(125, 255, 201, 0) 40%),
+    linear-gradient(180deg, #fafaf7 0%, #ffffff 54%, #f7fff9 100%);
+}
+
+.section-gradient-field {
+  background:
+    linear-gradient(112deg, rgba(138, 92, 246, 0.12) 0%, rgba(138, 92, 246, 0) 32%),
+    linear-gradient(248deg, rgba(43, 123, 255, 0.1) 0%, rgba(43, 123, 255, 0) 36%),
+    linear-gradient(180deg, #ffffff 0%, #fafaf7 58%, #ffffff 100%);
+}
+
+.section-gradient-ribbon {
+  background:
+    linear-gradient(90deg, rgba(125, 255, 201, 0.14) 0%, rgba(255, 255, 255, 0.45) 32%, rgba(138, 92, 246, 0.1) 68%, rgba(43, 123, 255, 0.12) 100%),
+    #fafaf7;
+}
+
+.section-gradient-night {
+  background:
+    linear-gradient(130deg, rgba(125, 255, 201, 0.16) 0%, rgba(125, 255, 201, 0) 34%),
+    linear-gradient(310deg, rgba(138, 92, 246, 0.2) 0%, rgba(138, 92, 246, 0) 42%),
+    linear-gradient(180deg, #050505 0%, #0a0b11 50%, #050505 100%);
+}
+
 .noise-layer {
   pointer-events: none;
   position: fixed;
