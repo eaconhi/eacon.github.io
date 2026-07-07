@@ -4,6 +4,7 @@ import { ArrowDown, ArrowRight, Mail, MapPin, Sparkles } from "lucide-react";
 import { heroKeywords, person } from "@/lib/profile-data";
 
 const floatingLabels = ["Academic Ops", "Expert Members", "AI Workflow", "Bilingual Docs"];
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export function Hero() {
   return (
@@ -99,7 +100,7 @@ export function Hero() {
             <div className="absolute -inset-px rounded-[44px] bg-[linear-gradient(135deg,rgba(125,255,201,0.34),transparent_38%,rgba(138,92,246,0.22))]" />
             <div className="absolute inset-5 overflow-hidden rounded-[34px] bg-[#F4F5F0]">
               <Image
-                src="/eacon-portrait.jpg"
+                src={`${basePath}/eacon-portrait.jpg`}
                 alt="江奕坤 Eacon Jing portrait"
                 width={1086}
                 height={1448}

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
-const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
+const [ownerName = "", repoName = ""] = process.env.GITHUB_REPOSITORY?.split("/") ?? [];
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
-const isUserOrOrgPage = repoName.endsWith(".github.io");
+const isUserOrOrgPage = repoName === `${ownerName}.github.io`;
 const basePath = isGitHubPages && repoName && !isUserOrOrgPage ? `/${repoName}` : "";
 
 const nextConfig = {
