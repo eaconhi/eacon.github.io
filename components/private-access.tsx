@@ -242,7 +242,9 @@ function TallyEmbedForm({
         marginWidth={0}
         title={copy.iframeTitle}
         className={
-          isDark ? "rounded-2xl bg-white" : "rounded-2xl bg-transparent"
+          isDark
+            ? "tally-dark-frame rounded-2xl bg-black/[0.18]"
+            : "rounded-2xl bg-transparent"
         }
       />
       <p
