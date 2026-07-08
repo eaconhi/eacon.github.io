@@ -246,9 +246,9 @@ export const publicMetrics = [
     icon: Globe2,
   },
   {
-    value: "3",
-    label: "NAAI 奖项类别",
-    detail: "Public award categories exposed on thenaai.org",
+    value: "4",
+    label: "NAAI 提名类奖项",
+    detail: "Awards page also lists open application calls",
     icon: Award,
   },
   {
@@ -393,7 +393,7 @@ export const localizedProfile = {
           "将多种 AI 工具和 vibe coding 工作流用于官网原型、双语资料、邮件模板、运营流程和项目文档的快速迭代。",
       },
       metricsFootnote:
-        "Public metrics were checked against thenaai.org public data on July 7, 2026.",
+        "Public metrics were checked against thenaai.org public data on July 8, 2026.",
       capabilities: {
         kicker: "What I Do",
         title: "核心能力",
@@ -686,9 +686,9 @@ export const localizedProfile = {
         icon: Globe2,
       },
       {
-        value: "3",
-        label: "NAAI award categories",
-        detail: "Public award categories exposed on thenaai.org",
+        value: "4",
+        label: "NAAI nomination-based awards",
+        detail: "Awards page also lists open application calls",
         icon: Award,
       },
       {
@@ -809,7 +809,7 @@ export const localizedProfile = {
           "I use AI tools and vibe coding workflows to rapidly iterate website prototypes, bilingual materials, email templates, operating procedures and project documentation.",
       },
       metricsFootnote:
-        "Public metrics were checked against thenaai.org public data on July 7, 2026.",
+        "Public metrics were checked against thenaai.org public data on July 8, 2026.",
       capabilities: {
         kicker: "What I Do",
         title: "Core Capabilities",
