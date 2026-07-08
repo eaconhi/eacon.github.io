@@ -253,8 +253,8 @@ export const publicMetrics = [
   },
   {
     value: "17",
-    label: "公开导航入口",
-    detail: "按 NAAI 官网当前公开菜单核对",
+    label: "NAAI 公开栏目",
+    detail: "按 NAAI 官网当前公开栏目核对",
     icon: PanelsTopLeft,
   },
   {
@@ -693,8 +693,8 @@ export const localizedProfile = {
       },
       {
         value: "17",
-        label: "Public navigation entries",
-        detail: "Current public menu entries verified on thenaai.org",
+        label: "NAAI public sections",
+        detail: "Current public sections verified on thenaai.org",
         icon: PanelsTopLeft,
       },
       {
