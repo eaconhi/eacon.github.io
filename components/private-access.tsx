@@ -2,17 +2,22 @@
 
 import type { FormEvent } from "react";
 import { useEffect, useState } from "react";
-import { Download, LockKeyhole, ShieldCheck } from "lucide-react";
+import { ArrowDown, Download, LockKeyhole, ShieldCheck } from "lucide-react";
 import type { Language, localizedProfile } from "@/lib/profile-data";
 
 type LocalizedProfile = (typeof localizedProfile)[Language];
 
 const ACCESS_STORAGE_KEY = "eacon-profile-tally-access-unlocked-v1";
 const ACCESS_EVENT_NAME = "eacon-profile-access-change";
-const ACCESS_REQUEST_STORAGE_KEY = "eacon-profile-access-request-v1";
 const TALLY_FORM_ID = "vGbEd8";
+const TALLY_RESPOND_URL = `https://api.tally.so/forms/${TALLY_FORM_ID}/respond`;
 const TALLY_EMBED_SRC = `https://tally.so/embed/${TALLY_FORM_ID}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`;
 const TALLY_WIDGET_SCRIPT = "https://tally.so/widgets/embed.js";
+const TALLY_FIELDS = {
+  company: "2531d89c-891d-4f62-9170-9652fd18d8f2",
+  phone: "17685a42-0179-4de4-9949-dfde3cb94362",
+  email: "66fbd5db-dbce-40c2-af18-b4f361dabb2d",
+};
 
 type TallyWindow = Window & {
   Tally?: {
@@ -82,6 +87,7 @@ function LocalAccessForm({ tone = "light", copy }: AccessFormProps) {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const isDark = tone === "dark";
 
   const inputClassName = isDark
@@ -96,7 +102,7 @@ function LocalAccessForm({ tone = "light", copy }: AccessFormProps) {
 
   const clearError = () => setError("");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!company.trim() || !phone.trim() || !email.trim()) {
@@ -104,16 +110,32 @@ function LocalAccessForm({ tone = "light", copy }: AccessFormProps) {
       return;
     }
 
-    window.localStorage.setItem(
-      ACCESS_REQUEST_STORAGE_KEY,
-      JSON.stringify({
-        company: company.trim(),
-        phone: phone.trim(),
-        email: email.trim(),
-        submittedAt: new Date().toISOString(),
-      }),
-    );
-    unlockAccess();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(TALLY_RESPOND_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sessionUuid: crypto.randomUUID(),
+          respondentUuid: crypto.randomUUID(),
+          responses: {
+            [TALLY_FIELDS.company]: company.trim(),
+            [TALLY_FIELDS.phone]: phone.trim(),
+            [TALLY_FIELDS.email]: email.trim(),
+          },
+          captchas: {},
+          isCompleted: true,
+        }),
+      });
+
+      if (!response.ok) throw new Error("Tally submission failed");
+      unlockAccess();
+    } catch {
+      setError(copy.submissionError);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -121,6 +143,7 @@ function LocalAccessForm({ tone = "light", copy }: AccessFormProps) {
       <label className={labelClassName}>
         {copy.companyLabel}
         <input
+          required
           value={company}
           onChange={(event) => {
             setCompany(event.target.value);
@@ -133,6 +156,7 @@ function LocalAccessForm({ tone = "light", copy }: AccessFormProps) {
       <label className={labelClassName}>
         {copy.phoneLabel}
         <input
+          required
           value={phone}
           onChange={(event) => {
             setPhone(event.target.value);
@@ -146,6 +170,7 @@ function LocalAccessForm({ tone = "light", copy }: AccessFormProps) {
       <label className={labelClassName}>
         {copy.emailLabel}
         <input
+          required
           value={email}
           onChange={(event) => {
             setEmail(event.target.value);
@@ -164,13 +189,14 @@ function LocalAccessForm({ tone = "light", copy }: AccessFormProps) {
       ) : null}
       <button
         type="submit"
+        disabled={isSubmitting}
         className={
           isDark
-            ? "magnetic-button flex h-11 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-black hover:bg-mint"
-            : "magnetic-button flex h-11 items-center justify-center rounded-full bg-black px-5 text-sm font-semibold text-white hover:bg-violet"
+            ? "magnetic-button flex h-11 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-black hover:bg-mint disabled:cursor-wait disabled:opacity-60"
+            : "magnetic-button flex h-11 items-center justify-center rounded-full bg-black px-5 text-sm font-semibold text-white hover:bg-violet disabled:cursor-wait disabled:opacity-60"
         }
       >
-        {copy.submitAccess}
+        {isSubmitting ? copy.submitting : copy.submitAccess}
       </button>
       <p className={noteClassName}>{copy.note}</p>
     </form>
@@ -382,12 +408,15 @@ export function ProtectedResumeDownload({
   }
 
   return (
-    <div className="mt-3 rounded-[24px] border border-white/[0.12] bg-white/[0.05] p-4">
-      <div className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-white/[0.42]">
+    <a
+      href="#education"
+      className="magnetic-button mt-3 flex w-full items-center justify-center gap-2 rounded-full border border-white/[0.14] bg-white/[0.08] px-5 py-3 text-sm font-semibold text-white hover:border-mint/70 hover:bg-white/[0.12]"
+    >
+      <span className="flex items-center gap-2">
         <LockKeyhole className="h-4 w-4 text-mint" aria-hidden="true" />
-        {copy.resumeAccessLabel}
-      </div>
-      <AccessForm tone="dark" language={language} copy={copy} />
-    </div>
+        {copy.unlockResume}
+      </span>
+      <ArrowDown className="h-4 w-4 text-mint" aria-hidden="true" />
+    </a>
   );
 }

@@ -3,8 +3,8 @@
 import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 import {
-  ArrowUpRight,
   CheckCircle2,
+  ChevronDown,
   ExternalLink,
   Mail,
   MapPin,
@@ -225,9 +225,10 @@ export default function Home() {
                       <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-black p-3 text-white">
                         <Icon className="h-6 w-6" aria-hidden="true" />
                       </div>
-                      <span className="inline-flex items-center gap-2 text-xs font-semibold text-black/[0.44] transition-colors group-hover:text-black">
-                        {sections.projects.viewDetails}
-                        <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                      <span className="rounded-full border border-black/[0.10] bg-white/[0.72] px-3 py-2 text-xs font-semibold text-black/[0.48]">
+                        {project.caseStudy
+                          ? sections.projects.caseStudy
+                          : sections.projects.officialSource}
                       </span>
                     </div>
                     <p className="mt-7 text-xs font-semibold uppercase tracking-[0.16em] text-violet">{project.english}</p>
@@ -253,12 +254,60 @@ export default function Home() {
                             {link.label}
                             {link.href.startsWith("http") ? (
                               <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                            ) : (
-                              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                            )}
+                            ) : null}
                           </a>
                         ))}
                       </div>
+                    ) : null}
+                    {project.caseStudy ? (
+                      <details className="case-disclosure mt-7 border-t border-black/[0.10] pt-5">
+                        <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-black marker:content-none">
+                          <span>{sections.projects.openCase}</span>
+                          <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full border border-black/[0.12] bg-white">
+                            <ChevronDown className="h-4 w-4 transition-transform" aria-hidden="true" />
+                          </span>
+                        </summary>
+                        <div className="mt-6 grid gap-6 border-t border-black/[0.08] pt-6">
+                          <div>
+                            <p className="case-label">{sections.projects.caseLabels.challenge}</p>
+                            <p className="mt-2 text-sm leading-7 text-black/[0.66]">{project.caseStudy.challenge}</p>
+                          </div>
+                          <div>
+                            <p className="case-label">{sections.projects.caseLabels.contribution}</p>
+                            <p className="mt-2 text-sm leading-7 text-black/[0.66]">{project.caseStudy.contribution}</p>
+                          </div>
+                          <div className="grid gap-5 lg:grid-cols-2">
+                            <div>
+                              <p className="case-label">{sections.projects.caseLabels.workflow}</p>
+                              <ol className="mt-3 space-y-3">
+                                {project.caseStudy.workflow.map((step, stepIndex) => (
+                                  <li key={step} className="flex gap-3 text-sm leading-7 text-black/[0.64]">
+                                    <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-black text-[11px] font-semibold text-white">
+                                      {stepIndex + 1}
+                                    </span>
+                                    <span>{step}</span>
+                                  </li>
+                                ))}
+                              </ol>
+                            </div>
+                            <div>
+                              <p className="case-label">{sections.projects.caseLabels.deliverables}</p>
+                              <ul className="mt-3 space-y-3">
+                                {project.caseStudy.deliverables.map((deliverable) => (
+                                  <li key={deliverable} className="flex gap-3 text-sm leading-7 text-black/[0.64]">
+                                    <CheckCircle2 className="mt-1 h-4 w-4 flex-none text-electric" aria-hidden="true" />
+                                    <span>{deliverable}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="rounded-[20px] border border-violet/20 bg-violet/[0.06] p-4">
+                            <p className="case-label text-violet">{sections.projects.caseLabels.scopeNote}</p>
+                            <p className="mt-2 text-sm leading-7 text-black/[0.66]">{project.caseStudy.scopeNote}</p>
+                          </div>
+                        </div>
+                      </details>
                     ) : null}
                   </div>
                 </article>
@@ -368,7 +417,11 @@ export default function Home() {
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/[0.42]">{sections.contact.wechatIdLabel}</p>
                   <p className="mt-2 text-lg font-semibold text-white">{person.wechat}</p>
                 </div>
-                <ProtectedResumeDownload href={`${basePath}/eacon-jing-resume.pdf`} copy={profile.privateAccess} language={language} />
+                <ProtectedResumeDownload
+                  href={`${basePath}/${language === "en" ? "eacon-jing-resume-en.pdf" : "eacon-jing-resume.pdf"}`}
+                  copy={profile.privateAccess}
+                  language={language}
+                />
               </div>
             </div>
           </div>

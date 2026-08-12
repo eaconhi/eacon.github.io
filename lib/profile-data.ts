@@ -174,6 +174,7 @@ export const projects = [
       "Bilingual Documentation",
     ],
     links: [{ label: "IIFSA 官网", href: "https://iifsa.org/" }],
+    caseStudy: null,
   },
   {
     title: "国际学术会员体系建设",
@@ -190,6 +191,26 @@ export const projects = [
       { label: "NAAI 官网", href: "https://thenaai.org/" },
       { label: "会员申请页", href: "https://thenaai.org/membership" },
     ],
+    caseStudy: {
+      challenge:
+        "国际学术会员资料来自不同国家、学科与职业背景，既要保证信息完整和公开身份一致，也要兼顾正式、礼貌的跨文化沟通。",
+      contribution:
+        "参与会员拓展、资料收集、公开信息核对、学术背景整理、审核支持、补充材料沟通和会员页面内容维护。",
+      workflow: [
+        "按申请对象整理身份、机构、领域、公开来源和待补信息。",
+        "使用 AI Agent 辅助结构化材料、形成核对清单和双语沟通初稿。",
+        "人工复核姓名、头衔、机构、链接和术语，发现冲突时回到公开来源确认。",
+        "将确认后的信息用于审核支持、邮件跟进和官网内容维护。",
+      ],
+      deliverables: [
+        "会员资料核对与审核支持记录",
+        "中英文补充材料与沟通邮件",
+        "会员信息页面和相关运营文档",
+        "可复用的资料检查步骤与交付清单",
+      ],
+      scopeNote:
+        "官网中的 3,200+ 会员和 85+ 国家 / 地区是 NAAI 公开呈现的机构背景。本案例说明我参与的具体运营环节，不将机构整体规模归为个人独立业绩。",
+    },
   },
   {
     title: "AI Agent 辅助官网与运营流程搭建",
@@ -203,6 +224,26 @@ export const projects = [
       "Operations Automation",
     ],
     links: [],
+    caseStudy: {
+      challenge:
+        "官网更新、双语材料、邮件模板和项目文档往往同时涉及事实、结构、语气与交付格式，单次问答难以保证稳定和可复用。",
+      contribution:
+        "将模糊需求拆成资料收集、结构化整理、初稿生成、人工复核、页面或文档实现、最终检查等步骤，并在每一步明确人工判断点。",
+      workflow: [
+        "先定义目标受众、事实来源、输出格式和不可夸大的边界。",
+        "让 AI Agent 按任务链处理资料整理、页面结构、双语初稿和检查项。",
+        "人工核对身份、数字、链接、语气和中英文一致性，再提出下一轮修改。",
+        "完成网页构建或文档生成后，在桌面和手机端检查显示、交互与下载结果。",
+      ],
+      deliverables: [
+        "中英双语个人官网与可切换的英文简历",
+        "Tally 信息收集和简历下载流程",
+        "双语文案、邮件模板与项目说明文档",
+        "构建、移动端、英文纯净度和交付检查清单",
+      ],
+      scopeNote:
+        "我的定位是运营场景中的 AI Agent 工作流设计与交付，不把自己描述为独立开发复杂底层系统的全栈工程师。",
+    },
   },
   {
     title: "教育科技机构运营",
@@ -216,6 +257,7 @@ export const projects = [
       "Partnerships",
     ],
     links: [],
+    caseStudy: null,
   },
   {
     title: "教育内容与新媒体运营",
@@ -229,6 +271,7 @@ export const projects = [
       "User Engagement",
     ],
     links: [],
+    caseStudy: null,
   },
 ];
 
@@ -406,9 +449,18 @@ export const localizedProfile = {
       },
       projects: {
         kicker: "Selected Projects",
-        title: "代表性项目方向",
-        copy: "可后续扩展为独立案例页、证书样本页、项目说明页或媒体资料页。",
-        viewDetails: "View details",
+        title: "代表性项目与案例",
+        copy: "用具体场景、个人动作、工作流与交付边界说明我如何推进项目。",
+        caseStudy: "案例",
+        officialSource: "官方来源",
+        openCase: "展开案例",
+        caseLabels: {
+          challenge: "场景与挑战",
+          contribution: "我的具体动作",
+          workflow: "工作流",
+          deliverables: "交付物",
+          scopeNote: "边界说明",
+        },
       },
       skills: {
         kicker: "Skills",
@@ -444,11 +496,14 @@ export const localizedProfile = {
       unlockedBadge: "已解锁",
       resumeAccessLabel: "Resume Access",
       downloadResume: "下载 PDF 简历",
+      unlockResume: "填写一次即可解锁教育背景与 PDF",
       companyLabel: "单位或公司",
       phoneLabel: "手机号",
       emailLabel: "邮箱",
       submitAccess: "提交并查看",
+      submitting: "正在提交...",
       missingFields: "请填写单位或公司、手机号和邮箱。",
+      submissionError: "提交没有成功，请稍后重试或直接联系邮箱。",
     },
     copyEmail: {
       copy: "复制邮箱",
@@ -615,6 +670,7 @@ export const localizedProfile = {
           "Bilingual Documentation",
         ],
         links: [{ label: "IIFSA Website", href: "https://iifsa.org/" }],
+        caseStudy: null,
       },
       {
         title: "Global Academic Membership System",
@@ -631,6 +687,26 @@ export const localizedProfile = {
           { label: "NAAI Website", href: "https://thenaai.org/" },
           { label: "Membership Page", href: "https://thenaai.org/membership" },
         ],
+        caseStudy: {
+          challenge:
+            "International academic member profiles span different countries, disciplines and professional contexts. The work requires complete information, consistency with public identities and careful cross-cultural communication.",
+          contribution:
+            "Supports member development, material collection, public-source checks, academic profile structuring, review preparation, follow-up for missing information and member-page content maintenance.",
+          workflow: [
+            "Structure identity, institution, field, public sources and missing information for each profile.",
+            "Use AI Agents to organize materials, prepare review checklists and draft bilingual follow-up communication.",
+            "Manually verify names, titles, institutions, links and terminology, returning to public sources when information conflicts.",
+            "Use confirmed information for review support, email follow-up and website content operations.",
+          ],
+          deliverables: [
+            "Member profile review-support records",
+            "Bilingual material requests and follow-up emails",
+            "Member information pages and operating documents",
+            "Reusable material-check and delivery checklists",
+          ],
+          scopeNote:
+            "The 3,200+ members and 85+ countries or regions shown on this website are NAAI's public institutional context. This case describes my specific operating contribution and does not claim the institution-wide scale as an individual achievement.",
+        },
       },
       {
         title: "AI Agent-enabled Website & Operations Workflow",
@@ -644,6 +720,26 @@ export const localizedProfile = {
           "Operations Automation",
         ],
         links: [],
+        caseStudy: {
+          challenge:
+            "Website updates, bilingual materials, email templates and project documents combine factual accuracy, structure, tone and delivery format. One-off AI prompts do not provide a reliable or repeatable process.",
+          contribution:
+            "Breaks ambiguous requirements into research, structuring, drafting, human review, page or document implementation and final checks, with explicit human decision points at every stage.",
+          workflow: [
+            "Define the audience, source facts, output format and claim boundaries before drafting.",
+            "Use AI Agents to support material organization, page structure, bilingual drafts and checklists.",
+            "Manually verify identities, figures, links, tone and bilingual consistency, then direct the next iteration.",
+            "After website or document production, check desktop and mobile rendering, interactions and download results.",
+          ],
+          deliverables: [
+            "Bilingual personal website with a complete English resume state",
+            "Tally information collection and resume access flow",
+            "Bilingual copy, email templates and project documents",
+            "Build, mobile, English-purity and delivery checklists",
+          ],
+          scopeNote:
+            "I position this as AI Agent workflow design and delivery for operational contexts, not as independent development of complex low-level software systems or a full-stack engineering claim.",
+        },
       },
       {
         title: "EdTech Organization Operations",
@@ -657,6 +753,7 @@ export const localizedProfile = {
           "Partnerships",
         ],
         links: [],
+        caseStudy: null,
       },
       {
         title: "Education Content & New Media",
@@ -670,6 +767,7 @@ export const localizedProfile = {
           "User Engagement",
         ],
         links: [],
+        caseStudy: null,
       },
     ],
     publicMetrics: [
@@ -823,9 +921,18 @@ export const localizedProfile = {
       },
       projects: {
         kicker: "Selected Projects",
-        title: "Representative Project Areas",
-        copy: "These areas can later expand into case pages, certificate sample pages, project explainers or media kits.",
-        viewDetails: "View details",
+        title: "Representative Projects & Cases",
+        copy: "Concrete context, personal actions, workflows and delivery boundaries show how I move projects forward.",
+        caseStudy: "Case Study",
+        officialSource: "Official Source",
+        openCase: "Open Case Study",
+        caseLabels: {
+          challenge: "Context & Challenge",
+          contribution: "My Contribution",
+          workflow: "Workflow",
+          deliverables: "Deliverables",
+          scopeNote: "Scope Note",
+        },
       },
       skills: {
         kicker: "Skills",
@@ -861,13 +968,17 @@ export const localizedProfile = {
       unlockedBadge: "Unlocked",
       resumeAccessLabel: "Resume Access",
       downloadResume: "Download PDF Resume",
+      unlockResume: "Submit once to unlock education and the PDF",
       nameLabel: "Full Name",
       companyLabel: "Company / Organization",
       phoneLabel: "Phone Number",
       emailLabel: "Email",
       submitAccess: "Submit & Unlock",
+      submitting: "Submitting...",
       missingFields:
         "Please enter your company or organization, phone number and email.",
+      submissionError:
+        "The form could not be submitted. Please try again or contact me by email.",
     },
     copyEmail: {
       copy: "Copy Email",

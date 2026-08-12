@@ -224,6 +224,23 @@ a {
   filter: invert(1) hue-rotate(180deg) saturate(0.82) contrast(0.92) brightness(0.92);
 }
 
+.case-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(5, 5, 5, 0.48);
+}
+
+.case-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.case-disclosure[open] summary svg {
+  transform: rotate(180deg);
+}
+
 [data-reveal] {
   opacity: 0;
   transform: translateY(28px);
