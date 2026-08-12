@@ -5,6 +5,7 @@ const isUserOrOrgPage = repoName === `${ownerName}.github.io`;
 const basePath = isGitHubPages && repoName && !isUserOrOrgPage ? `/${repoName}` : "";
 
 const nextConfig = {
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   output: "export",
   trailingSlash: true,
   basePath,

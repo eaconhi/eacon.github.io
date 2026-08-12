@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "江奕坤 / Eacon Jing - International Project Operations & AI Agent Workflow",
     description:
-      "个人品牌官网与线上简历：国际项目运营、学术与文化机构运营、奖项体系、AI Agent 工作流与双语机构表达。",
+      "个人品牌网站与线上简历：内容与网站运营、多源信息核验、AI 协作与信息质量控制。",
     url: siteUrl,
     type: "website",
     images: [

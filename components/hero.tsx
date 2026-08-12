@@ -99,7 +99,7 @@ export function Hero({ profile }: HeroProps) {
           </div>
         </div>
 
-        <div className="relative min-h-[620px]" data-reveal="fade-right">
+        <div className="relative min-h-[700px] lg:min-h-[620px]" data-reveal="fade-right">
           <div className="absolute left-3 top-7 hidden rounded-full border border-black/[0.10] bg-white/[0.70] px-4 py-2 text-xs font-semibold text-black/[0.62] shadow-soft backdrop-blur md:block">
             {hero.cornerLabel}
           </div>
@@ -125,21 +125,21 @@ export function Hero({ profile }: HeroProps) {
               key={label}
               data-reveal
               style={{ "--delay": `${300 + index * 110}ms` } as CSSProperties}
-              className={`float-soft absolute rounded-full border border-black/[0.10] bg-white/[0.80] px-4 py-3 text-xs font-semibold text-black/[0.66] shadow-[0_18px_50px_rgba(5,5,5,0.10)] backdrop-blur ${
+              className={`float-soft absolute z-20 rounded-full border border-black/[0.10] bg-white/[0.86] px-4 py-3 text-xs font-semibold text-black/[0.66] shadow-[0_18px_50px_rgba(5,5,5,0.10)] backdrop-blur ${
                 index === 0
                   ? "left-0 top-28"
                   : index === 1
                     ? "right-0 top-44"
                     : index === 2
-                      ? "left-5 bottom-32"
-                      : "right-8 bottom-20"
+                      ? "left-5 top-64"
+                      : "right-8 top-80"
               }`}
             >
               {label}
             </div>
           ))}
 
-          <div className="glass-card absolute bottom-5 left-0 w-[250px] rounded-[28px] p-5" data-reveal style={{ "--delay": "640ms" } as CSSProperties}>
+          <div className="glass-card absolute bottom-[150px] left-0 z-30 w-full rounded-[28px] p-5 sm:w-[290px] lg:bottom-5 lg:w-[250px]" data-reveal style={{ "--delay": "640ms" } as CSSProperties}>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-black/[0.45]">
               <Sparkles className="h-4 w-4 text-violet" aria-hidden="true" />
               {hero.focusLabel}
@@ -149,7 +149,7 @@ export function Hero({ profile }: HeroProps) {
             </p>
           </div>
 
-          <div className="glass-card absolute bottom-0 right-0 w-[268px] rounded-[28px] p-5" data-reveal style={{ "--delay": "760ms" } as CSSProperties}>
+          <div className="glass-card absolute bottom-0 right-0 z-30 w-full rounded-[28px] p-5 sm:w-[290px] lg:w-[268px]" data-reveal style={{ "--delay": "760ms" } as CSSProperties}>
             <div className="text-xs font-semibold uppercase tracking-[0.16em] text-black/[0.45]">
               {hero.modeLabel}
             </div>

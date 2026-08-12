@@ -12,7 +12,6 @@ import {
   Sparkles
 } from "lucide-react";
 import { CopyEmail } from "@/components/copy-email";
-import { CountValue } from "@/components/count-value";
 import { Hero } from "@/components/hero";
 import { ProtectedEducation, ProtectedResumeDownload } from "@/components/private-access";
 import { ScrollEffects } from "@/components/scroll-effects";
@@ -26,6 +25,7 @@ const LANGUAGE_STORAGE_KEY = "eacon-profile-language-v1";
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("zh");
+  const [languageReady, setLanguageReady] = useState(false);
   const profile = localizedProfile[language];
   const MethodIcon = profile.methodIcon;
   const { person, sections } = profile;
@@ -35,13 +35,15 @@ export default function Home() {
     if (storedLanguage === "zh" || storedLanguage === "en") {
       setLanguage(storedLanguage);
     }
+    setLanguageReady(true);
   }, []);
 
   useEffect(() => {
+    if (!languageReady) return;
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
     document.documentElement.lang = language === "en" ? "en" : "zh-CN";
     document.title = profile.metaTitle;
-  }, [language, profile.metaTitle]);
+  }, [language, languageReady, profile.metaTitle]);
 
   return (
     <main className="relative z-10">
@@ -89,30 +91,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section-gradient-mist relative overflow-hidden py-20 sm:py-24">
-        <div className="section-shell">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {profile.publicMetrics.map((metric, index) => {
-              const Icon = metric.icon;
-              return (
-                <div key={metric.label} data-reveal style={delay(index * 80)} className="neo-card rounded-[28px] p-5">
-                  <Icon className="h-5 w-5 text-violet" aria-hidden="true" />
-                  <p className="mt-5 text-3xl font-semibold text-black">
-                    <CountValue value={metric.value} />
-                  </p>
-                  <p className="mt-2 text-sm font-semibold text-black">{metric.label}</p>
-                  <p className="mt-2 text-xs leading-5 text-black/[0.52]">{metric.detail}</p>
-                </div>
-              );
-            })}
-          </div>
-          <p className="mt-6 max-w-3xl text-xs leading-6 text-black/[0.46]" data-reveal>
-            {sections.metricsFootnote}
-          </p>
-        </div>
-      </section>
-
-      <section id="capabilities" className="section-gradient-field relative py-24 sm:py-28">
+      <section id="capabilities" className="section-gradient-mist relative py-24 sm:py-28">
         <div className="section-shell">
           <div data-reveal>
             <SectionHeading
@@ -301,10 +280,6 @@ export default function Home() {
                                 ))}
                               </ul>
                             </div>
-                          </div>
-                          <div className="rounded-[20px] border border-violet/20 bg-violet/[0.06] p-4">
-                            <p className="case-label text-violet">{sections.projects.caseLabels.scopeNote}</p>
-                            <p className="mt-2 text-sm leading-7 text-black/[0.66]">{project.caseStudy.scopeNote}</p>
                           </div>
                         </div>
                       </details>

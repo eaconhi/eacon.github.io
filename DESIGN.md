@@ -7,31 +7,31 @@
 - Evidence reviewed: `app/page.tsx`, `app/globals.css`, `components/hero.tsx`, `components/site-header.tsx`, `components/private-access.tsx`, `lib/profile-data.ts`, current desktop and 390 x 844 live screenshots
 
 ## Brand
-- Personality: clear, international, capable, calm and contemporary
+- Personality: clear, practical, careful, capable, calm and contemporary
 - Trust signals: specific responsibilities, explainable workflows, official source links, careful separation between institutional context and personal contribution
 - Avoid: unsupported performance claims, implying institution-wide metrics are personal achievements, overly technical AI positioning, decorative complexity that slows resume scanning
 
 ## Product goals
-- Goals: help recruiters understand Eacon's professional direction quickly; demonstrate bilingual institutional communication and AI Agent-enabled operations; convert qualified interest into contact or resume access
+- Goals: help recruiters understand Eacon's professional direction quickly; demonstrate requirement clarification, content review, project follow-up and AI-assisted delivery; convert qualified interest into contact or resume access
 - Non-goals: presenting Eacon as a full-time software engineer; exposing confidential member, award or partner information; turning the resume into a marketing landing page
 - Success signals: visitors can identify the professional position in the first viewport, open at least two concrete case studies, switch to a fully English resume, and submit one clear access form
 
 ## Personas and jobs
-- Primary personas: recruiters, hiring managers, academic or cultural institution partners, international collaborators
-- User jobs: scan the profile, verify the career story, understand concrete contribution, inspect AI Agent working methods, download the resume, contact Eacon
+- Primary personas: recruiters, hiring managers, education or knowledge-organization teams, and project or content operations leads
+- User jobs: scan the profile, verify the career story, understand concrete contribution, inspect AI-assisted working methods, download the resume, contact Eacon
 - Key contexts of use: mobile links from WeChat or recruiting platforms, desktop interview preparation, English review by international partners
 
 ## Information architecture
 - Primary navigation: About, Experience, Projects, Skills, Education, Contact
 - Core routes/screens: one-page bilingual profile with in-page project case studies and a single resume access form
-- Content hierarchy: positioning, career story, institutional context, capabilities, experience, evidence-backed cases, skills and methods, education access, contact
+- Content hierarchy: positioning, career story, capabilities, experience, evidence-backed cases, skills and methods, education access, contact
 
 ## Design principles
 - Proof before polish: concrete actions and delivery checks carry more weight than decorative claims
 - One clear action per task: one form submission unlocks both education and the PDF; contact remains direct and separate
 - Bilingual parity: English mode must contain no Chinese visible text and must preserve the same facts, caveats and case-study depth
 - Mobile scanning: content must wrap safely at 390 px, with touch targets and disclosure controls that do not shift the layout unexpectedly
-- Tradeoffs: institutional metrics remain as context, but case studies explicitly label scope and personal contribution
+- Tradeoffs: institution-wide metrics are excluded from the resume's primary narrative; case studies explicitly label scope and personal contribution
 
 ## Visual language
 - Color: off-white base, black ink, mint, violet and electric blue accents; later sections may use restrained gradients without reducing contrast
@@ -69,7 +69,7 @@
 
 ## Content voice
 - Tone: professional, specific, modest and interview-explainable
-- Terminology: `AI Agent workflow`, `human-in-the-loop`, `task decomposition`, `operations automation`; avoid `Vibe Coding` in primary resume language
+- Terminology: `AI-assisted delivery`, `Codex-assisted work`, `task decomposition`, `content review`, `delivery acceptance`; avoid implying independent software development or spoken-English proficiency
 - Microcopy rules: distinguish `institutional context` from `personal contribution`; use `supports`, `participates`, or `leads` according to evidence
 
 ## Implementation constraints

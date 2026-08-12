@@ -1,5 +1,7 @@
 .DS_Store
 .next/
+.next-dev/
+.next-stale-*/
 out/
 node_modules/
 npm-debug.log*
@@ -11,3 +13,4 @@ yarn-error.log*
 tmp/
 __pycache__/
 *.pyc
+*.tsbuildinfo
