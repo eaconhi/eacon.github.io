@@ -25,18 +25,18 @@ export function CopyEmail({ email, labels }: CopyEmailProps) {
   };
 
   return (
-    <div className="rounded-[28px] border border-white/[0.12] bg-white/[0.06] p-2 shadow-[0_24px_90px_rgba(0,0,0,0.24)] backdrop-blur">
+    <div className="border border-white/[0.35] bg-white/[0.06] p-2">
       <a
         href={`mailto:${email}`}
-        className="flex items-center gap-4 rounded-[22px] border border-white/[0.10] bg-white/[0.04] px-5 py-5 text-white transition-colors hover:border-mint/50"
+        className="flex items-center gap-4 border border-white/[0.35] bg-white/[0.04] px-5 py-5 text-white transition-colors hover:border-[#ff4f18]"
       >
-        <Mail className="h-5 w-5 text-mint" aria-hidden="true" />
+        <Mail className="h-5 w-5 text-[#ff4f18]" aria-hidden="true" />
         <span className="min-w-0 flex-1 truncate text-lg font-semibold">{email}</span>
       </a>
       <button
         type="button"
         onClick={copy}
-        className="magnetic-button mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-mint"
+        className="hero-action mt-2 flex w-full items-center justify-center gap-2 bg-[#ff4f18] px-5 py-3 text-sm font-semibold text-black"
       >
         {copied ? <Check className="h-4 w-4" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
         {copied ? labels.copied : labels.copy}

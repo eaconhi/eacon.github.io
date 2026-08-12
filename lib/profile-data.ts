@@ -34,10 +34,9 @@ export const navItems = [
 export const heroKeywords = [
   "内容策划与编辑",
   "网站内容维护",
-  "信息质量控制",
+  "多源信息核验",
+  "AI Agent Workflow",
   "Vibe Coding",
-  "项目运营",
-  "用户反馈",
 ];
 
 export const capabilities = [
@@ -297,6 +296,19 @@ export const localizedProfile = {
       brandSubline: `${person.chineseName} / ${person.alias}`,
     },
     hero: {
+      editionLabel: "EACON JING / 2026",
+      disciplineLabel: "CONTENT OPERATIONS × AI",
+      locationLabel: "CHINA / GMT+8",
+      displayNameTop: "EACON",
+      displayNameAccent: person.chineseName,
+      profileLabel: "EACON JING",
+      profileVersion: "CONTENT OPERATIONS",
+      portraitBadge: "内容运营",
+      activeLabel: "AI 协作",
+      baseLabel: "所在地",
+      roleLabel: "职业方向",
+      contactLabel: "邮箱",
+      profileFootnote: "Vibe Coding × AI Agent Workflow",
       badge: "网站内容运营（AI 工具方向）",
       primaryName: person.chineseName,
       secondaryName: person.englishName,
@@ -414,11 +426,10 @@ export const localizedProfile = {
     ],
     heroKeywords: [
       "Content Planning & Editing",
-      "Website Content Updates",
-      "Content Review",
-      "Codex-assisted Work",
-      "Project Operations",
-      "User Feedback",
+      "Website Content Operations",
+      "Multi-source Verification",
+      "AI Agent Workflow",
+      "Vibe Coding",
     ],
     capabilities: [
       {
@@ -593,6 +604,19 @@ export const localizedProfile = {
       contact: "Contact", navAria: "Primary navigation", backToTop: "Back to top", menuOpen: "Open menu", menuClose: "Close menu", languageToggle: "EN / CN", languageToggleAria: "Switch to Chinese", brandSubline: "Website Content Operations",
     },
     hero: {
+      editionLabel: "EACON JING / 2026",
+      disciplineLabel: "CONTENT OPERATIONS × AI",
+      locationLabel: "CHINA / GMT+8",
+      displayNameTop: "EACON",
+      displayNameAccent: "JING",
+      profileLabel: "EACON JING",
+      profileVersion: "CONTENT OPERATIONS",
+      portraitBadge: "CONTENT OPS",
+      activeLabel: "AI WORKFLOW",
+      baseLabel: "BASE",
+      roleLabel: "ROLE",
+      contactLabel: "EMAIL",
+      profileFootnote: "VIBE CODING × AI AGENT WORKFLOW",
       badge: "Website Content Operations (AI Tools)",
       primaryName: "Eacon Jing",
       secondaryName: "Website Content Operations",

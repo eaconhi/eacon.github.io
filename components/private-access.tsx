@@ -91,8 +91,8 @@ function LocalAccessForm({ tone = "light", copy }: AccessFormProps) {
   const isDark = tone === "dark";
 
   const inputClassName = isDark
-    ? "mt-2 h-11 w-full rounded-2xl border border-white/[0.14] bg-white/[0.08] px-4 text-sm text-white outline-none transition-colors placeholder:text-white/[0.30] focus:border-mint/70"
-    : "mt-2 h-11 w-full rounded-2xl border border-black/[0.12] bg-white px-4 text-sm text-black outline-none transition-colors placeholder:text-black/[0.30] focus:border-violet/50";
+    ? "mt-2 h-11 w-full border border-white/[0.45] bg-white/[0.08] px-4 text-sm text-white outline-none transition-colors placeholder:text-white/[0.30] focus:border-[#ff4f18]"
+    : "mt-2 h-11 w-full border border-black bg-white px-4 text-sm text-black outline-none transition-colors placeholder:text-black/[0.30] focus:border-[#ff4f18]";
   const labelClassName = isDark
     ? "text-sm font-semibold text-white/[0.72]"
     : "text-sm font-semibold text-black/[0.70]";
@@ -183,7 +183,7 @@ function LocalAccessForm({ tone = "light", copy }: AccessFormProps) {
         />
       </label>
       {error ? (
-        <p className={isDark ? "text-xs text-mint" : "text-xs text-violet"}>
+        <p className="text-xs text-[#ff4f18]">
           {error}
         </p>
       ) : null}
@@ -192,8 +192,8 @@ function LocalAccessForm({ tone = "light", copy }: AccessFormProps) {
         disabled={isSubmitting}
         className={
           isDark
-            ? "magnetic-button flex h-11 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-black hover:bg-mint disabled:cursor-wait disabled:opacity-60"
-            : "magnetic-button flex h-11 items-center justify-center rounded-full bg-black px-5 text-sm font-semibold text-white hover:bg-violet disabled:cursor-wait disabled:opacity-60"
+            ? "hero-action flex h-11 items-center justify-center bg-[#ff4f18] px-5 text-sm font-semibold text-black disabled:cursor-wait disabled:opacity-60"
+            : "hero-action flex h-11 items-center justify-center bg-[#ff4f18] px-5 text-sm font-semibold text-black disabled:cursor-wait disabled:opacity-60"
         }
       >
         {isSubmitting ? copy.submitting : copy.submitAccess}
@@ -269,8 +269,8 @@ function TallyEmbedForm({
         title={copy.iframeTitle}
         className={
           isDark
-            ? "tally-dark-frame rounded-2xl bg-black/[0.18]"
-            : "rounded-2xl bg-transparent"
+            ? "tally-dark-frame border border-white/[0.35] bg-black/[0.18]"
+            : "border border-black bg-transparent"
         }
       />
       <p
@@ -311,17 +311,17 @@ export function ProtectedEducation({
     return (
       <section
         id="education"
-        className="section-gradient-lift relative py-20 sm:py-20"
+        className="section-gradient-mist relative border-b-2 border-black py-20 sm:py-20"
       >
         <div className="section-shell">
           <div
-            className="rounded-[30px] border border-black/[0.10] bg-white/[0.76] p-6 shadow-[0_20px_70px_rgba(5,5,5,0.06)] backdrop-blur sm:rounded-[34px] sm:p-8"
+            className="editorial-card p-6 sm:p-8"
             data-reveal
           >
             <div className="grid gap-8 md:grid-cols-[0.95fr_1.05fr] md:items-center">
               <div>
                 <p className="section-kicker">Education</p>
-                <div className="mt-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white">
+                <div className="editorial-icon mt-5 flex h-12 w-12 items-center justify-center bg-black text-white">
                   <LockKeyhole className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <h2 className="mt-6 text-2xl font-semibold leading-tight text-black sm:text-3xl">
@@ -331,7 +331,7 @@ export function ProtectedEducation({
                   {copy.lockedBody}
                 </p>
               </div>
-              <div className="rounded-[26px] border border-black/[0.10] bg-white/[0.72] p-5 backdrop-blur">
+              <div className="border-2 border-black bg-[#f5f4ef] p-5 shadow-[6px_6px_0_#050505]">
                 <AccessForm language={language} copy={copy} />
               </div>
             </div>
@@ -344,16 +344,16 @@ export function ProtectedEducation({
   return (
     <section
       id="education"
-      className="section-gradient-lift relative py-20 sm:py-20"
+      className="section-gradient-mist relative border-b-2 border-black py-20 sm:py-20"
     >
       <div className="section-shell">
         <div
-          className="rounded-[30px] border border-black/[0.10] bg-white/[0.76] p-6 shadow-[0_20px_70px_rgba(5,5,5,0.06)] backdrop-blur sm:rounded-[34px] sm:p-8"
+          className="editorial-card p-6 sm:p-8"
           data-reveal
         >
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-black/[0.10] bg-white px-3 py-2 text-xs font-semibold text-black/[0.58]">
+          <div className="mb-5 inline-flex items-center gap-2 border border-black bg-[#ffcc00] px-3 py-2 text-xs font-semibold text-black">
             <ShieldCheck
-              className="h-3.5 w-3.5 text-violet"
+              className="h-3.5 w-3.5 text-black"
               aria-hidden="true"
             />
             {copy.unlockedBadge}
@@ -399,7 +399,7 @@ export function ProtectedResumeDownload({
       <a
         href={href}
         download
-        className="magnetic-button mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-mint px-5 py-3 text-sm font-semibold text-black hover:bg-white"
+        className="hero-action mt-3 flex w-full items-center justify-center gap-2 bg-[#ff4f18] px-5 py-3 text-sm font-semibold text-black"
       >
         <Download className="h-4 w-4" aria-hidden="true" />
         {copy.downloadResume}
@@ -410,13 +410,13 @@ export function ProtectedResumeDownload({
   return (
     <a
       href="#education"
-      className="magnetic-button mt-3 flex w-full items-center justify-center gap-2 rounded-full border border-white/[0.14] bg-white/[0.08] px-5 py-3 text-sm font-semibold text-white hover:border-mint/70 hover:bg-white/[0.12]"
+      className="hero-action mt-3 flex w-full items-center justify-center gap-2 border-white bg-[#ff4f18] px-5 py-3 text-sm font-semibold text-black"
     >
       <span className="flex items-center gap-2">
-        <LockKeyhole className="h-4 w-4 text-mint" aria-hidden="true" />
+        <LockKeyhole className="h-4 w-4 text-black" aria-hidden="true" />
         {copy.unlockResume}
       </span>
-      <ArrowDown className="h-4 w-4 text-mint" aria-hidden="true" />
+      <ArrowDown className="h-4 w-4 text-black" aria-hidden="true" />
     </a>
   );
 }

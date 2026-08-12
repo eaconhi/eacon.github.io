@@ -50,14 +50,14 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
     <header className="fixed left-0 right-0 top-0 z-50 pt-4">
       <div className="section-shell">
         <div
-          className={`mx-auto flex h-14 max-w-6xl items-center justify-between rounded-full border px-2 pl-3 transition-all duration-500 ${
+          className={`mx-auto flex h-14 max-w-6xl items-center justify-between border-2 border-black px-2 pl-2 transition-all duration-500 ${
             scrolled
-              ? "border-black/[0.10] bg-white/[0.82] shadow-[0_18px_70px_rgba(5,5,5,0.10)] backdrop-blur-xl"
-              : "border-black/[0.08] bg-white/[0.62] backdrop-blur-md"
+              ? "bg-white shadow-[6px_6px_0_#050505]"
+              : "bg-[#f5f4ef]/95 backdrop-blur-md"
           }`}
         >
-          <a href="#top" className="group flex items-center gap-3 rounded-full pr-2" aria-label={copy.backToTop}>
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-xs font-semibold text-white ring-1 ring-black/[0.08]">
+          <a href="#top" className="group flex items-center gap-3 pr-2" aria-label={copy.backToTop}>
+            <span className="flex h-9 w-9 items-center justify-center bg-black text-xs font-semibold text-white">
               EJ
             </span>
             <span className="hidden leading-tight sm:block">
@@ -66,7 +66,7 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
             </span>
           </a>
 
-          <nav className="hidden items-center rounded-full bg-black/[0.035] p-1 lg:flex" aria-label={copy.navAria}>
+          <nav className="hidden items-center border-x border-black/[0.12] lg:flex" aria-label={copy.navAria}>
             {navItems.map((item) => {
               const isActive = active === item.href;
               const secondary = item.english && item.english !== item.label ? item.english : "";
@@ -74,10 +74,10 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`rounded-full px-3 py-2 text-xs font-semibold transition-all duration-500 ${
+                  className={`px-3 py-2 text-xs font-semibold transition-all duration-300 ${
                     isActive
-                      ? "bg-black text-white shadow-[0_8px_28px_rgba(5,5,5,0.18)]"
-                      : "text-black/[0.58] hover:bg-white hover:text-black"
+                      ? "bg-black text-white"
+                      : "text-black/[0.58] hover:bg-[#ff4f18] hover:text-black"
                   }`}
                 >
                   <span>{item.label}</span>
@@ -92,13 +92,13 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
               type="button"
               onClick={() => onLanguageChange(nextLanguage)}
               aria-label={copy.languageToggleAria}
-              className="hidden rounded-full border border-black/[0.10] px-3 py-2 text-[11px] font-semibold text-black/[0.58] transition-colors hover:border-violet/50 hover:bg-white lg:inline-flex"
+              className="hidden border border-black px-3 py-2 text-[11px] font-semibold text-black transition-colors hover:bg-[#ffcc00] lg:inline-flex"
             >
               {copy.languageToggle}
             </button>
             <a
               href={`mailto:${person.email}`}
-              className="magnetic-button hidden h-10 items-center gap-2 rounded-full bg-black px-4 text-xs font-semibold text-white hover:bg-[#111] sm:inline-flex"
+              className="hidden h-10 items-center gap-2 border-2 border-black bg-[#ff4f18] px-4 text-xs font-semibold text-black shadow-[3px_3px_0_#050505] transition-transform hover:translate-x-[1px] hover:translate-y-[1px] sm:inline-flex"
             >
               <Mail className="h-4 w-4" aria-hidden="true" />
               {copy.contact}
@@ -109,7 +109,7 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
               aria-label={open ? copy.menuClose : copy.menuOpen}
               aria-expanded={open}
               onClick={() => setOpen((value) => !value)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.10] text-black lg:hidden"
+              className="flex h-10 w-10 items-center justify-center border border-black text-black lg:hidden"
             >
               {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
             </button>
@@ -117,14 +117,14 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
         </div>
 
         {open ? (
-          <nav className="mt-3 rounded-[28px] border border-black/[0.10] bg-white/[0.92] p-2 shadow-[0_18px_60px_rgba(5,5,5,0.10)] backdrop-blur-xl lg:hidden">
+          <nav className="mt-3 border-2 border-black bg-[#f5f4ef] p-2 shadow-[6px_6px_0_#050505] lg:hidden">
             <button
               type="button"
               onClick={() => {
                 onLanguageChange(nextLanguage);
                 setOpen(false);
               }}
-              className="mb-1 flex w-full items-center justify-between rounded-full px-4 py-3 text-sm font-semibold text-black/[0.72] hover:bg-black hover:text-white"
+              className="mb-1 flex w-full items-center justify-between border border-black bg-[#ffcc00] px-4 py-3 text-sm font-semibold text-black"
             >
               {copy.languageToggle}
               <span className="text-xs opacity-55">{language === "zh" ? "English" : "Chinese"}</span>
@@ -134,7 +134,7 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-between rounded-full px-4 py-3 text-sm font-semibold text-black/[0.72] hover:bg-black hover:text-white"
+                className="flex items-center justify-between border-t border-black px-4 py-3 text-sm font-semibold text-black/[0.72] hover:bg-black hover:text-white"
               >
                 {item.label}
                 <span className="text-xs opacity-55">{item.english}</span>

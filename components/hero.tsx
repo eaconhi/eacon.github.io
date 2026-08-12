@@ -1,6 +1,5 @@
 import Image from "next/image";
-import type { CSSProperties } from "react";
-import { ArrowDown, ArrowRight, Mail, MapPin, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowRight, Mail, Workflow } from "lucide-react";
 import type { Language, localizedProfile } from "@/lib/profile-data";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -14,137 +13,138 @@ export function Hero({ profile }: HeroProps) {
   const { hero, heroKeywords, person } = profile;
 
   return (
-    <section id="top" className="relative isolate overflow-hidden bg-[#FAFAF7] pt-28 lg:pt-32">
-      <div className="accent-band" />
-      <div className="section-shell relative grid min-h-[760px] gap-14 pb-20 pt-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-        <div data-reveal="fade-left">
-          <div className="flex flex-wrap items-center gap-2">
-            <a
-              href={`mailto:${person.email}`}
-              className="inline-flex items-center gap-2 rounded-full border border-black/[0.10] bg-black px-3 py-2 text-xs font-semibold text-white shadow-[0_14px_34px_rgba(5,5,5,0.16)]"
-            >
-              <Mail className="h-3.5 w-3.5 text-mint" aria-hidden="true" />
-              {person.email}
-            </a>
-            <div className="inline-flex items-center gap-2 rounded-full border border-black/[0.10] bg-white/[0.70] px-3 py-2 text-xs font-semibold text-black/[0.60] backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-mint shadow-[0_0_18px_rgba(125,255,201,0.95)]" />
-              {hero.badge}
-            </div>
-          </div>
-
-          <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[0.94] tracking-normal text-black min-[420px]:text-6xl sm:text-7xl lg:text-8xl">
-            {hero.primaryName}
-            <span className="mt-4 block bg-[linear-gradient(90deg,#050505_0%,#8A5CF6_52%,#2B7BFF_100%)] bg-clip-text pb-2 text-transparent">
-              {hero.secondaryName}
-            </span>
-          </h1>
-
-          <div className="mt-6 flex flex-wrap items-center gap-3 text-sm font-semibold text-black/[0.58]">
-            <span>{person.alias}</span>
-            <span className="h-1 w-1 rounded-full bg-black/[0.30]" />
-            <span>{person.title}</span>
-          </div>
-
-          <p className="mt-8 max-w-2xl text-[1.55rem] font-medium leading-snug text-black sm:text-3xl">
-            {hero.leadStart}
-            <span className="text-violet">{hero.leadAccentOne}</span>
-            {hero.leadMiddle}
-            <span className="text-electric">{hero.leadAccentTwo}</span>
-            {hero.leadEnd}
-          </p>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-black/[0.62]">
-            {hero.body}
-          </p>
-
-          <div className="mt-8 grid grid-cols-1 gap-3 lg:flex lg:flex-wrap">
-            <a
-              href="#experience"
-              className="magnetic-button inline-flex h-12 items-center justify-center gap-2 rounded-full bg-black px-5 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(5,5,5,0.20)]"
-            >
-              {hero.ctaExperience}
-              <ArrowDown className="h-4 w-4" aria-hidden="true" />
-            </a>
-            <a
-              href="#projects"
-              className="magnetic-button inline-flex h-12 items-center justify-center gap-2 rounded-full border border-black/[0.12] bg-white/[0.70] px-5 text-sm font-semibold text-black backdrop-blur hover:border-violet/60"
-            >
-              {hero.ctaProjects}
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-            <a
-              href={`mailto:${person.email}`}
-              className="magnetic-button inline-flex h-12 items-center justify-center gap-2 rounded-full border border-black/[0.12] bg-white/[0.70] px-5 text-sm font-semibold text-black backdrop-blur hover:border-mint/80"
-            >
-              {hero.ctaContact}
-              <Mail className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </div>
-
-          <div className="mt-9 flex flex-wrap items-center gap-3 text-sm text-black/[0.58]">
-            <MapPin className="h-4 w-4 text-violet" aria-hidden="true" />
-            {person.location}
-          </div>
-
-          <div className="mt-10 flex max-w-3xl flex-wrap gap-2">
-            {heroKeywords.map((keyword, index) => (
-              <span
-                key={keyword}
-                data-reveal
-                style={{ "--delay": `${160 + index * 80}ms` } as CSSProperties}
-                className="rounded-full border border-black/[0.10] bg-white/[0.76] px-3 py-2 text-xs font-semibold text-black/[0.60] shadow-sm backdrop-blur"
-              >
-                {keyword}
-              </span>
-            ))}
-          </div>
+    <section id="top" className="hero-editorial relative isolate overflow-hidden border-b-2 border-black bg-[#f5f4ef] pt-24 lg:pt-28">
+      <div className="section-shell relative pb-0 pt-6 sm:pt-8">
+        <div className="flex items-center justify-between border-y border-black py-2 text-[10px] font-semibold uppercase text-black sm:text-xs">
+          <span>{hero.editionLabel}</span>
+          <span>{hero.disciplineLabel}</span>
+          <span className="hidden sm:inline">{hero.locationLabel}</span>
         </div>
 
-        <div className="relative min-h-[700px] lg:min-h-[620px]" data-reveal="fade-right">
-          <div className="pulse-ring float-soft absolute right-4 top-3 h-[520px] w-[74%] rounded-[44px] border border-mint/70 bg-white/[0.72] shadow-[0_34px_100px_rgba(5,5,5,0.16)] backdrop-blur lg:right-0 lg:w-[82%]">
-            <div className="absolute -inset-px rounded-[44px] bg-[linear-gradient(135deg,rgba(125,255,201,0.34),transparent_38%,rgba(138,92,246,0.22))]" />
-            <div className="absolute inset-5 overflow-hidden rounded-[34px] bg-[#F4F5F0]">
-              <Image
-                src={`${basePath}/eacon-portrait.jpg`}
-                alt={hero.portraitAlt}
-                width={1086}
-                height={1448}
-                priority
-                sizes="(min-width: 1024px) 430px, 78vw"
-                className="h-full w-full object-cover object-[50%_16%] grayscale-[8%] contrast-[1.02]"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_58%,rgba(250,250,247,0.90)_100%)]" />
+        <div className="grid gap-12 py-10 lg:min-h-[720px] lg:grid-cols-[1.12fr_0.88fr] lg:items-center lg:gap-16 lg:py-12">
+          <div data-reveal="fade-left">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="hero-stamp bg-[#ff4f18] text-black">{hero.badge}</span>
+              <span className="hero-stamp bg-black text-white">AI AGENT WORKFLOW</span>
             </div>
-          </div>
 
-          {hero.floatingLabels.map((label, index) => (
-            <div
-              key={label}
-              data-reveal
-              style={{ "--delay": `${300 + index * 110}ms` } as CSSProperties}
-              className={`float-soft absolute z-20 rounded-full border border-black/[0.10] bg-white/[0.86] px-4 py-3 text-xs font-semibold text-black/[0.66] shadow-[0_18px_50px_rgba(5,5,5,0.10)] backdrop-blur ${
-                index === 0
-                  ? "left-0 top-28"
-                  : index === 1
-                    ? "right-0 top-44"
-                    : index === 2
-                      ? "left-5 top-64"
-                      : "right-8 top-80"
-              }`}
-            >
-              {label}
-            </div>
-          ))}
+            <h1 className="mt-8 max-w-[760px] font-black uppercase leading-[0.82] text-black">
+              <span className="block text-6xl min-[420px]:text-7xl sm:text-8xl lg:text-[7.25rem] xl:text-[8.5rem]">
+                {hero.displayNameTop}
+              </span>
+              <span className="mt-3 block text-6xl text-[#ff4f18] min-[420px]:text-7xl sm:text-8xl lg:text-[6.5rem] xl:text-[7.5rem]">
+                {hero.displayNameAccent}<span className="text-black">.</span>
+              </span>
+            </h1>
 
-          <div className="glass-card absolute bottom-0 left-0 z-30 w-full rounded-[28px] p-5 sm:w-[290px] lg:w-[250px]" data-reveal style={{ "--delay": "640ms" } as CSSProperties}>
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-black/[0.45]">
-              <Sparkles className="h-4 w-4 text-violet" aria-hidden="true" />
-              {hero.focusLabel}
+            <div className="mt-8 flex max-w-2xl flex-wrap gap-2">
+              {hero.focusText.split(" · ").map((role, index) => (
+                <span
+                  key={role}
+                  className={`border border-black px-2.5 py-1 text-xs font-bold sm:text-sm ${
+                    index === 2 ? "bg-[#ffcc00]" : index === 3 ? "bg-[#2b7bff] text-white" : "bg-white"
+                  }`}
+                >
+                  {role}
+                </span>
+              ))}
             </div>
-            <p className="mt-3 text-sm font-semibold leading-6 text-black">
-              {hero.focusText}
+
+            <p className="mt-7 max-w-2xl text-2xl font-bold leading-tight text-black sm:text-3xl">
+              {hero.leadStart}
+              <span className="text-[#ff4f18]">{hero.leadAccentOne}</span>
+              {hero.leadMiddle}
+              <span>{hero.leadAccentTwo}</span>
+              {hero.leadEnd}
             </p>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-black/[0.68]">
+              {hero.body}
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a
+                href="#experience"
+                className="hero-action hero-action-primary inline-flex h-12 items-center justify-center gap-2 px-5 text-sm font-bold"
+              >
+                {hero.ctaExperience}
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <a
+                href="#projects"
+                className="hero-action inline-flex h-12 items-center justify-center gap-2 bg-white px-5 text-sm font-bold text-black"
+              >
+                {hero.ctaProjects}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <a
+                href={`mailto:${person.email}`}
+                className="hero-action inline-flex h-12 items-center justify-center gap-2 bg-white px-5 text-sm font-bold text-black"
+              >
+                {hero.ctaContact}
+                <Mail className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
           </div>
 
+          <div className="relative mx-auto w-full max-w-[470px] lg:mx-0 lg:justify-self-end" data-reveal="fade-right">
+            <div className="hero-profile-card relative border-2 border-black bg-[#f5f4ef] p-3 sm:p-4">
+              <div className="mb-3 flex items-center justify-between border-b border-black pb-2 text-[10px] font-bold uppercase sm:text-xs">
+                <span>{hero.profileLabel}</span>
+                <span>{hero.profileVersion}</span>
+              </div>
+
+              <div className="relative aspect-[3/4] overflow-hidden border-2 border-black bg-[#deded8]">
+                <Image
+                  src={`${basePath}/eacon-portrait.jpg`}
+                  alt={hero.portraitAlt}
+                  width={1086}
+                  height={1448}
+                  priority
+                  sizes="(min-width: 1024px) 430px, 90vw"
+                  className="h-full w-full object-cover object-center grayscale-[5%] contrast-[1.03]"
+                />
+                <div className="absolute left-0 top-0 bg-black px-3 py-2 text-[10px] font-bold uppercase text-white sm:text-xs">
+                  {hero.portraitBadge}
+                </div>
+                <div className="absolute right-0 top-0 bg-[#ff4f18] px-3 py-2 text-[10px] font-bold uppercase text-black sm:text-xs">
+                  {hero.activeLabel}
+                </div>
+              </div>
+
+              <div className="mt-3 border-t-2 border-black">
+                <div className="hero-profile-row">
+                  <span>{hero.baseLabel}</span>
+                  <strong className="min-w-0 break-words">{person.location}</strong>
+                </div>
+                <div className="hero-profile-row">
+                  <span>{hero.roleLabel}</span>
+                  <strong className="min-w-0 break-words">{person.title}</strong>
+                </div>
+                <div className="hero-profile-row">
+                  <span>{hero.contactLabel}</span>
+                  <a href={`mailto:${person.email}`} className="min-w-0 break-all font-bold underline decoration-1 underline-offset-2">
+                    {person.email}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute -bottom-5 left-3 flex max-w-[calc(100%-1.5rem)] items-center gap-2 border-2 border-black bg-[#ffcc00] px-3 py-2 text-xs font-bold sm:-left-8 sm:max-w-none sm:text-sm">
+              <Workflow className="h-4 w-4 shrink-0" aria-hidden="true" />
+              {hero.profileFootnote}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="border-t-2 border-black bg-black py-3 text-white">
+        <div className="section-shell grid grid-cols-2 gap-x-5 gap-y-2 text-[10px] font-bold uppercase sm:text-xs lg:grid-cols-5">
+          {heroKeywords.map((keyword) => (
+            <span key={keyword} className="inline-flex min-w-0 items-center gap-2 leading-tight">
+              <span className="h-2 w-2 shrink-0 bg-[#ff4f18]" aria-hidden="true" />
+              {keyword}
+            </span>
+          ))}
         </div>
       </div>
     </section>
