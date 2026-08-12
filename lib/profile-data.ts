@@ -314,8 +314,6 @@ export const localizedProfile = {
       floatingLabels: ["内容策划编辑", "质量控制", "Vibe Coding", "项目协调"],
       focusLabel: "求职方向",
       focusText: "AI 内容运营 · 网站内容运营 · 新媒体运营 · AI 应用运营",
-      modeLabel: "工作方式",
-      modeText: "内容把关 · AI 协作 · 交付检查",
     },
     sections: {
       about: {
@@ -607,7 +605,7 @@ export const localizedProfile = {
       body: "With years of content operations experience, I apply AI agent workflows to information verification, content planning and editing, website maintenance, and collaborative execution, turning complex requirements into accurate, complete content deliverables.",
       ctaExperience: "View Experience", ctaProjects: "View Projects", ctaContact: "Contact Me", cornerLabel: "Clear & Reliable", portraitAlt: "Portrait of Eacon Jing",
       floatingLabels: ["Content Planning", "Quality Control", "AI-assisted Production", "Project Operations"],
-      focusLabel: "Target Roles", focusText: "AI Content Operations · Website Content Operations · New Media Operations · AI Application Operations", modeLabel: "Working Style", modeText: "Content Ownership · AI Collaboration · Delivery Review",
+      focusLabel: "Target Roles", focusText: "AI Content Operations · Website Content Operations · New Media Operations · AI Application Operations",
     },
     sections: {
       about: {

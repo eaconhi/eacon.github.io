@@ -139,7 +139,7 @@ export function Hero({ profile }: HeroProps) {
             </div>
           ))}
 
-          <div className="glass-card absolute bottom-[150px] left-0 z-30 w-full rounded-[28px] p-5 sm:w-[290px] lg:bottom-5 lg:w-[250px]" data-reveal style={{ "--delay": "640ms" } as CSSProperties}>
+          <div className="glass-card absolute bottom-0 left-0 z-30 w-full rounded-[28px] p-5 sm:w-[290px] lg:w-[250px]" data-reveal style={{ "--delay": "640ms" } as CSSProperties}>
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-black/[0.45]">
               <Sparkles className="h-4 w-4 text-violet" aria-hidden="true" />
               {hero.focusLabel}
@@ -149,14 +149,6 @@ export function Hero({ profile }: HeroProps) {
             </p>
           </div>
 
-          <div className="glass-card absolute bottom-0 right-0 z-30 w-full rounded-[28px] p-5 sm:w-[290px] lg:w-[268px]" data-reveal style={{ "--delay": "760ms" } as CSSProperties}>
-            <div className="text-xs font-semibold uppercase tracking-[0.16em] text-black/[0.45]">
-              {hero.modeLabel}
-            </div>
-            <p className="mt-3 text-sm font-semibold leading-6 text-black">
-              {hero.modeText}
-            </p>
-          </div>
         </div>
       </div>
     </section>
