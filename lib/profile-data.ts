@@ -41,8 +41,8 @@ export const heroKeywords = [
   "International Project Operations",
   "Academic Institution Management",
   "Awards System",
-  "AI-assisted Workflow",
-  "Vibe Coding",
+  "AI Agent Workflow",
+  "Human-in-the-loop Automation",
   "Bilingual Communication",
   "Cultural Projects",
 ];
@@ -67,10 +67,10 @@ export const capabilities = [
     body: "撰写和维护中英文官网内容、项目介绍、官方邮件、评审指南、会员通知与证书文本。",
   },
   {
-    title: "AI 工具与 Vibe Coding",
-    english: "AI-assisted Workflow & Vibe Coding",
+    title: "AI Agent 工作流与运营自动化",
+    english: "AI Agent Workflow & Operations Automation",
     icon: Code2,
-    body: "熟练使用多种 AI 工具与 vibe coding 工作流，将官网原型、项目文档、双语内容、邮件模板、流程设计和运营系统快速转化为可执行成果。",
+    body: "围绕官网运营、资料审核、双语内容、邮件沟通和项目交付，设计人机协同的 AI Agent 工作流，把复杂任务拆解为资料收集、结构化整理、内容生成、人工复核和交付检查等步骤。",
   },
   {
     title: "教育与内容传播",
@@ -95,7 +95,7 @@ export const experiences = [
       "负责 NAAI 相关国际项目的会员拓展、学术审核、官网运营、国际合作、邮件沟通、证书发放及奖项体系支持。",
     bullets: [
       "负责全球会员拓展与学术会员资料审核，维护由资深学者、行业专家、机构负责人和高水平专业人士构成的高规格会员体系。",
-      "使用多种 AI 工具与 vibe coding 方法支持官网页面、双语文档、邮件模板、流程原型和项目资料的快速构建。",
+      "设计并使用 AI Agent 协作流程，将官网页面、双语文档、邮件模板、会员资料和项目材料拆解为可复用的任务链，形成 AI 辅助处理与人工复核结合的交付方式。",
       "参与官网内容建设与更新，确保机构介绍、项目页面、会员信息和奖项内容准确呈现。",
       "负责国际合作邮件沟通、项目说明、合作方资料整理与后续跟进。",
       "参与 Astria Awards 等影视与文化类国际奖项项目运营，支持提名、评审、影片收集及导演联络。",
@@ -105,7 +105,7 @@ export const experiences = [
     tags: [
       "国际项目",
       "高规格会员网络",
-      "AI 工作流",
+      "AI Agent 工作流",
       "奖项评审",
       "官网运营",
       "国际合作",
@@ -192,15 +192,15 @@ export const projects = [
     ],
   },
   {
-    title: "AI 辅助官网与运营系统搭建",
-    english: "AI-assisted Website & Operations Prototyping",
+    title: "AI Agent 辅助官网与运营流程搭建",
+    english: "AI Agent-enabled Website & Operations Workflow",
     icon: Code2,
-    body: "将多种 AI 工具、vibe coding、内容生成、页面原型和资料整理能力结合，用更短周期完成官网模块、双语材料、项目流程和运营交付物的迭代。",
+    body: "面向官网更新、资料整理、双语内容和项目协同场景，搭建由 AI Agent 辅助的任务拆解、资料结构化、页面原型、文案迭代和交付检查流程，让运营工作更可复制、更稳定。",
     tags: [
-      "AI Tools",
-      "Vibe Coding",
+      "AI Agent Workflow",
+      "Human-in-the-loop",
       "Website Prototype",
-      "Operations Workflow",
+      "Operations Automation",
     ],
     links: [],
   },
@@ -270,9 +270,9 @@ export const skills = [
   "学术机构运营",
   "奖项评审体系",
   "会员审核与会员体系",
-  "AI 工具应用",
-  "Vibe Coding",
-  "AI-assisted Workflow",
+  "AI Agent 工作流设计",
+  "人机协同运营",
+  "任务拆解与流程编排",
   "官网原型搭建",
   "中英文文案",
   "官网内容运营",
@@ -291,9 +291,9 @@ export const methods = [
     body: "将复杂项目拆解为清晰的流程、角色、节点、文档和交付物，降低沟通成本，提高执行稳定性。",
   },
   {
-    title: "AI 协作",
-    english: "AI-assisted",
-    body: "把 AI 工具当作协作层，用于快速生成原型、梳理资料、迭代文案、搭建页面和推进 vibe coding 实验，再用人工判断收敛为专业交付。",
+    title: "AI Agent 协同",
+    english: "Human-led AI Agent Workflow",
+    body: "不把 AI 只当作问答工具，而是围绕具体业务场景设计任务拆解、资料处理、内容生成、状态检查和人工复核机制，让 AI Agent 成为稳定交付的一层协作能力。",
   },
   {
     title: "双语化",
@@ -338,7 +338,7 @@ export const localizedProfile = {
     methodIcon,
     phraseSeparators: [
       "expert membership network.",
-      "AI-assisted workflow.",
+      "AI Agent workflow.",
       "global academic operations.",
       "bilingual institutional systems.",
     ],
@@ -370,19 +370,19 @@ export const localizedProfile = {
       floatingLabels: [
         "Academic Ops",
         "Expert Members",
-        "AI Workflow",
+        "AI Agent Workflow",
         "Bilingual Docs",
       ],
       focusLabel: "Current Focus",
       focusText: "International academic & cultural project operations",
       modeLabel: "Working Mode",
-      modeText: "AI-assisted · Vibe Coding · Bilingual · Global",
+      modeText: "AI Agent Workflow · Human Review · Bilingual · Global",
     },
     sections: {
       about: {
         kicker: "About",
         title: "从教育、内容到国际机构运营的复合型路径",
-        copy: "I work across academic institutions, international cultural programs, bilingual communication and AI-assisted operational workflows.",
+        copy: "我长期参与学术机构、国际文化项目、双语沟通与 AI Agent 工作流相关的运营建设。",
         intro:
           "我从英语教育一线出发，先后经历中学教学、教育内容运营、教育科技机构管理，并进入国际学术与文化项目运营领域。这条职业路径让我同时理解三件事：教育如何发生，内容如何传播，机构如何运转。",
         currentLabel: "Current Work",
@@ -390,14 +390,14 @@ export const localizedProfile = {
           "参与 NAAI 及相关国际文化奖项项目运营，负责会员拓展、学术审核、官网运营、国际合作、证书发放、邮件沟通与奖项评审流程支持。",
         aiLabel: "AI Operating Mode",
         aiBody:
-          "将多种 AI 工具和 vibe coding 工作流用于官网原型、双语资料、邮件模板、运营流程和项目文档的快速迭代。",
+          "将 AI Agent 工作流用于官网原型、双语资料、邮件模板、运营流程和项目文档的快速迭代，并通过人工判断完成事实核对、语气统一和最终交付。",
       },
       metricsFootnote:
         "Public metrics were checked against thenaai.org public data on July 8, 2026.",
       capabilities: {
         kicker: "What I Do",
         title: "核心能力",
-        copy: "围绕国际项目、学术机构、奖项体系、AI 工作流和双语表达建立可执行的运营系统。",
+        copy: "围绕国际项目、学术机构、奖项体系、AI Agent 工作流和双语表达建立可执行的运营系统。",
       },
       experience: {
         kicker: "Experience",
@@ -423,8 +423,8 @@ export const localizedProfile = {
       contact: {
         kicker: "Contact & Resume",
         title:
-          "欢迎就学术机构运营、国际文化项目、教育科技合作、AI 工作流与双语内容建设交流。",
-        copy: "For academic institution operations, cultural programs, awards systems, AI-assisted workflows or bilingual institutional communication, reach out directly.",
+          "欢迎就学术机构运营、国际文化项目、教育科技合作、AI Agent 工作流与双语内容建设交流。",
+        copy: "For academic institution operations, cultural programs, awards systems, AI Agent workflows or bilingual institutional communication, reach out directly.",
         openChannel: "Open Channel",
         wechatPrefix: "WeChat:",
         wechatIdLabel: "WeChat ID",
@@ -432,7 +432,7 @@ export const localizedProfile = {
       footer: {
         name: `${person.chineseName} / ${person.englishName}`,
         description:
-          "International Project Operations · Academic & Cultural Institutions · AI-assisted Workflow",
+          "International Project Operations · Academic & Cultural Institutions · AI Agent Workflow",
       },
     },
     privateAccess: {
@@ -454,7 +454,8 @@ export const localizedProfile = {
       copy: "复制邮箱",
       copied: "已复制邮箱",
     },
-    metaTitle: "江奕坤 / Eacon Jing - International Project Operations",
+    metaTitle:
+      "江奕坤 / Eacon Jing - International Project Operations & AI Agent Workflow",
   },
   en: {
     person: {
@@ -494,10 +495,10 @@ export const localizedProfile = {
         body: "Creates and maintains website copy, project descriptions, official emails, review guides, member notices and certificate text.",
       },
       {
-        title: "AI-assisted Workflow & Vibe Coding",
-        english: "Fast Prototyping to Delivery",
+        title: "AI Agent Workflow & Operations Automation",
+        english: "Human-led Agentic Execution",
         icon: Code2,
-        body: "Uses AI tools and vibe coding workflows to turn website prototypes, bilingual materials, email templates and operational systems into usable deliverables.",
+        body: "Designs human-in-the-loop AI Agent workflows for website operations, material review, bilingual content, email communication and project delivery, breaking complex work into research, structuring, drafting, review and delivery checks.",
       },
       {
         title: "Education & Content Strategy",
@@ -522,7 +523,7 @@ export const localizedProfile = {
           "Leads and supports NAAI-related international operations across membership development, academic review, website operations, international outreach, email communication, certificate delivery and awards programs.",
         bullets: [
           "Supports global member development and academic profile review for a high-level network of senior scholars, industry experts, institutional leaders and experienced professionals.",
-          "Uses AI tools and vibe coding workflows to accelerate website pages, bilingual documents, email templates, process prototypes and project materials.",
+          "Designs and uses AI Agent-assisted task flows for website pages, bilingual documents, email templates, member materials and project files, combining AI-supported processing with human review.",
           "Contributes to website content operations, keeping institutional profiles, project pages, member information and awards content accurate.",
           "Handles international partnership emails, project explanations, partner material organization and follow-up communication.",
           "Supports Astria Awards and related international film and cultural programs across nominations, film collection, director outreach and jury workflow.",
@@ -532,7 +533,7 @@ export const localizedProfile = {
         tags: [
           "International Projects",
           "Expert Network",
-          "AI Workflow",
+          "AI Agent Workflow",
           "Awards Review",
           "Website Operations",
           "Partnerships",
@@ -632,15 +633,15 @@ export const localizedProfile = {
         ],
       },
       {
-        title: "AI-assisted Website & Operations Prototyping",
-        english: "AI Workflow",
+        title: "AI Agent-enabled Website & Operations Workflow",
+        english: "Agentic Operations",
         icon: Code2,
-        body: "Combines AI tools, vibe coding, content generation, page prototyping and material organization to iterate website modules, bilingual materials, project workflows and operational deliverables faster.",
+        body: "Builds AI Agent-assisted workflows for website updates, material organization, bilingual content and project coordination, covering task decomposition, structured research, page prototyping, copy iteration and delivery checks.",
         tags: [
-          "AI Tools",
-          "Vibe Coding",
+          "AI Agent Workflow",
+          "Human-in-the-loop",
           "Website Prototype",
-          "Operations Workflow",
+          "Operations Automation",
         ],
         links: [],
       },
@@ -709,9 +710,9 @@ export const localizedProfile = {
       "Academic Institution Operations",
       "Awards Review Systems",
       "Membership Review",
-      "AI Tooling",
-      "Vibe Coding",
-      "AI-assisted Workflow",
+      "AI Agent Workflow Design",
+      "Human-in-the-loop Operations",
+      "Task Decomposition",
       "Website Prototyping",
       "Bilingual Copywriting",
       "Website Content Operations",
@@ -729,9 +730,9 @@ export const localizedProfile = {
         body: "Breaks complex projects into clear workflows, roles, milestones, documents and deliverables to reduce communication cost and improve execution stability.",
       },
       {
-        title: "AI-assisted",
-        english: "Human-led AI Collaboration",
-        body: "Uses AI tools as a collaboration layer for prototypes, research organization, copy iteration, page building and vibe coding experiments, then applies human judgment to converge on professional deliverables.",
+        title: "AI Agent Collaboration",
+        english: "Human-led AI Agent Workflow",
+        body: "Uses AI not only as a chat tool, but as a collaboration layer for task decomposition, research organization, drafting, status checks and human review, turning complex operations into more repeatable delivery systems.",
       },
       {
         title: "Bilingual",
@@ -753,7 +754,7 @@ export const localizedProfile = {
     methodIcon,
     phraseSeparators: [
       "expert membership network.",
-      "AI-assisted workflow.",
+      "AI Agent workflow.",
       "global academic operations.",
       "bilingual institutional systems.",
     ],
@@ -771,7 +772,7 @@ export const localizedProfile = {
       badge: "International Institution Operations",
       primaryName: "Eacon Jing",
       secondaryName: "International Operations",
-      leadStart: "Building",
+      leadStart: "Building ",
       leadAccentOne: "structured",
       leadMiddle: " and ",
       leadAccentTwo: "international",
@@ -785,20 +786,20 @@ export const localizedProfile = {
       floatingLabels: [
         "Academic Ops",
         "Expert Members",
-        "AI Workflow",
+        "AI Agent Workflow",
         "Bilingual Docs",
       ],
       focusLabel: "Current Focus",
       focusText: "International academic and cultural project operations",
       modeLabel: "Working Mode",
-      modeText: "AI-assisted · Vibe Coding · Bilingual · Global",
+      modeText: "AI Agent Workflow · Human Review · Bilingual · Global",
     },
     sections: {
       about: {
         kicker: "About",
         title:
           "A cross-functional path from education and content to global institutional operations",
-        copy: "I work across academic institutions, international cultural programs, bilingual communication and AI-assisted operational workflows.",
+        copy: "I work across academic institutions, international cultural programs, bilingual communication and AI Agent-enabled operational workflows.",
         intro:
           "My path began in front-line English education, then moved through education content operations, EdTech organization management and international academic and cultural project operations. This background helps me understand how education happens, how content travels and how institutions operate.",
         currentLabel: "Current Work",
@@ -806,14 +807,14 @@ export const localizedProfile = {
           "I support NAAI and related international cultural awards programs across member development, academic review, website operations, international cooperation, certificate delivery, email communication and awards review workflows.",
         aiLabel: "AI Operating Mode",
         aiBody:
-          "I use AI tools and vibe coding workflows to rapidly iterate website prototypes, bilingual materials, email templates, operating procedures and project documentation.",
+          "I use AI Agent workflows to iterate website prototypes, bilingual materials, email templates, operating procedures and project documentation, with human judgment for fact-checking, tone alignment and final delivery.",
       },
       metricsFootnote:
         "Public metrics were checked against thenaai.org public data on July 8, 2026.",
       capabilities: {
         kicker: "What I Do",
         title: "Core Capabilities",
-        copy: "I build practical operating systems around international projects, academic institutions, awards programs, AI workflows and bilingual communication.",
+        copy: "I build practical operating systems around international projects, academic institutions, awards programs, AI Agent workflows and bilingual communication.",
       },
       experience: {
         kicker: "Experience",
@@ -839,8 +840,8 @@ export const localizedProfile = {
       contact: {
         kicker: "Contact & Resume",
         title:
-          "Open to conversations around academic institution operations, international cultural projects, EdTech partnerships, AI workflows and bilingual institutional content.",
-        copy: "For academic institution operations, cultural programs, awards systems, AI-assisted workflows or bilingual institutional communication, reach out directly.",
+          "Open to conversations around academic institution operations, international cultural projects, EdTech partnerships, AI Agent workflows and bilingual institutional content.",
+        copy: "For academic institution operations, cultural programs, awards systems, AI Agent workflows or bilingual institutional communication, reach out directly.",
         openChannel: "Open Channel",
         wechatPrefix: "WeChat:",
         wechatIdLabel: "WeChat ID",
@@ -848,7 +849,7 @@ export const localizedProfile = {
       footer: {
         name: "Eacon Jing",
         description:
-          "International Project Operations · Academic & Cultural Institutions · AI-assisted Workflow",
+          "International Project Operations · Academic & Cultural Institutions · AI Agent Workflow",
       },
     },
     privateAccess: {
@@ -872,7 +873,8 @@ export const localizedProfile = {
       copy: "Copy Email",
       copied: "Email Copied",
     },
-    metaTitle: "Eacon Jing - International Project Operations Resume",
+    metaTitle:
+      "Eacon Jing - International Project Operations & AI Agent Workflow Resume",
   },
 };
 
