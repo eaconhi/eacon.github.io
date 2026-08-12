@@ -218,6 +218,12 @@ a {
   transform: translateX(4px);
 }
 
+.tally-dark-frame {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  filter: invert(1) hue-rotate(180deg) saturate(0.82) contrast(0.92) brightness(0.92);
+}
+
 [data-reveal] {
   opacity: 0;
   transform: translateY(28px);
