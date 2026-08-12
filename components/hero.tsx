@@ -100,10 +100,6 @@ export function Hero({ profile }: HeroProps) {
         </div>
 
         <div className="relative min-h-[700px] lg:min-h-[620px]" data-reveal="fade-right">
-          <div className="absolute left-3 top-7 hidden rounded-full border border-black/[0.10] bg-white/[0.70] px-4 py-2 text-xs font-semibold text-black/[0.62] shadow-soft backdrop-blur md:block">
-            {hero.cornerLabel}
-          </div>
-
           <div className="pulse-ring float-soft absolute right-4 top-3 h-[520px] w-[74%] rounded-[44px] border border-mint/70 bg-white/[0.72] shadow-[0_34px_100px_rgba(5,5,5,0.16)] backdrop-blur lg:right-0 lg:w-[82%]">
             <div className="absolute -inset-px rounded-[44px] bg-[linear-gradient(135deg,rgba(125,255,201,0.34),transparent_38%,rgba(138,92,246,0.22))]" />
             <div className="absolute inset-5 overflow-hidden rounded-[34px] bg-[#F4F5F0]">
