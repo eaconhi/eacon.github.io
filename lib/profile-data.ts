@@ -80,18 +80,18 @@ export const capabilities = [
 
 export const experiences = [
   {
-    organization: "NAAI / 国际学术与文化项目运营",
-    role: "核心管理层 / 国际项目负责人",
+    organization: "NAAI / EAE 国际学术与文化项目运营",
+    role: "NAAI 核心管理层 / 国际项目负责人；EAE 网站内容运营",
     period: "2025.03 - 至今",
     summary:
-      "在学术会员、网站和文化奖项项目中承担资料核对、内容维护、修改跟进与交付检查。",
+      "在 NAAI、EAE 等国际学术机构及文化奖项项目中承担会员资料初步核验、网站内容维护、修改跟进与交付检查。",
     bullets: [
-      "按姓名、职务、机构、专业背景和公开来源逐项核对会员资料，将缺失、冲突与待确认信息整理为问题清单，作为后续评审和页面更新依据。",
-      "持续检查会员、新闻、奖项和项目页面的文字、称谓、链接及中英文一致性，并复核电脑端与手机端的公开结果。",
+      "参与 NAAI 与 EAE 会员资料初步核验，检查身份、机构、职务、研究方向、代表成果和公开来源的一致性，将缺失、冲突与待确认信息整理为问题清单，提交后续评审或页面修正。",
+      "维护 EAE Member、News 及相关网站内容，检查会员类别与 Member 称谓使用、英文资料、来源链接、图片和页面显示，并复核电脑端与手机端的公开结果。",
       "围绕 Astria Awards 等影视文化项目整理提名与影片材料，跟进导演或评委沟通、证书文本、时间节点和资料归档。",
       "结合 Codex 完成资料整理、内容初稿、页面与文档制作，并推进事实核对、内容修改和交付检查。",
     ],
-    tags: ["会员资料核对", "网站内容维护", "内容审核", "项目跟进", "Codex 工具应用"],
+    tags: ["NAAI 运营", "EAE 内容运营", "会员资料初步核验", "网站内容维护", "Codex 工具应用"],
   },
   {
     organization: "硕途教育科技集团",
@@ -140,20 +140,20 @@ export const education = {
 
 export const projects = [
   {
-    title: "会员资料与公开页面质量检查",
-    english: "Member Profile Review & Website Operations",
+    title: "NAAI / EAE 会员资料与公开页面质量检查",
+    english: "NAAI & EAE Member Review & Website Operations",
     icon: Network,
     body: "把分散的会员信息转成可核对的字段，回到公开来源确认事实，再推动页面修改并检查发布结果。",
     tags: ["多源核验", "公开来源", "称谓核对", "质量控制"],
     links: [
       { label: "NAAI 网站", href: "https://thenaai.org/" },
-      { label: "会员申请页", href: "https://thenaai.org/membership" },
+      { label: "EAE 网站", href: "https://eae-academy.eu/" },
     ],
     caseStudy: {
       challenge:
         "会员资料来自不同国家、学科与职业背景，常见问题包括字段缺失、职务口径不统一、公开来源不清和页面显示不一致。",
       contribution:
-        "按字段整理资料，逐项核对身份、机构、专业背景、公开来源和页面内容，把缺失、冲突和待确认项转成明确的补充或修改清单。",
+        "按字段整理 NAAI 与 EAE 会员资料，逐项核对身份、机构、职务、研究方向、代表成果、公开来源和页面内容，把缺失、冲突和待确认项转成明确的补充或修改清单。",
       workflow: [
         "整理现有资料和待确认字段。",
         "借助 AI 工具提取信息、生成核对清单和书面初稿。",
@@ -163,7 +163,7 @@ export const projects = [
       deliverables: [
         "会员资料核对记录",
         "补充信息和修改清单",
-        "会员与新闻页面内容",
+        "NAAI 与 EAE 会员及相关公开页面内容",
         "桌面端与移动端验收结果",
       ],
     },
@@ -263,6 +263,7 @@ export const methods = [
 
 export const sourceLinks = [
   { label: "NAAI Official Website", href: "https://thenaai.org/" },
+  { label: "EAE Official Website", href: "https://eae-academy.eu/" },
   { label: "NAAI Membership", href: "https://thenaai.org/membership" },
   { label: "NAAI Awards", href: "https://thenaai.org/awards" },
   { label: "NAAI AIMC Competition", href: "https://thenaai.org/competition" },
@@ -335,7 +336,7 @@ export const localizedProfile = {
           "我经历过英语教学、教育内容与新媒体运营、教育科技机构管理，以及学术和文化项目运营。长期内容工作让我对事实准确性、受众理解、版本差异和最终交付保持敏感。",
         currentLabel: "现在在做什么",
         currentBody:
-          "参与会员信息核验、网站内容维护、奖项材料整理和发布检查，将发现的问题转成明确修改项并跟进公开结果。",
+          "参与 NAAI 与 EAE 会员资料初步核验、网站内容维护、奖项材料整理和发布检查，将发现的问题转成明确修改项并跟进公开结果。",
         aiLabel: "AI 工具应用",
         aiBody:
           "运用 Codex 等 AI 工具完成资料整理、文案初稿、页面与文档制作，并结合实际场景持续优化内容和交付效果。",
@@ -471,17 +472,17 @@ export const localizedProfile = {
     ],
     experiences: [
       {
-        organization: "NAAI / Academic & Cultural Project Operations",
-        role: "Core Management Team / International Project Lead",
+        organization: "NAAI & EAE / Academic and Cultural Project Operations",
+        role: "NAAI Core Management Team / International Project Lead; EAE Website Content Operations",
         period: "Mar 2025 - Present",
-        summary: "Handles material review, content quality checks, revision follow-through and delivery acceptance across membership, website and cultural awards work.",
+        summary: "Handles preliminary member-data verification, website content maintenance, revision follow-through and delivery checks across NAAI, EAE and cultural awards work.",
         bullets: [
-          "Checks member materials field by field against names, roles, institutions, professional backgrounds and public sources, turning missing, conflicting or unverified information into an issue log for review and page updates.",
-          "Reviews wording, titles, links and language consistency across member, news, awards and project pages, then verifies public results on desktop and mobile.",
+          "Performs preliminary checks on NAAI and EAE member materials, reviewing identity, institution, position, research field, representative work and public sources, then records missing, conflicting or unverified items for further review or page revision.",
+          "Maintains EAE Member, News and related website content, checking membership categories, use of the Member title, English fields, source links, images and page presentation, then reviews the public desktop and mobile results.",
           "Organizes nomination and film materials for Astria Awards and related programs, tracking director or jury communication, certificate wording, milestones and documentation.",
           "Uses Codex for material organization, drafts and page or document implementation while retaining responsibility for factual boundaries, revision requests and final acceptance.",
         ],
-        tags: ["Member Data Review", "Website Content", "Content Review", "Project Follow-up", "Codex Tools"],
+        tags: ["NAAI Operations", "EAE Content Operations", "Preliminary Member Review", "Website Content", "Codex Tools"],
       },
       {
         organization: "Shuotu Education Technology Group",
@@ -527,25 +528,25 @@ export const localizedProfile = {
     },
     projects: [
       {
-        title: "Member Data & Public Page Quality Review",
+        title: "NAAI & EAE Member Data and Public Page Quality Review",
         english: "Content Quality Case",
         icon: Network,
         body: "Turns fragmented member information into reviewable fields, verifies facts against public sources and follows page revisions through publication.",
         tags: ["Material Review", "Public Sources", "Title Checks", "Content Maintenance"],
         links: [
           { label: "NAAI Website", href: "https://thenaai.org/" },
-          { label: "Membership Page", href: "https://thenaai.org/membership" },
+          { label: "EAE Website", href: "https://eae-academy.eu/" },
         ],
         caseStudy: {
           challenge: "Member materials span countries, disciplines and professions. Typical issues include missing fields, inconsistent titles, unclear public sources and page-level discrepancies.",
-          contribution: "Organizes materials by field, checks identity, institution, professional background, public sources and page content, and turns missing, conflicting or unverified items into a clear revision list.",
+          contribution: "Organizes NAAI and EAE member materials by field, checks identity, institution, position, research field, representative work, public sources and page content, and turns missing, conflicting or unverified items into a clear revision list.",
           workflow: [
             "Organize available materials and missing fields.",
             "Use AI tools to extract information and draft checklists or written materials.",
             "Manually verify sources, titles, links and publication boundaries.",
             "Follow revisions and review the final desktop and mobile pages.",
           ],
-          deliverables: ["Member review records", "Information and revision checklists", "Member or news page content", "Desktop and mobile acceptance results"],
+          deliverables: ["Member review records", "Information and revision checklists", "NAAI and EAE member or related public-page content", "Desktop and mobile acceptance results"],
         },
       },
       {
@@ -634,7 +635,7 @@ export const localizedProfile = {
       about: {
         kicker: "About", title: "Years of content operations, now using AI tools for practical delivery", copy: "My work focuses on updating website content, reviewing data, following projects and delivering websites, forms and documents.",
         intro: "My background covers English teaching, education content and new media operations, EdTech organization management, and academic and cultural project operations. This work has developed a strong awareness of factual accuracy, audience understanding, version differences and final delivery.",
-        currentLabel: "Current Work", currentBody: "I work on member information verification, website content, awards materials and publication checks, translating issues into specific revisions and following them through to the public result.",
+        currentLabel: "Current Work", currentBody: "I work on preliminary NAAI and EAE member-data verification, website content, awards materials and publication checks, translating issues into specific revisions and following them through to the public result.",
         aiLabel: "How AI Helps", aiBody: "Codex supports organization, drafts and page or document implementation. I own the quality bar, factual boundaries, trade-offs, revision decisions and final acceptance.",
       },
       capabilities: { kicker: "What I Do", title: "Six Types of Work I Can Handle", copy: "Each area is supported by real experience and directly matches content, website, review or project operations roles." },
