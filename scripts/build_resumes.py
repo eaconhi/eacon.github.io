@@ -50,36 +50,36 @@ ZH_JOBS = [
         "NAAI / EAE 国际学术与文化项目运营",
         "NAAI 核心管理层 / 国际项目负责人；EAE 网站内容运营 | 2025.03 - 至今",
         [
-            "将 NAAI 与 EAE 会员资料拆成身份、机构、职务、研究方向、代表成果和公开来源等核验字段，定位缺失、冲突与待确认项，为后续评审和页面修正提供依据。",
-            "承担 EAE Member、News 及相关网站内容运营，从材料整理、英文书面信息核对、称谓与来源检查，到发布后的页面复核，形成完整质量闭环。",
-            "围绕 Astria Awards 等影视文化项目统筹提名、影片与人员材料，记录关键缺口，跟进导演或评委沟通、证书文本、节点确认与最终归档。",
-            "将 Codex 用于资料提取、内容初稿、页面和文档实现及多轮修改；负责定义目标与边界、提出修正标准、复核事实并验收结果。",
+            "建立 NAAI / EAE 会员资料核验字段，识别身份、机构、职务、研究方向、代表成果和公开来源中的缺失、冲突与待确认项。",
+            "运营 EAE Member、News 等网站内容，完成材料整理、英文书面核对、称谓与来源检查及发布后页面复核。",
+            "统筹 Astria Awards 等影视文化项目的提名、影片与人员材料，跟进关键缺口、导演或评委沟通、证书文本和节点归档。",
+            "为 AI Agent 设定来源优先级、禁止猜测项、输出格式和验收要求，复核事实与公开结果，并沉淀 Skill 和检查清单。",
         ],
     ),
     (
         "硕途教育科技集团",
         "常务总经理 | 2023 - 2025",
         [
-            "从用户、内容、社群和合作方反馈中识别运营问题，明确优先级、责任环节和处理节点。",
-            "把零散沟通、资料缺口和流程卡点整理为可跟进事项，协调相关人员补充信息并推动问题解决。",
-            "持续回收用户与合作方反馈，复核处理结果，并据此调整内容、服务与后续执行安排。",
+            "汇总用户、内容、社群和合作方反馈，判断优先级并明确责任环节与处理节点。",
+            "将资料缺口与流程卡点整理为可跟进事项，协调补充信息并推动解决。",
+            "复核处理结果，根据反馈调整内容、服务与后续安排。",
         ],
     ),
     (
         "思源汉客文化传播有限公司",
-        "新媒体运营专员 / 内容运营负责人 | 2018.03 - 2023.08",
+        "内容运营负责人 / 新媒体运营 | 2018.03 - 2023.08",
         [
-            "完成教育类内容从选题、编辑到发布和日常维护的完整内容流程。",
-            "根据用户反馈与内容表现调整选题、表达方式和发布节奏。",
-            "制作线上活动与推广内容，跟进发布、用户互动和后续反馈。",
+            "负责教育类内容的选题、编辑、发布和日常维护。",
+            "根据用户反馈与内容表现调整选题、表达和发布节奏。",
+            "组织线上活动与推广内容，跟进发布、互动和复盘，优化后续执行。",
         ],
     ),
     (
         "奎屯市第一中学",
         "初中英语教师 | 2016.09 - 2018.02",
         [
-            "根据教学目标和学生差异组织课程内容与课堂活动。",
-            "记录学习情况，与学生及家长沟通反馈，并据此调整教学安排。",
+            "根据教学目标和学生差异拆解知识点、组织课堂活动。",
+            "记录学习情况并沟通反馈，将问题转成教学调整与跟进动作。",
         ],
     ),
 ]
@@ -89,55 +89,55 @@ EN_JOBS = [
         "NAAI & EAE / Academic and Cultural Project Operations",
         "NAAI Core Management Team / International Project Lead; EAE Website Content Operations | Mar 2025 - Present",
         [
-            "Structures NAAI and EAE member materials into verification fields covering identity, institution, role, research area, representative work and public sources, identifying missing, conflicting or unverified items for review and page correction.",
-            "Runs the EAE Member, News and related content workflow from material organization and written-English checks to title, source and post-publication review, creating a complete quality loop.",
-            "Coordinates nomination, film and participant materials for Astria Awards and related programs, tracking critical gaps, director or jury communication, certificate wording, milestones and final records.",
-            "Uses Codex for extraction, drafting, page and document implementation and iterative revision while defining objectives, boundaries and correction standards, verifying facts and accepting final results.",
+            "Builds verification fields for NAAI and EAE member data, identifying gaps, conflicts and open questions across identity, institution, role, research area, representative work and public sources.",
+            "Runs EAE Member, News and related website content through material organization, written-English review, title and source checks, and post-publication page review.",
+            "Coordinates nomination, film and participant materials for Astria Awards and related programs, following critical gaps, director or jury communication, certificate wording and milestone records.",
+            "Sets source priorities, no-guess boundaries, output formats and acceptance criteria for AI agents, reviews facts and public results, and captures reusable skills and checklists.",
         ],
     ),
     (
         "Shuotu Education Technology Group",
         "Executive General Manager | 2023 - 2025",
         [
-            "Identified operating issues across user, content, community and partner feedback, clarifying priorities, owners and execution milestones.",
-            "Converted fragmented communication, missing materials and process blockers into trackable actions, coordinating information recovery and issue resolution.",
-            "Closed the loop with users and partners, reviewed outcomes and adjusted content, service and follow-up plans based on feedback.",
+            "Consolidated user, content, community and partner feedback, setting priorities, owners and action milestones.",
+            "Turned missing materials and process blockers into trackable actions, coordinating information recovery and resolution.",
+            "Reviewed outcomes and adjusted content, service and follow-up plans based on feedback.",
         ],
     ),
     (
         "Siyuan Hanke Culture Communication Co., Ltd.",
-        "New Media Operations Specialist / Content Operations Lead | Mar 2018 - Aug 2023",
+        "Content Operations Lead / New Media Operations | Mar 2018 - Aug 2023",
         [
-            "Managed the full content flow from topic selection and editing to publishing and ongoing maintenance.",
-            "Adjusted topics, framing and publishing schedules based on user feedback and content performance.",
-            "Produced online campaign and promotional content, then tracked publishing, user interaction and follow-up feedback.",
+            "Managed education content across topic selection, editing, publishing and ongoing maintenance.",
+            "Adjusted topics, framing and publishing schedules based on feedback and content performance.",
+            "Organized campaigns and promotional content, following publication, interaction and review to improve later execution.",
         ],
     ),
     (
         "Kuitun No.1 Middle School",
         "Junior High School English Teacher | Sep 2016 - Feb 2018",
         [
-            "Organized course content and classroom activities around learning goals and student needs.",
-            "Recorded progress, communicated feedback with students and parents, and adjusted teaching plans accordingly.",
+            "Structured concepts and classroom activities around learning goals and student readiness.",
+            "Tracked progress and turned student and parent feedback into teaching adjustments and follow-up actions.",
         ],
     ),
 ]
 
 ZH_CASES = [
     (
-        "会员资料核验与内容运营闭环",
+        "会员信息治理与内容质量闭环",
         [
             "<b>场景：</b>资料可能出现字段缺失、职务口径不统一、公开来源不清或页面显示不一致。",
-            "<b>我的动作：</b>把业务要求转成核验字段与判断边界，借助 AI 提取信息，再人工复核身份、机构、专业背景、公开来源和页面内容，将问题转成具体修正动作。",
+            "<b>我的动作：</b>把业务要求转成核验字段与判断边界，借助 AI 提取信息，再人工复核身份、机构、专业背景、官方来源和页面状态，将问题转成具体修正动作。",
             "<b>交付：</b>会员资料核验记录、字段标准与修改清单、会员或新闻页面，以及发布检查流程与复核结果。",
         ],
     ),
     (
-        "AI Agent 协作的多格式内容交付",
+        "AI Agent 协作的运营工作流",
         [
-            "<b>场景：</b>同一份简历需要兼顾内容真实性、中英文一致、手机显示、表单、PDF、Word 和线上部署。",
-            "<b>我的动作：</b>定义使用对象、事实边界和验收标准，将目标拆成内容、页面、表单、文档和发布任务，通过 Vibe Coding 驱动 Codex 逐轮实现与修正。",
-            "<b>交付：</b>中英文网站、PDF 与 Word 简历、信息收集流程、移动端适配和公开线上版本。",
+            "<b>场景：</b>学术组织运营涉及公开来源、会员资料、新闻内容、页面状态和多个时间节点，任务反复且判断边界、验收口径容易不一致。",
+            "<b>我的动作：</b>把工作拆成检索、字段整理、内容生成、页面检查和公开结果复核，为 AI Agent 设定来源优先级、输出格式、禁止猜测项和验收标准，并根据偏差持续修正规则。",
+            "<b>交付：</b>结构化核验记录与修改清单、会员与新闻内容、来源与页面复核结果，以及可复用 Skill、工作流和检查清单。",
         ],
     ),
     (
@@ -152,7 +152,7 @@ ZH_CASES = [
 
 EN_CASES = [
     (
-        "Member Verification & Content Operations Loop",
+        "Member Information Governance & Content Quality",
         [
             "<b>Context:</b> Materials may include missing fields, inconsistent titles, unclear public sources or page-level discrepancies.",
             "<b>Actions:</b> Translates the operating need into verification fields and decision boundaries, uses AI for extraction, manually reviews identity, institution, professional background, public sources and page content, and turns issues into corrective actions.",
@@ -160,11 +160,11 @@ EN_CASES = [
         ],
     ),
     (
-        "AI Agent-assisted Multi-format Content Delivery",
+        "AI Agent-enabled Operations Workflow",
         [
-            "<b>Context:</b> One resume experience required accurate content, complete Chinese and English states, mobile presentation, forms, PDFs, Word files and live deployment.",
-            "<b>Actions:</b> Defines users, factual boundaries and acceptance criteria, translates the goal into content, page, form, document and publication tasks, and directs Codex through iterative implementation and correction.",
-            "<b>Deliverables:</b> Bilingual website, PDF and Word resumes, information collection flow, mobile adaptation and a public live version.",
+            "<b>Context:</b> Academic-organization operations span public sources, member data, news content, page status and multiple milestones. Repeated tasks can drift when decision boundaries and acceptance criteria are unclear.",
+            "<b>Actions:</b> Structures work into research, field organization, content generation, page checks and public-result review; sets source priorities, output formats, no-guess boundaries and acceptance criteria for AI agents, then iterates the rules when results drift.",
+            "<b>Deliverables:</b> Structured verification records and revision lists, member and news content, source and page review results, and reusable skills, workflows and checklists.",
         ],
     ),
     (
@@ -293,12 +293,12 @@ def build_pdf(language, s):
             story,
             s,
             "江奕坤 / Eacon Jing",
-            "AI 应用落地与内容运营",
-            "求职方向：AI 应用运营、AI 产品运营、AI / SaaS 客户成功、AI 交付协同、内容与知识运营。擅长把一线问题转成任务，并组织 AI Agent 推进和验收结果。",
+            "AI 应用运营与交付",
+            "求职方向：AI 应用运营、AI 项目交付运营、AI 工具运营、AI / SaaS 客户成功、AI 用户教育与应用支持、知识库运营与信息治理。",
             "hieacon@gmail.com<br/>WeChat: JovoeYK_05<br/>中国",
         )
-        story += [section_title("职业定位", s), p("具备多年内容与机构运营经验，能够进入具体业务场景识别真实问题与关键约束，将复杂需求转成可执行任务，并组织 Codex 等工具推进内容、页面、资料与流程的制作、修改和验收。擅长多源信息核验、反馈闭环和标准沉淀，确保结果真实、可用、可复用。", s["body"])]
-        story += [section_title("核心能力", s), keyword_bar(["场景诊断", "需求转化", "AI 协同交付", "信息质量", "流程沉淀"], s)]
+        story += [section_title("职业定位", s), p("具备多年内容、教育与机构运营经验，能够理解业务需求、拆解任务、组织 Codex 与 ChatGPT 等 AI Agent 协作，并通过信息核验、跨角色推进和结果复核，把复杂事项推进到可用、可验证的交付。优势不是单纯会使用工具，而是能够定义目标与边界、持续纠偏并推动结果闭环。", s["body"])]
+        story += [section_title("核心能力", s), keyword_bar(["需求分析", "任务拆解", "AI Agent 协作", "信息治理", "交付推进"], s)]
         story += [section_title("工作经历", s)]
         for name, meta, points in ZH_JOBS:
             story.append(KeepTogether([p(name, s["job"]), p(meta, s["meta"])] + pdf_bullets(points, s["bullet"])))
@@ -306,25 +306,25 @@ def build_pdf(language, s):
         for title, points in ZH_CASES:
             story.append(KeepTogether([p(title, s["job"])] + [p(point, s["body"]) for point in points]))
         story += [section_title("技能", s), skills_table([
-            ("业务落地", "业务场景诊断、问题定义、需求转化、优先级与验收标准"),
-            ("AI 协作", "AI Agent Workflow、Vibe Coding、Codex 协作、迭代反馈与结果复核"),
-            ("内容与信息", "多源信息核验、网站内容运营、中英文书面内容编辑与质量控制"),
-            ("交付协同", "反馈闭环、跨角色协调、修改推进、可复用 Skill、模板、流程与检查清单"),
+            ("需求与交付", "需求分析、任务拆解、优先级、责任边界、验收标准与结果复核"),
+            ("AI Agent 协作", "Codex / ChatGPT 协作、AI Agent Workflow、Vibe Coding、迭代纠偏"),
+            ("信息与知识", "官方来源检索、多源核验、结构化信息整理、状态追踪、内容与知识库运营"),
+            ("运营与标准化", "项目协同、反馈闭环、Skill、模板、台账、工作流与检查清单设计"),
         ], s)]
         story += [section_title("教育背景", s), p("伊犁师范大学 | 英语教育方向，本科 | 2012.09 - 2016.06", s["job"]), p("接受英语语言、教育学、课程设计和教学实践训练，具备教育内容组织与英文书面材料处理基础。", s["body"])]
         path = PUBLIC / "eacon-jing-resume.pdf"
-        doc = pdf_document(path, "Eacon Jing Resume - Chinese", "Eacon Jing · AI 应用落地与内容运营")
+        doc = pdf_document(path, "Eacon Jing Resume - Chinese", "Eacon Jing · AI 应用运营与交付")
     else:
         add_pdf_header(
             story,
             s,
             "Eacon Jing",
-            "AI Application Delivery & Content Operations",
-            "Target roles: AI Application Operations, AI Product Operations, Customer Success (AI / SaaS), AI Project Delivery Coordination, and Content & Knowledge Operations.",
+            "AI Application Operations & Delivery",
+            "Target roles: AI Application Operations, AI Delivery Operations, AI Tool Operations, Customer Success (AI / SaaS), AI User Education & Enablement, and Knowledge Operations or Information Governance.",
             "hieacon@gmail.com<br/>WeChat: JovoeYK_05<br/>China",
         )
-        story += [section_title("Professional Profile", s), p("Years of content and organizational operations experience, with the ability to identify real problems and constraints in specific business contexts, translate complex needs into executable tasks, and coordinate Codex and other AI agents through production, correction and acceptance. Strong in multi-source verification, feedback loops and reusable workflow design.", s["body"])]
-        story += [section_title("Core Capabilities", s), keyword_bar(["Business Discovery", "Requirement Translation", "AI Delivery", "Information Quality", "Reusable Workflows"], s)]
+        story += [section_title("Professional Profile", s), p("Years of experience across content, education and organization operations. Translates business needs into executable work, coordinates Codex, ChatGPT and other AI agents, and uses information verification, cross-role follow-through and outcome review to move complex work toward usable, verifiable delivery. The differentiator is not tool access alone, but defining boundaries, correcting drift and closing the loop.", s["body"])]
+        story += [section_title("Core Capabilities", s), keyword_bar(["Requirement Analysis", "Task Decomposition", "AI Agent Coordination", "Information Governance", "Delivery"], s)]
         story += [section_title("Experience", s)]
         for name, meta, points in EN_JOBS:
             story.append(KeepTogether([p(name, s["job"]), p(meta, s["meta"])] + pdf_bullets(points, s["bullet"])))
@@ -332,14 +332,14 @@ def build_pdf(language, s):
         for title, points in EN_CASES:
             story.append(KeepTogether([p(title, s["job"])] + [p(point, s["body"]) for point in points]))
         story += [section_title("Skills", s), skills_table([
-            ("Business Delivery", "Business discovery, problem framing, requirement translation, prioritization and acceptance criteria"),
-            ("AI Collaboration", "AI Agent Workflow, vibe coding, Codex collaboration, iterative feedback and outcome review"),
-            ("Content & Information", "Multi-source verification, website content operations, written-English content review and quality control"),
-            ("Delivery Coordination", "Feedback loops, cross-functional coordination, revision follow-through, reusable skills, templates, workflows and checklists"),
+            ("Requirements & Delivery", "Requirement analysis, task decomposition, priorities, ownership boundaries, acceptance criteria and outcome review"),
+            ("AI Agent Coordination", "Codex / ChatGPT collaboration, AI Agent Workflow, vibe coding and iterative correction"),
+            ("Information & Knowledge", "Official-source research, multi-source verification, structured information, status tracking, content and knowledge operations"),
+            ("Operations & Standards", "Project coordination, feedback loops, reusable skills, templates, trackers, workflows and checklists"),
         ], s)]
         story += [section_title("Education", s), p("Yili Normal University | Undergraduate study in English Education | Sep 2012 - Jun 2016", s["job"]), p("Training in English language, pedagogy, curriculum design and teaching practice, with a foundation in education content and written English materials.", s["body"])]
         path = PUBLIC / "eacon-jing-resume-en.pdf"
-        doc = pdf_document(path, "Eacon Jing Resume - English", "Eacon Jing · AI Application Delivery & Content Operations")
+        doc = pdf_document(path, "Eacon Jing Resume - English", "Eacon Jing · AI Application Operations & Delivery")
     doc.build(story)
 
 
@@ -407,8 +407,8 @@ def embed_docx_font(doc, font_path=DOCX_FONT_PATH, font_name=DOCX_FONT):
 def build_docx_resume():
     doc = Document()
     section = doc.sections[0]
-    section.top_margin = Inches(0.6)
-    section.bottom_margin = Inches(0.6)
+    section.top_margin = Inches(0.52)
+    section.bottom_margin = Inches(0.52)
     section.left_margin = Inches(0.72)
     section.right_margin = Inches(0.72)
 
@@ -416,12 +416,12 @@ def build_docx_resume():
     normal = styles["Normal"]
     normal.font.name = DOCX_FONT
     normal._element.get_or_add_rPr().get_or_add_rFonts().set(qn("w:eastAsia"), DOCX_FONT)
-    normal.font.size = Pt(9.4)
-    normal.paragraph_format.space_after = Pt(3.5)
-    normal.paragraph_format.line_spacing = 1.12
+    normal.font.size = Pt(9.2)
+    normal.paragraph_format.space_after = Pt(2.8)
+    normal.paragraph_format.line_spacing = 1.06
     for style_name, size, color, before, after in (
-        ("Heading 1", 13.5, (17, 17, 17), 8, 4),
-        ("Heading 2", 10.5, (111, 75, 232), 5, 2),
+        ("Heading 1", 13.2, (17, 17, 17), 6, 3),
+        ("Heading 2", 10.3, (111, 75, 232), 3.5, 1.5),
     ):
         style = styles[style_name]
         style.font.name = DOCX_FONT
@@ -435,28 +435,28 @@ def build_docx_resume():
     bullet = styles["List Bullet"]
     bullet.font.name = DOCX_FONT
     bullet._element.get_or_add_rPr().get_or_add_rFonts().set(qn("w:eastAsia"), DOCX_FONT)
-    bullet.font.size = Pt(9.1)
-    bullet.paragraph_format.space_after = Pt(2.5)
-    bullet.paragraph_format.line_spacing = 1.08
+    bullet.font.size = Pt(9.0)
+    bullet.paragraph_format.space_after = Pt(1.8)
+    bullet.paragraph_format.line_spacing = 1.04
 
     title = doc.add_paragraph()
     title.paragraph_format.space_after = Pt(0)
     set_run_font(title.add_run("江奕坤 / Eacon Jing"), size=24, bold=True, color=(17, 17, 17))
     role = doc.add_paragraph()
     role.paragraph_format.space_after = Pt(4)
-    set_run_font(role.add_run("AI 应用落地与内容运营"), size=11, bold=True, color=(111, 75, 232))
+    set_run_font(role.add_run("AI 应用运营与交付"), size=11, bold=True, color=(111, 75, 232))
     contact = doc.add_paragraph()
     contact.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     contact.paragraph_format.space_after = Pt(4)
     set_run_font(contact.add_run("hieacon@gmail.com  |  WeChat: JovoeYK_05  |  中国"), size=8.6, color=(80, 87, 99))
 
     doc.add_heading("职业定位", level=1)
-    doc.add_paragraph("求职方向：AI 应用运营、AI 产品运营、AI / SaaS 客户成功、AI 项目交付协同、内容与知识运营。具备多年内容与机构运营经验，能够进入具体业务场景识别真实问题与关键约束，将复杂需求转成可执行任务，并组织 Codex 等 AI Agent 推进制作、修改和验收；擅长多源信息核验、反馈闭环和标准沉淀。")
+    doc.add_paragraph("求职方向：AI 应用运营、AI 项目交付运营、AI 工具运营、AI / SaaS 客户成功、AI 用户教育与应用支持、知识库运营与信息治理。具备多年内容、教育与机构运营经验，能够理解业务需求、拆解任务、组织 Codex 与 ChatGPT 等 AI Agent 协作，并通过信息核验、跨角色推进和结果复核，把复杂事项推进到可用、可验证的交付。")
 
     doc.add_heading("核心能力", level=1)
     table = doc.add_table(rows=1, cols=5)
     table.autofit = False
-    for cell, text in zip(table.rows[0].cells, ["场景诊断", "需求转化", "AI 协同交付", "信息质量", "流程沉淀"]):
+    for cell, text in zip(table.rows[0].cells, ["需求分析", "任务拆解", "AI Agent 协作", "信息治理", "交付推进"]):
         cell.width = Inches(1.28)
         set_cell_margins(cell)
         cell.vertical_alignment = 1
@@ -481,10 +481,10 @@ def build_docx_resume():
 
     doc.add_heading("技能", level=1)
     skill_groups = [
-        ("业务落地", "业务场景诊断、问题定义、需求转化、优先级与验收标准"),
-        ("AI 协作", "AI Agent Workflow、Vibe Coding、Codex 协作、迭代反馈与结果复核"),
-        ("内容与信息", "多源信息核验、网站内容运营、中英文书面内容编辑与质量控制"),
-        ("交付协同", "反馈闭环、跨角色协调、修改推进、可复用 Skill、模板、流程与检查清单"),
+        ("需求与交付", "需求分析、任务拆解、优先级、责任边界、验收标准与结果复核"),
+        ("AI Agent 协作", "Codex / ChatGPT 协作、AI Agent Workflow、Vibe Coding、迭代纠偏"),
+        ("信息与知识", "官方来源检索、多源核验、结构化信息整理、状态追踪、内容与知识库运营"),
+        ("运营与标准化", "项目协同、反馈闭环、Skill、模板、台账、工作流与检查清单设计"),
     ]
     table = doc.add_table(rows=len(skill_groups), cols=2)
     table.autofit = False
@@ -515,10 +515,10 @@ def build_docx_resume():
 
     footer = section.footer.paragraphs[0]
     footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    set_run_font(footer.add_run("Eacon Jing | AI 应用落地与内容运营"), size=7.5, color=(120, 124, 132))
+    set_run_font(footer.add_run("Eacon Jing | AI 应用运营与交付"), size=7.5, color=(120, 124, 132))
 
     embed_docx_font(doc)
-    path = ROOT / "江奕坤EaconJing_AI应用落地与内容运营_简历.docx"
+    path = ROOT / "江奕坤EaconJing_AI应用运营与交付_简历.docx"
     doc.save(path)
     public_path = PUBLIC / "eacon-jing-resume.docx"
     public_path.write_bytes(path.read_bytes())
