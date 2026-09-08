@@ -56,7 +56,7 @@ export default function Home() {
         copy={profile.header}
         onLanguageChange={setLanguage}
       />
-      <Hero profile={profile} />
+      <Hero profile={profile} language={language} />
 
       <section id="about" className="section-gradient-lift relative border-b-2 border-black py-24 sm:py-28">
         <div className="section-shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">

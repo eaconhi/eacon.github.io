@@ -33,25 +33,39 @@ export function ScrollEffects({ watchKey }: ScrollEffectsProps) {
 
   useEffect(() => {
     const timeline = document.querySelector<HTMLElement>("[data-timeline]");
-    if (!timeline) return;
-
+    const tracks = Array.from(document.querySelectorAll<HTMLElement>(".marquee-track"));
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
     const update = () => {
-      const rect = timeline.getBoundingClientRect();
-      const viewport = window.innerHeight;
-      const total = rect.height + viewport * 0.5;
-      const travelled = viewport * 0.58 - rect.top;
-      const progress = Math.max(0, Math.min(1, travelled / total));
-      document.documentElement.style.setProperty("--timeline-progress", `${progress * 100}%`);
+      frame = 0;
+      if (timeline) {
+        const rect = timeline.getBoundingClientRect();
+        const viewport = window.innerHeight;
+        const progress = reduced.matches ? 1 : Math.max(0, Math.min(1, (viewport * 0.58 - rect.top) / (rect.height + viewport * 0.5)));
+        document.documentElement.style.setProperty("--timeline-progress", `${progress * 100}%`);
+      }
+      tracks.forEach((track) => {
+        const half = track.scrollWidth / 2;
+        const offset = reduced.matches || !half ? 0 : (window.scrollY * 0.12) % half;
+        track.style.setProperty("--scroll-offset", `${-offset}px`);
+      });
     };
-
+    const schedule = () => { if (!frame) frame = window.requestAnimationFrame(update); };
+    const observer = new ResizeObserver(schedule);
+    if (timeline) observer.observe(timeline);
+    tracks.forEach((track) => observer.observe(track));
     update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    reduced.addEventListener("change", schedule);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
     return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      window.cancelAnimationFrame(frame);
+      observer.disconnect();
+      reduced.removeEventListener("change", schedule);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
     };
-  }, []);
+  }, [watchKey]);
 
   return null;
 }

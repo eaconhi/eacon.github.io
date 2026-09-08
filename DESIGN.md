@@ -82,3 +82,13 @@
 ## Open questions
 - [ ] Tally owner: sign in and make the phone field optional; this cannot be changed from the public form or repository
 - [ ] Content owner: add non-confidential personal output counts when reliable source records are available
+
+## September 2026 scroll motion update
+
+- Implemented from GitHub main `cb3625a`, preserving the current orange/black editorial identity and AI operations content.
+- Opening: three native-scroll chapters, with independently moving portrait, background type and narrative. Progress is absolute and reversible; no wheel interception or timed playback.
+- The reference describes scroll-scrubbed video. This version applies that interaction to the existing portrait and type, without adding third-party video or generated footage.
+- CTA links remain outside fading layers; all chapter text remains accessible to assistive technology.
+- Short viewports, reduced motion and compact English phone layouts show a complete normal-flow profile. Keywords follow the stage in normal flow.
+- Existing ribbon text now moves with scrolling, and the experience timeline shares a batched animation-frame update.
+- No profile facts, language/access storage keys, form behavior or resume files were changed.
