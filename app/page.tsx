@@ -66,6 +66,10 @@ export default function Home() {
               title={sections.about.title}
               copy={sections.about.copy}
             />
+            <p className="mt-7 text-base leading-8 text-black/[0.68]">{profile.hero.body}</p>
+            <div className="mt-6 flex flex-wrap gap-2" aria-label={profile.hero.focusLabel}>
+              {profile.hero.focusText.split(" · ").map(role => <span key={role} className="border border-black/15 px-3 py-2 text-sm">{role}</span>)}
+            </div>
           </div>
           <div className="grid gap-5" data-reveal="fade-right">
             <div className="glass-card p-6 sm:p-7">

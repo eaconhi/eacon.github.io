@@ -18,10 +18,14 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
   const [active, setActive] = useState("#about");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [overHero, setOverHero] = useState(true);
   const nextLanguage: Language = language === "zh" ? "en" : "zh";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 16);
+      setOverHero((document.getElementById("top")?.getBoundingClientRect().bottom ?? 0) > 90);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -47,10 +51,10 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
   }, []);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 pt-4">
+    <header className="site-header fixed left-0 right-0 top-0 z-50 pt-4" data-surface={overHero ? "cinema" : "page"}>
       <div className="section-shell">
         <div
-          className={`mx-auto flex h-14 max-w-6xl items-center justify-between border-2 border-black px-2 pl-2 transition-all duration-500 ${
+          className={`site-header-bar mx-auto flex h-14 max-w-6xl items-center justify-between border-2 border-black px-2 pl-2 transition-all duration-500 ${
             scrolled
               ? "bg-white shadow-[6px_6px_0_#050505]"
               : "bg-[#f5f4ef]/95 backdrop-blur-md"
