@@ -7,7 +7,7 @@ The requested reference binds scrolling to a continuous video timeline. The earl
 - [x] Paused inline video, controlled only by absolute scroll progress.
 - [x] Coalesce rapid seeks; retain the latest position before metadata loads.
 - [x] Preserve resume content, Chinese/English switching and existing links.
-- [x] Poster on media failure or reduced motion; normal document flow on short screens.
+- [x] Poster on media failure or reduced motion; compact windows retain the moving background behind naturally flowing content.
 - [x] Inspect original scene at the start, middle and end.
 - [x] Encode H.264/yuv420p without audio and with frequent keyframes.
 - [x] Verify forward, stationary and reverse scroll in the browser.
@@ -16,7 +16,7 @@ The requested reference binds scrolling to a continuous video timeline. The earl
 
 ## Asset provenance
 
-`scripts/render-workspace.py` builds the scene from original geometry and materials. No downloaded footage, third-party models, logos or photographed people are embedded in the movie. The separate identity thumbnail remains the existing supplied portrait.
+`scripts/render-workspace.py` builds the scene from original geometry and materials. No downloaded footage, third-party models, logos or photographed people are embedded in the movie. The original supplied portrait remains a large foreground image, including in compact and reduced-motion layouts.
 
 ## Interaction
 
@@ -52,3 +52,13 @@ Each encoded frame is independently decodable to keep reverse scroll responsive.
 - Reduced motion: all chapters appeared in document flow; video source was absent. Actual iPhone/Safari hardware was not available for this check.
 - Python SimpleHTTP's missing byte-range support was reproduced as seekable [0,0]. Use `scripts/serve-preview.py` for local static preview. Its 206 response was verified against the exact requested bytes. Unsupported seeking falls back to the poster.
 - Rendered edit source and three high-quality preview frames are retained outside the repository at `../outputs/workspace-camera/`.
+
+## Compact-window correction
+
+The user's actual in-app viewport was 319 × 760. The previous width threshold disabled video entirely and hid the small identity thumbnail, so the shipped experience failed in that window even though wider QA passed.
+
+Motion preference and layout are now independent. Only `prefers-reduced-motion: reduce` disables media. Width, height and dense English content select a flowing foreground over a sticky 100svh video. Progress uses the section height minus the visible viewport, not the full flowing stage height. The original portrait is restored as a prominent figure in both layouts.
+
+Verified in the actual 319 × 760 window: portrait 264 × 352 at y373–725, no horizontal overflow, video loaded and ready. Scrolling 600px kept the backdrop at y0, moved the portrait to y−227, and advanced the camera to 3.394225 seconds. English scrolling 300px advanced to 1.598477 seconds; stopping preserved it; reversing to 150px returned to 0.799238 seconds.
+
+Also checked 390 × 667 in both languages and 1024 × 560 landscape: video remained enabled; the background stayed at y0 as content moved. Desktop 1280 × 800 restored a 443 × 488 portrait. Reduced motion removed the video source but kept the large portrait visible.

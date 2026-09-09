@@ -18,13 +18,15 @@ export function Hero({ profile, language }: HeroProps) {
   const stageRef = useRef<HTMLDivElement>(null);
   const cinemaRef = useRef<ScrollCinemaHandle>(null);
   const isEnglish = language === "en";
-  const staticMediaQuery = "(prefers-reduced-motion: reduce), (max-height: 640px), (max-width: 359px)" + (isEnglish ? ", (max-width: 767px) and (max-height: 800px)" : "");
+  const staticMediaQuery = "(prefers-reduced-motion: reduce)";
+  const flowMediaQuery = "(max-height: 640px), (max-width: 359px)" + (isEnglish ? ", (max-width: 767px) and (max-height: 800px)" : "");
 
   useLayoutEffect(() => {
     const root = rootRef.current;
     const stage = stageRef.current;
     if (!root || !stage) return;
     const staticQuery = window.matchMedia(staticMediaQuery);
+    const flowQuery = window.matchMedia(flowMediaQuery);
     let frame = 0;
     let disposed = false;
     let previousChapter = -1;
@@ -33,9 +35,11 @@ export function Hero({ profile, language }: HeroProps) {
       frame = 0;
       if (disposed) return;
       const isStatic = staticQuery.matches;
+      const isFlow = flowQuery.matches || isStatic;
       root.dataset.motion = isStatic ? "static" : "scroll";
+      root.dataset.layout = isFlow ? "flow" : "chapters";
       const rect = root.getBoundingClientRect();
-      const progress = clamp(-rect.top / Math.max(1, rect.height - stage.offsetHeight));
+      const progress = clamp(-rect.top / Math.max(1, rect.height - (isFlow ? window.innerHeight : stage.offsetHeight)));
       const state = heroFrame(progress);
       cinemaRef.current?.setProgress(isStatic ? 0 : progress);
       for (const [name, value] of Object.entries(state.styles)) root.style.setProperty(name, value);
@@ -50,6 +54,7 @@ export function Hero({ profile, language }: HeroProps) {
     observer.observe(root);
     observer.observe(stage);
     staticQuery.addEventListener("change", schedule);
+    flowQuery.addEventListener("change", schedule);
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule, { passive: true });
     document.fonts.ready.then(schedule);
@@ -59,10 +64,11 @@ export function Hero({ profile, language }: HeroProps) {
       window.cancelAnimationFrame(frame);
       observer.disconnect();
       staticQuery.removeEventListener("change", schedule);
+      flowQuery.removeEventListener("change", schedule);
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
     };
-  }, [staticMediaQuery]);
+  }, [flowMediaQuery]);
 
   return (
     <>
@@ -70,9 +76,11 @@ export function Hero({ profile, language }: HeroProps) {
       <div ref={stageRef} className="parallax-stage">
         <div className="parallax-clip">
           <div className="cinema-backdrop" aria-hidden="true">
-            <ScrollCinema ref={cinemaRef} videoSrc={`${basePath}/workspace-dolly.mp4`} posterSrc={`${basePath}/workspace-poster.jpg`} staticMediaQuery={staticMediaQuery} />
+            <div className="cinema-viewport">
+              <ScrollCinema ref={cinemaRef} videoSrc={`${basePath}/workspace-dolly.mp4`} posterSrc={`${basePath}/workspace-poster.jpg`} staticMediaQuery={staticMediaQuery} />
+              <div className="cinema-shade" />
+            </div>
           </div>
-          <div className="cinema-shade" aria-hidden="true" />
           <div className="section-shell parallax-shell">
             <div className="parallax-edition">
               <span>{hero.editionLabel}</span>
@@ -86,6 +94,12 @@ export function Hero({ profile, language }: HeroProps) {
               <p className="parallax-subtitle">{person.subtitle}</p>
               <p className="parallax-location">{person.location}</p>
             </div>
+
+            <figure className="parallax-portrait">
+              <Image src={`${basePath}/eacon-portrait.jpg`} alt={hero.portraitAlt} width={1086} height={1448}
+                priority sizes="(min-width: 768px) 38vw, 75vw" />
+              <figcaption><strong>{hero.primaryName}</strong><span>{hero.profileLabel}</span></figcaption>
+            </figure>
 
             <div className="parallax-story">
               <p className="parallax-eyebrow">02 / {isEnglish ? "FROM NEED TO DELIVERY" : "从需求到交付"}</p>
@@ -111,10 +125,6 @@ export function Hero({ profile, language }: HeroProps) {
               </div>
               <a className="parallax-skip" href="#about">{isEnglish ? "Scroll to explore" : "滚动，走进我的工作世界"}<ArrowDown size={15} aria-hidden="true" /></a>
               <div className="parallax-progress" aria-hidden="true"><span className="parallax-chapter"><b>01</b><b>02</b><b>03</b></span><i><span /></i><span>03</span></div>
-            </div>
-            <div className="cinema-signature">
-              <Image src={`${basePath}/eacon-portrait.jpg`} alt={hero.portraitAlt} width={48} height={64} />
-              <div><strong>{hero.primaryName}</strong><span>{hero.profileLabel}</span></div>
             </div>
           </div>
         </div>
