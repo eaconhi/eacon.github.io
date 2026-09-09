@@ -70,7 +70,7 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
             </span>
           </a>
 
-          <nav className="hidden items-center border-x border-black/[0.12] lg:flex" aria-label={copy.navAria}>
+          <nav className="hidden items-center border-x border-black/[0.12] xl:flex" aria-label={copy.navAria}>
             {navItems.map((item) => {
               const isActive = active === item.href;
               const secondary = item.english && item.english !== item.label ? item.english : "";
@@ -96,7 +96,7 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
               type="button"
               onClick={() => onLanguageChange(nextLanguage)}
               aria-label={copy.languageToggleAria}
-              className="hidden border border-black px-3 py-2 text-[11px] font-semibold text-black transition-colors hover:bg-[#ffcc00] lg:inline-flex"
+              className="hidden border border-black px-3 py-2 text-[11px] font-semibold text-black transition-colors hover:bg-[#ffcc00] xl:inline-flex"
             >
               {copy.languageToggle}
             </button>
@@ -113,7 +113,7 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
               aria-label={open ? copy.menuClose : copy.menuOpen}
               aria-expanded={open}
               onClick={() => setOpen((value) => !value)}
-              className="flex h-10 w-10 items-center justify-center border border-black text-black lg:hidden"
+              className="flex h-10 w-10 items-center justify-center border border-black text-black xl:hidden"
             >
               {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
             </button>
@@ -121,7 +121,7 @@ export function SiteHeader({ language, navItems, person, copy, onLanguageChange 
         </div>
 
         {open ? (
-          <nav className="mt-3 border-2 border-black bg-[#f5f4ef] p-2 shadow-[6px_6px_0_#050505] lg:hidden">
+          <nav className="mt-3 border-2 border-black bg-[#f5f4ef] p-2 shadow-[6px_6px_0_#050505] xl:hidden">
             <button
               type="button"
               onClick={() => {

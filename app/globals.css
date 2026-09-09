@@ -513,14 +513,15 @@ a {
 .parallax-shell { height: 100%; position: relative; max-width: 100rem; }
 .parallax-edition { position: absolute; z-index: 5; top: 6.2rem; left: 2.5rem; right: 2.5rem; display: flex; justify-content: space-between; gap: 1rem; color: #a5a5ad; font-size: .75rem; font-weight: 500; letter-spacing: .08em; }
 .parallax-intro, .parallax-story, .parallax-roles { position: absolute; z-index: 2; }
-.parallax-intro { top: 17%; left: 0; width: 100%; text-align: center; opacity: var(--intro-opacity); transform: translate3d(0,var(--intro-y),0) scale(var(--intro-scale)); }
+.parallax-intro { top: 50%; left: 6%; width: 44%; text-align: left; opacity: var(--intro-opacity); transform: translate3d(0,calc(-50% + var(--intro-y)),0) scale(var(--intro-scale)); transform-origin: left center; }
+.parallax-intro .parallax-eyebrow { justify-content: flex-start; }
 .parallax-eyebrow { display: flex; justify-content: center; align-items: center; gap: .6rem; margin: 0; color: #c5c5ce; font-size: .875rem; line-height: 1.5; font-weight: 500; }
 .parallax-eyebrow > span { width: .4rem; height: .4rem; border-radius: 50%; background: #ff794f; }
-.parallax-intro h1 { margin: .8rem 0 0; font-size: clamp(5rem,11vw,11rem); font-weight: 700; line-height: .88; letter-spacing: -.065em; }
+.parallax-intro h1 { margin: .8rem 0 0; font-size: clamp(3.5rem,6.4vw,7rem); font-weight: 700; line-height: .88; letter-spacing: -.065em; }
 .parallax-intro h1 > span { display: block; }
-.parallax-intro h1 > strong { display: block; margin-top: .65rem; font-size: 1.4rem; font-weight: 500; letter-spacing: .2em; }
+.parallax-intro h1 > strong { display: block; margin-top: 1rem; font-size: clamp(2rem,3.6vw,4rem); font-weight: 500; line-height: 1.2; letter-spacing: .08em; }
 .parallax-intro h1 i { font-style: normal; color: #ff794f; }
-.parallax-portrait { position: absolute; z-index: 3; top: 59%; left: 50%; width: min(32vw,42svh); aspect-ratio: 3 / 4; margin: 0; border-radius: 12px; overflow: hidden; background: #d7d7d7; box-shadow: 0 30px 80px #0009; opacity: var(--portrait-opacity); transform: perspective(1200px) translate3d(calc(-50% + var(--portrait-x) * var(--portrait-travel)),calc(-50% + var(--portrait-y)),0) rotateY(var(--portrait-rotate)) scale(var(--portrait-scale)); transform-origin: center; pointer-events: none; }
+.parallax-portrait { position: absolute; z-index: 3; top: 54%; left: 74%; width: min(29vw,38svh,25rem); aspect-ratio: 3 / 4; margin: 0; border-radius: 12px; overflow: hidden; background: #d7d7d7; box-shadow: 0 30px 80px #0009; opacity: var(--portrait-opacity); transform: perspective(1200px) translate3d(calc(-50% + var(--portrait-x) * var(--portrait-travel)),calc(-50% + var(--portrait-y)),0) rotateY(var(--portrait-rotate)) scale(var(--portrait-scale)); transform-origin: center; pointer-events: none; }
 .parallax-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
 .parallax-portrait figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.2rem 1.25rem .9rem; display: flex; justify-content: space-between; align-items: baseline; gap: .6rem; background: linear-gradient(transparent,#08090bdb); color: #fff; font-size: .875rem; }
 .parallax-portrait figcaption span { font-size: .65rem; letter-spacing: .06em; }
@@ -536,7 +537,7 @@ a {
 .parallax-method[data-step="2"] { transform: translate3d(var(--method-2-x,0px),var(--method-2-y,0px),0) rotateY(var(--method-2-rotate,0deg)) scale(var(--method-2-scale,1)); }
 .parallax-method[data-step="3"] { transform: translate3d(var(--method-3-x,0px),var(--method-3-y,0px),0) rotateY(var(--method-3-rotate,0deg)) scale(var(--method-3-scale,1)); }
 .parallax-method[data-step="4"] { transform: translate3d(var(--method-4-x,0px),var(--method-4-y,0px),0) rotateY(var(--method-4-rotate,0deg)) scale(var(--method-4-scale,1)); }
-.parallax-roles { top: 34%; left: 55%; width: 42%; opacity: var(--roles-opacity); transform: translate3d(0,var(--roles-y),0); }
+.parallax-roles { top: 34%; left: 6%; width: 44%; opacity: var(--roles-opacity); transform: translate3d(0,var(--roles-y),0); }
 .parallax-roles .parallax-eyebrow { justify-content: flex-start; }
 .parallax-roles h2 { margin: 1.2rem 0; font-size: clamp(2.5rem,4.8vw,5rem); line-height: 1.13; letter-spacing: -.04em; font-weight: 650; }
 .parallax-footnote { max-width: 24rem; margin-top: 1.5rem; color: #b4b4bf; font-size: .875rem; line-height: 1.6; }
@@ -568,11 +569,12 @@ a {
   .parallax-hero { height: 540svh; --portrait-travel: .24; }
   .parallax-edition { top: 5.6rem; left: 1.25rem; right: 1.25rem; font-size: .7rem; }
   .parallax-edition span:nth-child(2) { display: none; }
-  .parallax-intro { top: 18%; }
+  .parallax-intro { top: 18%; left: 0; width: 100%; text-align: center; transform: translate3d(0,var(--intro-y),0) scale(var(--intro-scale)); transform-origin: center; }
+  .parallax-intro .parallax-eyebrow { justify-content: center; }
   .parallax-intro h1 { font-size: clamp(3.8rem,17vw,7rem); }
-  .parallax-intro h1 > strong { font-size: 1.1rem; }
+  .parallax-intro h1 > strong { margin-top: .65rem; font-size: 1.1rem; line-height: .88; letter-spacing: .2em; }
   .parallax-eyebrow { font-size: .8rem; }
-  .parallax-portrait { width: min(82vw,39svh); top: 59%; border-radius: 10px; }
+  .parallax-portrait { left: 50%; width: min(82vw,39svh); top: 59%; border-radius: 10px; }
   .parallax-portrait figcaption { padding-inline: .8rem; }
   .parallax-story { top: 25%; left: 6%; width: 88%; }
   .parallax-story h2 { margin-top: 1rem; font-size: clamp(1.75rem,8.9vw,3.5rem); line-height: 1.2; }
@@ -595,14 +597,13 @@ a {
 }
 /* Compact height changes composition, never the interaction. */
 @media (min-width: 768px) and (max-height: 650px) {
-  .parallax-intro { top: 23%; left: 7%; width: 43%; }
-  .parallax-intro h1 { font-size: 7vw; }
-  .parallax-portrait { left: 65%; top: 53%; width: min(24vw,44svh); }
+  .parallax-intro { top: 51%; }
+  .parallax-portrait { top: 54%; width: min(27vw,34svh,25rem); }
   .parallax-story { top: 24%; }
   .parallax-story h2 { font-size: 3rem; }
   .parallax-methods { top: 57%; gap: .65rem; }
   .parallax-method { min-height: 4rem; flex-direction: row; align-items: center; padding: .7rem; }
-  .parallax-roles { left: 58%; top: 30%; width: 37%; }
+  .parallax-roles { left: 6%; top: 30%; width: 44%; }
   .parallax-roles h2 { font-size: 2.5rem; }
 }
 @media (max-width: 767px) and (max-height: 600px) {
@@ -671,3 +672,5 @@ a {
 .parallax-rule { position: absolute; top: 40%; left: -15%; width: 130%; height: 16%; border-block: 1px solid #ff5a2438; transform: translate3d(0,var(--line-y),0) rotate(-15deg); translate: calc(var(--pointer-x) * -12px) calc(var(--pointer-y) * 7px); transition: translate 160ms ease-out; pointer-events: none; }
 @media (max-width: 767px) { .parallax-word { font-size: 11rem; bottom: 8%; } }
 .parallax-hero:is([data-layout="flow"], :not([data-motion])) :is(.parallax-word,.parallax-rule) { display: none; }
+.parallax-portrait figcaption { flex-wrap: wrap; column-gap: .5rem; row-gap: .2rem; }
+.parallax-portrait figcaption > * { white-space: nowrap; }

@@ -29,3 +29,14 @@ test('continuous sampling contains no invalid CSS values or opacity overshoot', 
     }
   }
 });
+
+test('foreground stays within its column and the closing portrait remains readable', () => {
+  for (let i = 0; i <= 100; i++) {
+    const {styles} = heroFrame(i / 100);
+    assert.ok(Number(styles['--intro-scale']) <= 1.1, 'name must not grow across the photo column');
+    assert.ok(Number(styles['--portrait-scale']) <= 1.2, 'photo must not expand into a full-screen close-up');
+  }
+  assert.ok(Number(heroFrame(1).styles['--portrait-scale']) >= 0.75, 'closing photo must not collapse to a thumbnail');
+  assert.equal(Number(heroFrame(1).styles['--portrait-opacity']), 1);
+  assert.equal(parseFloat(heroFrame(1).styles['--portrait-x']), 0, 'photo returns to its own column');
+});

@@ -18,7 +18,7 @@ On `(hover: hover) and (pointer: fine)`, coordinates are normalized against the 
 
 Every normal viewport uses one sticky 100svh stage. Narrow widths change composition, not interaction. Mobile uses a 540svh section; desktop uses 580svh. Measured stage height determines absolute scroll progress, without wheel interception or timers.
 
-1. The portrait grows to 1.65 times its starting scale while the name moves separately.
+1. The portrait grows to at most 1.18 times its starting scale while the name moves separately.
 2. Four working-process steps enter with different translations and perspective angles.
 3. The portrait returns beside the concise career direction.
 
@@ -26,10 +26,16 @@ Full introduction and career targets remain in the normal About section. The sup
 
 ## Verification
 
-All 13 existing tests pass, including exact reversible scroll frames, stable plateaus and safe CSS values, plus tests for the retained but inactive ScrollCinema component. Next static export and TypeScript checks pass with the existing GitHub Pages base path.
+All 14 tests pass, including exact reversible scroll frames, stable plateaus and safe CSS values, plus tests for the retained but inactive ScrollCinema component. Next static export and TypeScript checks pass with the existing GitHub Pages base path.
 
 Actual 319 × 760 preview: pinned chapters, no horizontal overflow, a prominent original portrait and two fitting action labels. Mouse left/right changes the portrait's translation/rotation and moves the name in the opposite direction while scrollY remains zero. The restored background is rgb(17,17,16), the faint name and orange rules are present, and the page contains zero video elements.
 
 Also visually inspected 390 × 667 and 1280 × 800 during development. These are browser viewport checks, not actual iPhone/Safari hardware verification.
 
 The workspace video, poster, render script and ScrollCinema component are retained as inactive source assets from the previous edition; they are not referenced by the active Hero.
+
+## Full-screen layout correction
+
+Desktop uses left-aligned introduction and career text in the left 44% column, with the portrait centered at 74% of the stage shell. Photo width is bounded by viewport width, height and a 25rem maximum; short windows use a smaller height cap. Name scaling is capped at 1.05 and portrait scaling at 1.18. The closing portrait returns to the same right column instead of colliding with the final heading. Mobile retains its vertical composition. Navigation uses a compact menu below 1280px so medium desktop widths do not squeeze every link into the header.
+
+Checked 1728 × 1117, 1280 × 800 and 1024 × 560. The full-screen opening had 198px between the text column and portrait at rest; 1280px kept a 133px gap with the pointer at the left edge. At 1024 × 560 the final English chapter retained a 167px gap, and all portrait/text content ended above the action bar. A regression test now bounds foreground growth and ensures the closing portrait remains visible and returns to its original column.
