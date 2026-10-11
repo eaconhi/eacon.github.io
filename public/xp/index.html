@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#101318">
-  <title>屏 live</title>
+  <title>小 P桌面</title>
   <script>
 /* Shared by the pre-Vue bootstrap, standalone pages and Vue controllers. */
 (function () {
   if (window.ScreenBrand) return;
   const normalColors = Object.freeze(['#2374e1', '#7c3aed', '#38bdf8', '#fbbf24', '#f472b6', '#ffffff']);
   const brands = Object.freeze(Object.fromEntries([
-    ['xp', '鹏屏', 'xpeng', '小鹏', 'xp.lzxin.eu.org'],
+    ['xp', '小 P桌面', 'xpeng', '小鹏', 'xp.lzxin.eu.org'],
     ['ts', '特屏', 'tesla', '特斯拉', 'ts.lzxin.eu.org'],
     ['dev', 'D屏', 'dev', 'DEV', 'dev.leung.xin'],
   ].map(([key, shortName, sender, vehicle, host]) => [key, Object.freeze({
-    key, shortName, name: shortName + ' live', vehicle, host,
-    logo: './assets-v590/images/icons/icon-' + key + '.png',
+    key, shortName, name: key === 'xp' ? '小 P桌面' : shortName + ' live', vehicle, host,
+    logo: key === 'xp' ? './branding/xiaop-logo-512.png?v=20261011-xiaop-identity' : './assets-v590/images/icons/icon-' + key + '.png',
     background: '/assets-v590/images/backgrounds/bg-' + key + '.png',
     sender: Object.freeze({ name: sender, id: sender }),
     confetti: key === 'ts' ? Object.freeze(['#12a594', '#22c7b5', '#67e8f9', '#fbbf24', '#fb7185', '#ffffff']) : normalColors,
@@ -37,7 +37,7 @@
     document.documentElement.dataset.brand = key;
     document.documentElement.dataset.brandResolved = source === 'fallback' ? '0' : '1';
     const suffix = { preview: ' · 效果预览', upload: ' · 上传动图', donation: ' · 打赏通知', offline: ' - 服务维护中' }[page] || '';
-    document.title = ((page === 'main' || page === 'offline') && source === 'fallback' ? '屏 live' : brand.name) + suffix;
+    document.title = ((page === 'main' || page === 'offline') && source === 'fallback' ? '小 P桌面' : brand.name) + suffix;
     if (page === 'offline') return;
     for (const rel of page === 'main' ? ['icon', 'apple-touch-icon'] : ['icon']) {
       let link = document.querySelector('link[rel="' + rel + '"]');
@@ -88,18 +88,18 @@
   <link rel="stylesheet" href="./style-v610.css?v=room-share-qr-loading-1-brand-live-sweep-3-brand-unified-1-startup-cache-retry-1-showcase-lift-2">
   <link rel="stylesheet" href="./clock-presets.css">
   <link rel="stylesheet" href="./spectrum.css">
-  <script type="module" crossorigin src="./assets/chat-4uxaFt2s.js?v=20261011-phone-workshop-2"></script>
-  <link rel="modulepreload" crossorigin href="./assets/runtime-dom.esm-bundler-B9XXtl4y.js?v=20261011-phone-workshop-2">
-  <link rel="modulepreload" crossorigin href="./assets/_plugin-vue_export-helper-DlAUqK2U.js?v=20261011-phone-workshop-2">
-  <link rel="modulepreload" crossorigin href="./assets/ChannelIcon-O94B6Vuk.js?v=20261011-phone-workshop-2">
-  <link rel="modulepreload" crossorigin href="./assets/BrandLogo-BdG9mCyV.js?v=20261011-phone-workshop-2">
-  <link rel="modulepreload" crossorigin href="./assets/BaseModal-CLQWeK2W.js?v=20261011-phone-workshop-2">
-  <link rel="modulepreload" crossorigin href="./assets/browser-storage-DWIqAP_-.js?v=20261011-phone-workshop-2">
+  <script type="module" crossorigin src="./assets/chat-4uxaFt2s.js?v=20261011-xiaop-identity"></script>
+  <link rel="modulepreload" crossorigin href="./assets/runtime-dom.esm-bundler-B9XXtl4y.js?v=20261011-xiaop-identity">
+  <link rel="modulepreload" crossorigin href="./assets/_plugin-vue_export-helper-DlAUqK2U.js?v=20261011-xiaop-identity">
+  <link rel="modulepreload" crossorigin href="./assets/ChannelIcon-O94B6Vuk.js?v=20261011-xiaop-identity">
+  <link rel="modulepreload" crossorigin href="./assets/BrandLogo-BdG9mCyV.js?v=20261011-xiaop-identity">
+  <link rel="modulepreload" crossorigin href="./assets/BaseModal-CLQWeK2W.js?v=20261011-xiaop-identity">
+  <link rel="modulepreload" crossorigin href="./assets/browser-storage-DWIqAP_-.js?v=20261011-xiaop-identity">
   <link rel="stylesheet" crossorigin href="./assets/ChannelIcon-DSvYbdTE.css">
   <link rel="stylesheet" crossorigin href="./assets/chat-BtDqfUAM.css">
-<style>.home-preview-entry,.notice-board-preview-entry,#startupPreviewEntry{display:none!important}</style><link rel="stylesheet" href="./local-self-use.css?v=20261011-phone-workshop-2">
+<style>.home-preview-entry,.notice-board-preview-entry,#startupPreviewEntry{display:none!important}</style><link rel="stylesheet" href="./local-self-use.css?v=20261011-xiaop-identity">
 <script src="./local-bootstrap.js?v=2"></script>
-<script src="./pages-bootstrap.js?v=20261011-phone-workshop-2"></script></head>
+<script src="./pages-bootstrap.js?v=20261011-xiaop-identity"></script></head>
 <body>
   <div class="startup-loader" id="startupLoader" aria-label="页面加载中" role="status">
     <div class="startup-loader-inner">
@@ -305,6 +305,6 @@
 
 <div id="app"></div>
 
-<script type="module" src="./local-sensors.js?v=20261011-phone-workshop-2"></script>
+<script type="module" src="./local-sensors.js?v=20261011-xiaop-identity"></script>
 </body>
 </html>
