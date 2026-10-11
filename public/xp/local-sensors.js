@@ -1,4 +1,4 @@
-import {mountSensorPanel} from './sensor-panel.js';
+import {mountSensorPanel} from './sensor-panel.js?v=20261011-mobile';
 await window.__XP_PAGES_READY;
 const panel=mountSensorPanel({relayBase:"",widgetHidden:true,nativeSource:window.__XP_PHONE_SOURCE||null});
 const button=document.createElement('button');button.type='button';button.textContent='海拔 / 指南针';button.className='local-sensor-button';

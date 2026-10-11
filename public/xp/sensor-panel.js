@@ -1,13 +1,13 @@
 import {finite,degrees,direction,reading} from './sensor-core.js';
 
 export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=false,nativeSource=null}={}) {
-  const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('./sensor-panel.css',import.meta.url);document.head.append(stylesheet);
+  const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('./sensor-panel.css?v=20261011-mobile',import.meta.url);document.head.append(stylesheet);
   const widget=document.createElement('aside');widget.className='sensor-widget';widget.setAttribute('aria-label','海拔与方向');
   widget.innerHTML='<div><small>GPS 高度</small><strong data-alt>— m</strong><small data-accuracy>等待数据</small></div><div><small data-direction-label>方向</small><strong data-heading>—</strong><small data-source>未启用</small></div><button type="button" data-open>设置</button>';
-  widget.hidden=widgetHidden;
+  widget.hidden=widgetHidden||standalone;
   const controls=document.createElement('section');controls.className='sensor-controls';controls.hidden=!standalone;controls.setAttribute('role','dialog');controls.setAttribute('aria-label','海拔与指南针设置');
-  controls.innerHTML=`<div class="sensor-card"><button type="button" class="sensor-close" aria-label="关闭海拔设置">×</button>
-    <h2>海拔与指南针</h2><p>先在车辆停稳时设置，行驶时保留数据展示。</p>
+  controls.innerHTML=`<div class="sensor-card"><header class="sensor-panel-header"><h2>海拔与指南针</h2><button type="button" class="sensor-close" aria-label="返回壁纸图库">返回图库</button></header>
+    <p>先在车辆停稳时设置，行驶时保留数据展示。</p>
     <h3 data-reader-title>本机传感器</h3><div class="sensor-actions"><button data-gps>启用 GPS</button><button data-compass>启用指南针</button><button data-stop>停止读取</button></div>
     <p class="sensor-status" data-status>尚未申请传感器权限。</p>
     <p data-height-note>浏览器高度采用 WGS84 椭球高度；iPhone App 高度以平均海平面为参考。两者可能为空或存在误差。GPS 航向表示行进方向；手机罗盘表示手机朝向，需固定并对齐车头。罗盘未提供可靠数据时显示“—”，请远离磁干扰并校准。</p>
@@ -96,7 +96,7 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
   $('[data-gps]').onclick=startGPS;$('[data-compass]').onclick=startCompass;
   $('[data-stop]').onclick=async()=>{stopGPS();stopCompass();sample={};if(pairRole==='sender')try{await api('/'+pair.id+'/stop',{body:{},token:pair.writeToken});}catch{}status('已停止读取');paint();diagnostic();};
   $('[data-close-pair]').onclick=closePair;
-  w('[data-open]').onclick=()=>{controls.hidden=false;diagnostic();};$('.sensor-close').onclick=()=>controls.hidden=true;
+  w('[data-open]').onclick=()=>{controls.hidden=false;diagnostic();};$('.sensor-close').onclick=()=>{if(standalone)location.assign(new URL('./',import.meta.url));else controls.hidden=true;};
   $('[data-hide]').onclick=()=>{widget.hidden=true;if(!standalone)controls.hidden=true;};
   $('[data-copy]').onclick=async()=>{await diagnostic();try{await navigator.clipboard.writeText($('[data-diagnostic]').textContent);status('检测结果已复制');}catch{status('复制不可用，请选中检测文字手动复制。');}};
   const params=new URLSearchParams(location.search);if(params.get('join')){$('[data-code]').value=params.get('join');controls.hidden=false;const candidate=params.get('relay');try{const url=new URL(candidate);if(url.protocol==='https:'||url.origin===location.origin){base=url.origin;$('[data-base]').value=base;}}catch{}}
