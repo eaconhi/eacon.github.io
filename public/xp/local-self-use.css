@@ -29,3 +29,14 @@
 .local-media-upload select, .local-media-upload button { padding:10px 14px; border-radius:10px; border:1px solid #879ab333; background:transparent; color:inherit; }
 .local-media-upload button { margin-left:8px; background:#2374e1; color:white; }
 .local-media-upload output { display:block; font-size:13px; padding-top:8px; }
+
+/* Touch users need a persistent exit from the full-screen plush clock. */
+@media (max-width: 760px) {
+  .plush-clock-viewer .viewer-close {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 100;
+    top: max(16px, env(safe-area-inset-top));
+  }
+  .plush-clock-viewer .viewer-close-left { display: none; }
+}
