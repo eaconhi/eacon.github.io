@@ -1,0 +1,31 @@
+/* This instance is a personal wallpaper library. Keep functional local controls. */
+#groupChatButton, #groupChatModal, #donationButton, #donationModal,
+#noticeBoardTrigger, #noticeBoardMask, #startupReminderMask,
+#announcementCommunityButton, #announcementPreviewButton,
+#videoTutorialSidebar, #vehicleGallerySidebar, .preview-guide-buttons,
+#preferredSitesButton, #preferredSitesPanel, #preferredSitesVisibilityToggle,
+#gameChannelButton, #gameChannelPanel, #gameChannelVisibilityToggle,
+#liveShowRoomList, #liveShowPanel, #liveShowChannelVisibilityToggle,
+#roomList [data-room-id="showcase"], .members,
+.home-preview-entry, .notice-board-preview-entry, .startup-preview-entry,
+#videoReviewUploadEntry, #mobileVideoReviewUploadEntry,
+#settingsAdminPasswordGroup, #ownerProfileEntry,
+#roomCreationGate, #usageNoticeButton { display: none !important; }
+.setting-row:has(#gameChannelVisibilityToggle),
+.setting-row:has(#preferredSitesVisibilityToggle),
+.setting-row:has(#liveShowChannelVisibilityToggle),
+.setting-row:has(#teslaTheaterToggle), #requestAllPrivateRoomsSetting { display:none!important; }
+.local-help { line-height:1.8; }
+.local-help h2 { margin:0 0 12px; }
+.local-help li { margin:8px 0; }
+.local-help a { color:var(--accent,#5388ef); }
+.upload-type-card.pink, nav[aria-label="主导航"] > button:first-child,
+.owner-badge[title="打赏支持"] { display:none!important; }
+.local-upload-link { display:inline-flex; padding:8px 14px; border-radius:10px; background:#2374e1; color:white; text-decoration:none; white-space:nowrap; font-size:13px; }
+.local-media-upload { margin:16px auto; max-width:680px; padding:18px; border:1px solid #879ab333; border-radius:18px; box-sizing:border-box; width:calc(100% - 32px); }
+.local-media-upload h3 { margin:0 0 8px; }
+.local-media-upload p { font-size:13px; opacity:.75; }
+.local-media-upload input { width:100%; margin:10px 0; }
+.local-media-upload select, .local-media-upload button { padding:10px 14px; border-radius:10px; border:1px solid #879ab333; background:transparent; color:inherit; }
+.local-media-upload button { margin-left:8px; background:#2374e1; color:white; }
+.local-media-upload output { display:block; font-size:13px; padding-top:8px; }

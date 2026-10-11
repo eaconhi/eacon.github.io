@@ -10,6 +10,13 @@ export function sanitizeSample(input = {}, now = Date.now()) {
     speed:number(input.speed,0,500), gpsHeading:number(input.gpsHeading,0,360), gpsAt:time(input.gpsAt),
     compass:number(input.compass,0,360), compassAt:time(input.compassAt),
     compassKind:['磁北方向','绝对方向参考'].includes(input.compassKind) ? input.compassKind : '',
+    latitude:number(input.latitude,-90,90),longitude:number(input.longitude,-180,180),
+    pitch:number(input.pitch,-180,180),roll:number(input.roll,-180,180),motionAt:time(input.motionAt),
+    battery:number(input.battery,0,100),batteryAt:time(input.batteryAt),
+    acceleration:input.acceleration&&['x','y','z'].every(k=>finite(input.acceleration[k]))?Object.fromEntries(['x','y','z'].map(k=>[k,number(input.acceleration[k],-200,200)])):null,
+    rotationRate:input.rotationRate&&['x','y','z'].every(k=>finite(input.rotationRate[k]))?Object.fromEntries(['x','y','z'].map(k=>[k,number(input.rotationRate[k],-200,200)])):null,
+    pressure:number(input.pressure,0,200),relativeAltitude:number(input.relativeAltitude,-10000,10000),pressureAt:time(input.pressureAt),
+    altitudeReference:['WGS84 椭球高度','平均海平面高度'].includes(input.altitudeReference)?input.altitudeReference:'',
   };
 }
 export function reading(sample = {}, now = Date.now()) {
@@ -22,6 +29,14 @@ export function reading(sample = {}, now = Date.now()) {
     heading:moving ? degrees(sample.gpsHeading) : compass ? degrees(sample.compass) : null,
     headingKind:moving ? '行进方向 · GPS' : compass ? sample.compassKind : '方向未提供',
     speed:gps ? sample.speed : null,
+    latitude:gps?sample.latitude:null,longitude:gps?sample.longitude:null,accuracy:gps?sample.accuracy:null,
+    gpsHeading:gps&&finite(sample.gpsHeading)?degrees(sample.gpsHeading):null,
+    compass:compass?degrees(sample.compass):null,
+    pitch:fresh(sample.motionAt)?sample.pitch:null,roll:fresh(sample.motionAt)?sample.roll:null,
+    acceleration:fresh(sample.motionAt)?sample.acceleration:null,rotationRate:fresh(sample.motionAt)?sample.rotationRate:null,
+    battery:fresh(sample.batteryAt)?sample.battery:null,
+    pressure:fresh(sample.pressureAt)?sample.pressure:null,relativeAltitude:fresh(sample.pressureAt)?sample.relativeAltitude:null,
+    altitudeReference:sample.altitudeReference||'WGS84 椭球高度',
     fresh:gps || compass || fresh(sample.altitudeAt),
   };
 }
