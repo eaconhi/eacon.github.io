@@ -1,7 +1,11 @@
 /* Browser-local storage bridge for the self-use Pages build. No remote accounts. */
 (() => {
   'use strict';
-  const base=new URL('.',document.currentScript.src),nativeFetch=window.fetch.bind(window),randomUUID=()=>crypto.randomUUID();
+  const base=new URL('.',document.currentScript.src),nativeFetch=window.fetch.bind(window);
+  const nativeUUID=globalThis.crypto?.randomUUID?.bind(globalThis.crypto);
+  const randomUUID=()=>{if(nativeUUID)return nativeUUID();const bytes=crypto.getRandomValues(new Uint8Array(16));bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;const hex=[...bytes].map(b=>b.toString(16).padStart(2,'0'));return [hex.slice(0,4),hex.slice(4,6),hex.slice(6,8),hex.slice(8,10),hex.slice(10)].map(a=>a.join('')).join('-');};
+  // randomUUID requires HTTPS in some browsers; getRandomValues also works on LAN HTTP.
+  if(!nativeUUID)Object.defineProperty(crypto,'randomUUID',{value:randomUUID,configurable:true});
   const key='xp-pages-state-v1',sockets=new Set(),sessions=new Map(),identities=new Map(),blobs=new Map();
   if(!localStorage.getItem('xp-pages-interface-v1')){
     localStorage.setItem('chat-auto-screensaver','0');
