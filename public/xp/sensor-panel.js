@@ -10,13 +10,13 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
     <h2>海拔与指南针</h2><p>先在车辆停稳时设置，行驶时保留数据展示。</p>
     <h3 data-reader-title>本机传感器</h3><div class="sensor-actions"><button data-gps>启用 GPS</button><button data-compass>启用指南针</button><button data-stop>停止读取</button></div>
     <p class="sensor-status" data-status>尚未申请传感器权限。</p>
-    <p>GPS 高度采用浏览器提供的 WGS84 椭球高度，可能为空或存在误差。GPS 航向表示行进方向；停车时需要设备罗盘。手机罗盘表示手机朝向，需平放并对齐车头。</p>
+    <p data-height-note>浏览器高度采用 WGS84 椭球高度；iPhone App 高度以平均海平面为参考。两者可能为空或存在误差。GPS 航向表示行进方向；手机罗盘表示手机朝向，需固定并对齐车头。罗盘未提供可靠数据时显示“—”，请远离磁干扰并校准。</p>
     <h3>实时数据</h3><div class="sensor-readings" data-readings></div><p>速度采用 GPS 地面速度；手机的电量、方向和倾斜不等于车辆接口数据。位置不保存历史。</p>
     <div data-relay-section><h3>手机转发</h3><p>车机取不到数据时，让手机在前台读取并转发。手机锁屏或切到后台可能停止更新，超过 15 秒会显示失效。</p>
     <details><summary>转发服务地址</summary><p>GitHub Pages 需要另配 HTTPS 转发服务。本地完整版本使用同一服务。</p><label>服务地址 <input data-base placeholder="https://你的转发服务" type="url"></label><button data-save-base>保存地址</button></details>
     <div class="sensor-actions"><button data-create>车机：生成配对码</button><input data-code aria-label="手机配对码" placeholder="输入六位配对码" inputmode="numeric" maxlength="6"><button data-join>手机：连接</button><button data-close-pair>断开配对</button></div>
     <div class="sensor-pair" data-pair-code></div><p data-pair-status>未连接</p><p><a data-phone-link hidden target="_blank" rel="noopener">打开手机转发页面</a></p></div>
-    <h3>车机检测</h3><p>接口存在不代表已经开放权限，请点击上面的启用按钮实测。</p><pre class="sensor-diagnostic" data-diagnostic></pre><button data-copy>复制检测结果</button><button data-hide>隐藏数据卡片</button>
+    <div data-browser-diagnostic><h3>车机检测</h3><p>接口存在不代表已经开放权限，请点击上面的启用按钮实测。</p><pre class="sensor-diagnostic" data-diagnostic></pre><button data-copy>复制检测结果</button></div><button data-hide>隐藏数据卡片</button>
     </div>`;
   document.body.append(widget,controls);
   const $=s=>controls.querySelector(s),w=s=>widget.querySelector(s);
@@ -39,7 +39,7 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
     w('[data-source]').textContent=r.fresh?source+(finite(r.speed)?' · '+Math.round(r.speed*3.6)+' km/h':''):source+' · 无有效数据';
     const value=(v,unit='',digits=1)=>finite(v)?v.toFixed(digits)+unit:'—';
     const xyz=v=>v?['x','y','z'].map(k=>k.toUpperCase()+' '+value(v[k],'',2)).join(' / '):'—';
-    const rows=[['GPS 地面速度',value(r.speed===null?null:r.speed*3.6,' km/h')],['GPS 行进方向',value(r.gpsHeading,'°')],['手机罗盘方向',value(r.compass,'°')],['高度',value(r.altitude,' m')+' · '+r.altitudeReference],['位置（WGS84）',finite(r.latitude)&&finite(r.longitude)?r.latitude.toFixed(6)+', '+r.longitude.toFixed(6):'—'],['定位精度',value(r.accuracy,' m')],['俯仰 / 横滚（手机参考）',value(r.pitch,'°')+' / '+value(r.roll,'°')],['加速度（m/s²）',xyz(r.acceleration)],['角速度（rad/s）',xyz(r.rotationRate)],['气压',value(r.pressure,' kPa')],['相对高度变化',value(r.relativeAltitude,' m')],['手机电量',value(r.battery,'%',0)]];
+    const rows=[['GPS 地面速度',value(r.speed===null?null:r.speed*3.6,' km/h')],['GPS 行进方向',value(r.gpsHeading,'°')],['手机罗盘方向',value(r.compass,'°')],['高度',value(r.altitude,' m')+' · '+r.altitudeReference],['位置（WGS84）',finite(r.latitude)&&finite(r.longitude)?r.latitude.toFixed(6)+', '+r.longitude.toFixed(6):'—'],['定位精度',value(r.accuracy,' m')],['俯仰 / 横滚（手机参考）',value(r.pitch,'°')+' / '+value(r.roll,'°')],['加速度（m/s²）',xyz(r.acceleration)],['角速度（rad/s）',xyz(r.rotationRate)],['重力方向（g）',xyz(r.gravity)],['气压',value(r.pressure,' kPa')],['相对高度变化',value(r.relativeAltitude,' m')],['手机电量',value(r.battery,'%',0)]];
     $('[data-readings]').replaceChildren(...rows.map(([name,text])=>{const item=document.createElement('div'),label=document.createElement('small'),strong=document.createElement('strong');label.textContent=name;strong.textContent=text;item.append(label,strong);return item;}));
   }
   function stopGPS(){if(watch!==null)navigator.geolocation?.clearWatch(watch);watch=null;delete sample.gpsAt;delete sample.altitudeAt;}
@@ -101,8 +101,8 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
   $('[data-copy]').onclick=async()=>{await diagnostic();try{await navigator.clipboard.writeText($('[data-diagnostic]').textContent);status('检测结果已复制');}catch{status('复制不可用，请选中检测文字手动复制。');}};
   const params=new URLSearchParams(location.search);if(params.get('join')){$('[data-code]').value=params.get('join');controls.hidden=false;const candidate=params.get('relay');try{const url=new URL(candidate);if(url.protocol==='https:'||url.origin===location.origin){base=url.origin;$('[data-base]').value=base;}}catch{}}
   relayAvailability();
-  async function nativeTick(){if(!nativeSource||pollBusy)return;pollBusy=true;try{const response=await fetch(new URL('api/phone/sample',nativeSource.base),{headers:{Authorization:'Bearer '+nativeSource.key},cache:'no-store'});const data=await response.json();if(!response.ok||!data.ok)throw new Error(data.error||'手机服务无法连接');remote=data.sample||{};status(reading(remote).fresh?'正在接收 iPhone 数据。':'iPhone 服务已连接，等待有效传感器数据。');}catch(e){remote={};status('手机转发中断：'+e.message);}finally{pollBusy=false;paint();}}
-  if(nativeSource){$('[data-relay-section]').hidden=true;$('[data-reader-title]').textContent='iPhone 局域网数据';for(const selector of ['[data-gps]','[data-compass]','[data-stop]'])$(selector).hidden=true;nativeTick();}
+  async function nativeTick(){if(!nativeSource||pollBusy)return;pollBusy=true;const abort=new AbortController(),deadline=setTimeout(()=>abort.abort(),8000);try{const response=await fetch(new URL('api/phone/sample',nativeSource.base),{headers:{Authorization:'Bearer '+nativeSource.key},cache:'no-store',signal:abort.signal});const data=await response.json();if(!response.ok||!data.ok)throw new Error(data.error||'手机服务无法连接');remote=data.sample||{};status(reading(remote).fresh?'正在接收 iPhone 数据。':'iPhone 服务已连接，等待有效传感器数据。');}catch(e){remote={};status('手机转发中断：'+e.message);}finally{clearTimeout(deadline);pollBusy=false;paint();}}
+  if(nativeSource){$('[data-relay-section]').hidden=true;$('[data-browser-diagnostic]').hidden=true;$('[data-reader-title]').textContent='iPhone 局域网数据';for(const selector of ['[data-gps]','[data-compass]','[data-stop]'])$(selector).hidden=true;nativeTick();}
   const timer=setInterval(()=>{paint();if(nativeSource)nativeTick();else relayTick();},1000);diagnostic();paint();
   window.addEventListener('pagehide',()=>{stopGPS();stopCompass();clearInterval(timer);});
   return {open(){widget.hidden=false;controls.hidden=false;diagnostic();}};

@@ -15,6 +15,7 @@ export function sanitizeSample(input = {}, now = Date.now()) {
     battery:number(input.battery,0,100),batteryAt:time(input.batteryAt),
     acceleration:input.acceleration&&['x','y','z'].every(k=>finite(input.acceleration[k]))?Object.fromEntries(['x','y','z'].map(k=>[k,number(input.acceleration[k],-200,200)])):null,
     rotationRate:input.rotationRate&&['x','y','z'].every(k=>finite(input.rotationRate[k]))?Object.fromEntries(['x','y','z'].map(k=>[k,number(input.rotationRate[k],-200,200)])):null,
+    gravity:input.gravity&&['x','y','z'].every(k=>finite(input.gravity[k]))?Object.fromEntries(['x','y','z'].map(k=>[k,number(input.gravity[k],-2,2)])):null,
     pressure:number(input.pressure,0,200),relativeAltitude:number(input.relativeAltitude,-10000,10000),pressureAt:time(input.pressureAt),
     altitudeReference:['WGS84 椭球高度','平均海平面高度'].includes(input.altitudeReference)?input.altitudeReference:'',
   };
@@ -34,6 +35,7 @@ export function reading(sample = {}, now = Date.now()) {
     compass:compass?degrees(sample.compass):null,
     pitch:fresh(sample.motionAt)?sample.pitch:null,roll:fresh(sample.motionAt)?sample.roll:null,
     acceleration:fresh(sample.motionAt)?sample.acceleration:null,rotationRate:fresh(sample.motionAt)?sample.rotationRate:null,
+    gravity:fresh(sample.motionAt)?sample.gravity:null,
     battery:fresh(sample.batteryAt)?sample.battery:null,
     pressure:fresh(sample.pressureAt)?sample.pressure:null,relativeAltitude:fresh(sample.pressureAt)?sample.relativeAltitude:null,
     altitudeReference:sample.altitudeReference||'WGS84 椭球高度',
