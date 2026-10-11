@@ -1,7 +1,7 @@
 import {finite,degrees,direction,reading} from './sensor-core.js';
 
 export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=false,nativeSource=null}={}) {
-  const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('./sensor-panel.css?v=20261011-mobile',import.meta.url);document.head.append(stylesheet);
+  const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('./sensor-panel.css?v=20261011-fullscreen-sensors',import.meta.url);document.head.append(stylesheet);
   const widget=document.createElement('aside');widget.className='sensor-widget';widget.setAttribute('aria-label','海拔与方向');
   widget.innerHTML='<div><small>GPS 高度</small><strong data-alt>— m</strong><small data-accuracy>等待数据</small></div><div><small data-direction-label>方向</small><strong data-heading>—</strong><small data-source>未启用</small></div><button type="button" data-open>设置</button>';
   widget.hidden=widgetHidden||standalone;
@@ -19,6 +19,20 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
     <div data-browser-diagnostic><h3>车机检测</h3><p>接口存在不代表已经开放权限，请点击上面的启用按钮实测。</p><pre class="sensor-diagnostic" data-diagnostic></pre><button data-copy>复制检测结果</button></div><button data-hide>隐藏数据卡片</button>
     </div>`;
   document.body.append(widget,controls);
+  // Element fullscreen only paints that element's descendants. Keep the live
+  // panel and its launcher in that subtree, including the plush clock viewer.
+  const overlays=[widget,controls];
+  function syncFullscreenHost(){
+    const fullscreen=document.fullscreenElement||document.webkitFullscreenElement;
+    const host=fullscreen?.isConnected&&fullscreen!==document.documentElement?fullscreen:document.body;
+    for(const overlay of overlays)if(overlay.parentNode!==host)host.append(overlay);
+  }
+  for(const event of ['fullscreenchange','webkitfullscreenchange'])document.addEventListener(event,syncFullscreenHost);
+  const hostObserver=new MutationObserver(syncFullscreenHost);
+  hostObserver.observe(document.body,{childList:true});
+  syncFullscreenHost();
+  // Overlay interactions must not trigger the clock's click/keyboard controls.
+  for(const overlay of overlays)for(const event of ['pointerdown','click','keydown'])overlay.addEventListener(event,e=>e.stopPropagation());
   const $=s=>controls.querySelector(s),w=s=>widget.querySelector(s);
   let sample={},remote=null,watch=null,orientationListening=false,orientationReceived=false,compassTimer=null,pair=null,pairRole='',gpsError='',compassError='',pollBusy=false,publishBusy=false,lastPublished=0;
   let base=localStorage.getItem('xp-sensor-relay-base')||relayBase; $('[data-base]').value=base;
@@ -104,6 +118,6 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
   async function nativeTick(){if(!nativeSource||pollBusy)return;pollBusy=true;const abort=new AbortController(),deadline=setTimeout(()=>abort.abort(),8000);try{const response=await fetch(new URL('api/phone/sample',nativeSource.base),{headers:{Authorization:'Bearer '+nativeSource.key},cache:'no-store',signal:abort.signal});const data=await response.json();if(!response.ok||!data.ok)throw new Error(data.error||'手机服务无法连接');remote=data.sample||{};status(reading(remote).fresh?'正在接收 iPhone 数据。':'iPhone 服务已连接，等待有效传感器数据。');}catch(e){remote={};status('手机转发中断：'+e.message);}finally{clearTimeout(deadline);pollBusy=false;paint();}}
   if(nativeSource){$('[data-relay-section]').hidden=true;$('[data-browser-diagnostic]').hidden=true;$('[data-reader-title]').textContent='iPhone 局域网数据';for(const selector of ['[data-gps]','[data-compass]','[data-stop]'])$(selector).hidden=true;nativeTick();}
   const timer=setInterval(()=>{paint();if(nativeSource)nativeTick();else relayTick();},1000);diagnostic();paint();
-  window.addEventListener('pagehide',()=>{stopGPS();stopCompass();clearInterval(timer);});
-  return {open(){widget.hidden=false;controls.hidden=false;diagnostic();}};
+  window.addEventListener('pagehide',()=>{stopGPS();stopCompass();clearInterval(timer);hostObserver.disconnect();for(const event of ['fullscreenchange','webkitfullscreenchange'])document.removeEventListener(event,syncFullscreenHost);});
+  return {open(){syncFullscreenHost();widget.hidden=false;controls.hidden=false;diagnostic();},registerOverlay(node){overlays.push(node);for(const event of ['pointerdown','click','keydown'])node.addEventListener(event,e=>e.stopPropagation());syncFullscreenHost();}};
 }
