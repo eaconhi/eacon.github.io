@@ -1,0 +1,55 @@
+.xiaop-pet-ui{position:absolute;inset:0;pointer-events:none;z-index:80;font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;color:#f4f8fb}
+.plush-clock-viewer>.viewer-close{z-index:100!important}
+.xiaop-pet-ui [hidden]{display:none!important}
+.xiaop-pet-ui button,.xiaop-pet-ui input,.xiaop-pet-ui select{font:inherit}
+.xiaop-pet-hit{position:absolute;pointer-events:auto;touch-action:none;background:transparent!important;border:0!important;border-radius:35%;padding:0!important;cursor:grab;outline-offset:3px;-webkit-tap-highlight-color:transparent;overflow:visible;box-shadow:none!important}
+.xiaop-pet-art{position:absolute;inset:0;background-repeat:no-repeat;background-size:400% 200%;background-position:0 0;transform-origin:50% 89%;will-change:transform;pointer-events:none}
+.xiaop-pet-sparkles{position:absolute;right:4%;top:18%;color:#ba7788;font-size:24px;opacity:0;pointer-events:none;transition:opacity .2s}
+.xiaop-pet-ui[data-action=happy] .xiaop-pet-sparkles{opacity:1;animation:xiaop-pet-heart 1.2s ease-out infinite}
+.xiaop-pet-menu input[type=checkbox]{width:24px;min-height:24px;margin-left:auto;accent-color:#b8edd8}
+@keyframes xiaop-pet-heart{from{transform:translateY(8px) scale(.8)}to{transform:translateY(-13px) scale(1.1);opacity:0}}
+.xiaop-pet-hit:active{cursor:grabbing}.xiaop-pet-hit:focus-visible{outline:2px solid #84dcca}
+.xiaop-pet-launch{position:absolute;left:22px;bottom:max(20px,env(safe-area-inset-bottom));pointer-events:auto;padding:9px 17px;border-radius:22px;border:1px solid #ffffff30;background:#102532c9;backdrop-filter:blur(14px);color:#e2f4ee;cursor:pointer;font-size:14px;font-weight:600;box-shadow:0 4px 18px #06121c20}
+.xiaop-pet-launch span{color:#b8edd8;margin-right:5px}
+.xiaop-pet-bubble{position:absolute;transform:translateX(-50%);max-width:210px;padding:9px 14px;border-radius:16px;background:#122330dc;border:1px solid #ffffff28;box-shadow:0 5px 15px #07172520;color:#edf8f4;white-space:normal;text-align:center;font-size:13px;line-height:1.4;pointer-events:none}
+.xiaop-pet-menu{position:absolute;left:22px;bottom:72px;width:min(300px,calc(100% - 44px));max-height:calc(100% - 125px);box-sizing:border-box;overflow-y:auto;overscroll-behavior:contain;pointer-events:auto;border:1px solid #ffffff30;border-radius:22px;padding:18px;background:#122433ed;backdrop-filter:blur(18px);box-shadow:0 14px 50px #05111a40;color:#edf8f4;text-align:left}
+.xiaop-pet-menu-title{display:flex;align-items:center;justify-content:space-between;font-size:18px}.xiaop-pet-menu-title button{background:none;border:0;color:inherit;font-size:25px;width:32px;height:32px;cursor:pointer}
+.xiaop-pet-menu p{font-size:12px;line-height:1.5;color:#adbdc6;margin:6px 0 15px}
+.xiaop-pet-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.xiaop-pet-actions button{border:1px solid #ffffff22;border-radius:12px;background:#294353;color:#f2f8fa;padding:10px 8px;cursor:pointer;font-size:14px;min-height:40px}
+.xiaop-pet-actions button:hover{background:#3b5c6b}.xiaop-pet-ui button:focus-visible,.xiaop-pet-ui select:focus-visible{outline:2px solid #b8edd8;outline-offset:2px}
+.xiaop-pet-menu label{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:13px;color:#c7d6dc;margin:14px 0;gap:8px}
+.xiaop-pet-menu input{width:100%;margin:0;accent-color:#b8edd8;min-height:28px}.xiaop-pet-menu select{width:165px;max-width:65%;background:#243f50;color:#f1f6f9;border:1px solid #ffffff24;padding:7px 10px;border-radius:10px;font-size:14px}
+@media(max-width:600px){.xiaop-pet-launch{left:14px;bottom:max(16px,env(safe-area-inset-bottom));padding:9px 14px}.xiaop-pet-menu{left:14px;width:min(300px,calc(100% - 28px))}.xiaop-pet-bubble{max-width:170px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){.xiaop-pet-ui *{animation:none!important;transition:none!important}}
+.xiaop-pet-ui[data-mode=clock] .xiaop-pet-art{visibility:hidden}
+.xiaop-pet-ui[data-mode=clock][data-moved=false] .xiaop-pet-hit{clip-path:ellipse(23% 40% at 17% 40%)}
+.plush-clock-viewer.xiaop-companion-active .clock-meta{bottom:148px}
+.plush-clock-viewer.xiaop-companion-active[data-xiaop-scene=companion] .clock-meta,.plush-clock-viewer.xiaop-companion-active[data-xiaop-scene=board] .clock-meta{visibility:hidden}
+.xiaop-pet-ui:not([data-mode=clock]) .xiaop-pet-hit:before{content:"";position:absolute;left:22%;right:22%;bottom:0;height:5%;background:#70636c24;border-radius:50%;filter:blur(7px);pointer-events:none}
+.xiaop-food-board{position:absolute;pointer-events:auto;transform-origin:50% 95%;animation:xiaop-board-idle 5s ease-in-out infinite}
+.xiaop-food-board>img{display:block;width:100%;height:100%;pointer-events:none;user-select:none}
+.xiaop-food-hit{position:absolute;transform:translate(-50%,-50%)!important;width:25%;height:18%;padding:0!important;min-width:0!important;min-height:0!important;box-sizing:border-box;border:0!important;box-shadow:none!important;background:transparent!important;border-radius:15px;cursor:pointer;touch-action:none;outline-offset:0;transition:outline-color .15s}
+.xiaop-food-hit:focus-visible,.xiaop-food-hit:hover{outline:2px solid #d8b47766;background:#fff8ed18!important}
+.xiaop-board-response{animation:xiaop-board-response .65s ease-out}
+@keyframes xiaop-board-idle{0%,100%{transform:rotate(-.5deg)}50%{transform:rotate(.5deg)}}
+@keyframes xiaop-board-response{0%,100%{transform:rotate(0)}30%{transform:rotate(-3deg)}60%{transform:rotate(2deg)}}
+.xiaop-flying-treat,.xiaop-drag-treat,.xiaop-food-sticker{position:absolute;width:56px;height:56px;border-radius:12px;background-repeat:no-repeat;pointer-events:none;z-index:3}
+.xiaop-flying-treat{animation:xiaop-food-flight .65s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes xiaop-food-flight{0%{transform:translate(0,0) rotate(-8deg) scale(.9)}65%{transform:translate(var(--food-x),calc(var(--food-y) - 20px)) rotate(8deg) scale(1.08)}100%{transform:translate(var(--food-x),var(--food-y)) scale(1)}}
+.xiaop-food-sticker{animation:xiaop-sticker-bounce .55s ease-out}
+@keyframes xiaop-sticker-bounce{0%{transform:scale(.7)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
+.xiaop-charge-meter{position:absolute;left:25%;top:8%;width:50%;height:7%;padding:3px;background:#eeffffad;border:2px solid #7ecbb7;border-radius:8px;box-sizing:border-box;pointer-events:none}
+.xiaop-charge-meter i{display:block;height:100%;background:#75d7a2;border-radius:3px;animation:xiaop-charge 3s ease-out forwards}
+@keyframes xiaop-charge{from{width:8%}to{width:100%}}
+.xiaop-pet-ui[data-food-effect=charge] .xiaop-pet-art{filter:drop-shadow(0 0 7px #85fce898)}
+.xiaop-desktop-cards{position:absolute;left:50%;bottom:75px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(680px,75%);pointer-events:auto}
+.xiaop-desktop-cards>button{position:relative;border:1px solid #ffffff70;background:#ffffff65;backdrop-filter:blur(14px);border-radius:13px;box-shadow:0 5px 16px #73695606;color:#606164;text-align:left;padding:13px 35px 13px 16px;cursor:pointer;min-height:62px}
+.xiaop-desktop-cards strong{display:block;font-weight:500;font-size:15px}.xiaop-desktop-cards span{display:block;font-size:11px;margin-top:4px;color:#949194}.xiaop-desktop-cards i{position:absolute;right:13px;top:20px;font-style:normal;font-size:22px;color:#7c7e83}
+.xiaop-scene-tabs{position:absolute;bottom:max(18px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;gap:6px;padding:4px;border-radius:20px;background:#ffffff42;backdrop-filter:blur(12px);border:1px solid #ffffff50;pointer-events:auto}
+.xiaop-scene-tabs button{font:inherit;font-size:12px;white-space:nowrap;border:0;background:transparent;color:#717076;border-radius:16px;padding:7px 12px;cursor:pointer}
+.xiaop-scene-tabs button[aria-pressed=true]{background:#fff9;color:#775f50;box-shadow:0 2px 8px #69605508}
+.xiaop-pet-sheet{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(420px,calc(100% - 36px));max-height:70%;overflow:auto;border:1px solid #ffffff90;background:#faf7f0f2;color:#5c5b5a;border-radius:22px;padding:22px;box-sizing:border-box;box-shadow:0 12px 50px #534b3622;pointer-events:auto;z-index:5}
+.xiaop-pet-sheet header{display:flex;justify-content:space-between;align-items:center;font-size:20px}.xiaop-pet-sheet header button{border:0;background:none;font-size:25px;color:inherit;cursor:pointer}.xiaop-sheet-content{margin-top:16px;font-size:14px;line-height:1.8}.xiaop-sheet-content textarea{width:100%;min-height:140px;box-sizing:border-box;padding:14px;border:1px solid #d7d0c5;background:#fff9;color:#57534a;border-radius:12px;font:inherit}.xiaop-sheet-content button{padding:9px 20px;border:1px solid #d5c9b7;background:#e8dfd0;color:#665e52;border-radius:12px;font:inherit;margin-top:12px;cursor:pointer}
+@media(max-width:600px){.xiaop-desktop-cards{width:calc(100% - 24px);gap:6px;bottom:122px}.xiaop-desktop-cards>button{padding:11px 8px;min-height:58px}.xiaop-desktop-cards strong{font-size:13px}.xiaop-desktop-cards span{font-size:9px}.xiaop-desktop-cards i{display:none}.xiaop-scene-tabs{bottom:18px;left:50%}.xiaop-scene-tabs button{font-size:10px;padding:6px 7px}.xiaop-pet-launch{left:12px;bottom:68px;padding:9px 14px;font-size:12px}.xiaop-pet-menu{bottom:118px}.plush-clock-viewer.xiaop-companion-active .clock-corner-actions{bottom:68px!important}.plush-clock-viewer.xiaop-companion-active .clock-meta{bottom:204px}.plush-clock-viewer.xiaop-companion-active .local-sensor-button{bottom:182px!important;right:12px!important}}
+@media(prefers-reduced-motion:reduce){.xiaop-food-board,.xiaop-board-response,.xiaop-flying-treat{animation:none}.xiaop-flying-treat{display:none}}
