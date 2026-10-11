@@ -1,1 +1,1 @@
-import{o as s,c as o,J as t,n}from"./runtime-dom.esm-bundler-B9XXtl4y.js?v=20261011-xiaop-clear";const c={__name:"BaseModal",props:{kind:{type:String,default:"modal"}},setup(e){return(a,r)=>(s(),o("div",{class:n(e.kind)},[t(a.$slots,"default")],2))}};export{c as _};
+import{o as s,c as o,J as t,n}from"./runtime-dom.esm-bundler-B9XXtl4y.js?v=20261012-colors";const c={__name:"BaseModal",props:{kind:{type:String,default:"modal"}},setup(e){return(a,r)=>(s(),o("div",{class:n(e.kind)},[t(a.$slots,"default")],2))}};export{c as _};

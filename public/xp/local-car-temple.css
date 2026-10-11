@@ -1,0 +1,4 @@
+.fun-workshop-orange .fun-workshop-cover{background:#241a12 url('./temple/ritual-art/login-guanyin.webp') center 45%/contain no-repeat!important}
+.fun-workshop-orange .fun-workshop-cover>span{visibility:hidden}
+.fun-workshop-orange .fun-workshop-cover:focus-visible{outline:3px solid #e3c78c;outline-offset:-5px}
+.fun-workshop-orange .fun-workshop-status[data-status='可使用']{background:#80643633;color:#e8c992}

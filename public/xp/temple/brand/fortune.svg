@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="fortune-title">
+  <title id="fortune-title">灵签</title>
+  <defs>
+    <linearGradient id="fortune-bamboo" x1="36" y1="14" x2="83" y2="65" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff0bb"/><stop offset=".5" stop-color="#e5c886"/><stop offset="1" stop-color="#aa763c"/>
+    </linearGradient>
+    <linearGradient id="fortune-bronze" x1="32" y1="75" x2="99" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9b6a31"/><stop offset=".2" stop-color="#e0b464"/><stop offset=".42" stop-color="#f5d99b"/><stop offset=".68" stop-color="#c5984e"/><stop offset="1" stop-color="#755127"/>
+    </linearGradient>
+    <linearGradient id="fortune-rim" x1="32" y1="46" x2="97" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff0b9"/><stop offset=".53" stop-color="#bd8b40"/><stop offset="1" stop-color="#f2d696"/>
+    </linearGradient>
+  </defs>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M33 56 23 20l9-3 15 40Zm19-2L48 10l10-1 4 45Zm15-1 8-38 10 2-8 39Zm14 5 14-31 9 4-14 30Z" fill="url(#fortune-bamboo)" stroke="#735229" stroke-width="2.2"/>
+    <path d="m29 22 7 23M53 15l2 28m24-23-5 24m24-12-8 16" fill="none" stroke="#fff3c9" stroke-width="2.6"/>
+    <path d="m31 32 5-1m17-5h5m17 5 5 1m11 9 4 2" fill="none" stroke="#a57037" stroke-width="2"/>
+    <ellipse cx="64" cy="57" rx="34" ry="12" fill="#704e29" stroke="url(#fortune-rim)" stroke-width="4"/>
+    <path d="M30 57c2 8 66 8 68 0l-6 49c-11 13-45 13-56 0Z" fill="url(#fortune-bronze)" stroke="#6e4d25" stroke-width="2.2"/>
+    <path d="M31 58c13 10 53 10 66 0m-62 39c16 11 43 11 58 0" fill="none" stroke="#f6dc9d" stroke-width="3.5"/>
+    <path d="M38 70 41 99m46-29-3 29" fill="none" stroke="#fff0bc" stroke-width="2" opacity=".63"/>
+    <path d="M37 106c14 9 40 9 54 0" fill="none" stroke="#f3d394" stroke-width="3.2"/>
+    <path d="m64 73 13 12-13 13-13-13Z" fill="#84612f" stroke="#f7e3b0" stroke-width="2.5"/>
+    <path d="m64 79 6 6-6 6-6-6Z" fill="#f9e5b3"/>
+  </g>
+</svg>

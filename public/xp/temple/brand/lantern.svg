@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="lantern-title">
+  <title id="lantern-title">祈福灯</title>
+  <defs>
+    <radialGradient id="lantern-silk" cx=".43" cy=".43" r=".66">
+      <stop stop-color="#fff5c5"/><stop offset=".32" stop-color="#f2d284"/><stop offset=".72" stop-color="#d8a44e"/><stop offset="1" stop-color="#99682c"/>
+    </radialGradient>
+    <linearGradient id="lantern-brass" x1="47" y1="0" x2="83" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9e7336"/><stop offset=".38" stop-color="#fae5ad"/><stop offset=".69" stop-color="#d8ad62"/><stop offset="1" stop-color="#86602d"/>
+    </linearGradient>
+  </defs>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M64 8v14" fill="none" stroke="#60451f" stroke-width="5.6"/>
+    <path d="M64 8v14" fill="none" stroke="#f7df9b" stroke-width="3.2"/>
+    <path d="M48 24c9-6 23-6 32 0l7 8c13 15 13 42 0 58l-7 7H48l-7-7c-13-16-13-43 0-58Z" fill="url(#lantern-silk)" stroke="#84602e" stroke-width="2.3"/>
+    <path d="M50 28c-11 16-12 43-2 62m30-62c11 16 12 43 2 62M59 28c-5 17-5 43-1 63m11-63c5 17 5 43 1 63" fill="none" stroke="#a87a36" stroke-width="1.8" opacity=".71"/>
+    <path d="M36 43c17 6 39 6 56 0M32 58c20 6 44 6 64 0M34 74c19 6 41 6 60 0" fill="none" stroke="#a57732" stroke-width="1.7" opacity=".65"/>
+    <path d="M48 22c10-3 22-3 32 0v7c-11 3-21 3-32 0Z" fill="url(#lantern-brass)" stroke="#79572b" stroke-width="2"/>
+    <path d="M49 94c10 3 20 3 30 0v7c-10 3-20 3-30 0Z" fill="url(#lantern-brass)" stroke="#79572b" stroke-width="2"/>
+    <path d="M50 23c9 2 19 2 28 0m-27 74c8 2 18 2 26 0" fill="none" stroke="#fff0bd" stroke-width="2"/>
+    <path d="M64 52c1 8 8 11 8 18a8 8 0 0 1-16 0c0-6 7-11 8-18Z" fill="#fff7dc" stroke="#d6ae62" stroke-width="1.4"/>
+    <path d="M64 104v8m-7-6-2 13m9-5v7m7-15 2 13" fill="none" stroke="#62451f" stroke-width="4.8"/>
+    <path d="M64 104v8m-7-6-2 13m9-5v7m7-15 2 13" fill="none" stroke="#f0ce83" stroke-width="2.8"/>
+  </g>
+</svg>

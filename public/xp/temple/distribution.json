@@ -1,0 +1,219 @@
+{
+  "channel": "testflight",
+  "bundledMusic": true,
+  "musicSource": "licensed-and-user-imports",
+  "licensedMusic": [
+    {
+      "file": "licensed-music/cylinder-one.m4a",
+      "sha256": "dc88756d6c5453ca0293f340c59c62b41ed0478f2c4b7d3d12f1df9428675b74",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/cylinder-two.m4a",
+      "sha256": "a6f7115c35eadc9fab450dc0841606880d90130ac75d6f065f3e5700bf224754",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/cylinder-four.m4a",
+      "sha256": "2d1fdd762455510e5e4c247a02b344cddce463adb90794d46e4b90eeeaa0fdae",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/cylinder-three.m4a",
+      "sha256": "c5474f7e66d8b16fc70bd7b0902ba1dcb26e7a82e2d1215c9795298efbab5140",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/cylinder-five.m4a",
+      "sha256": "6bfc484b9c8e60a2b162112086224ce052e97265f77de540d3a5587c9eff54a1",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/cylinder-six.m4a",
+      "sha256": "a678ff359b86ff2a35e31e4c0aa1168941e0d8d4cf43142eb6c9a28bc6c87a82",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/cylinder-seven.m4a",
+      "sha256": "edbf9b890bfaa960adff4ad5acfacff05cec5cff863e6f08808226476a673d07",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/cylinder-eight.m4a",
+      "sha256": "5822b793466eb4b0f0b73bc6d983b62f0d16b823f83104591fdabeff6391a6bb",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/cylinder-nine.m4a",
+      "sha256": "3338f4322c248c1ed4cdb3593fce5f30c07ebeed434e9ef63d002de1d1a0e9e7",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/divider-heliograph.m4a",
+      "sha256": "ed614ee448559a1f7f4ad597d6548723d07c79e5d47bb9569dbe42994cf4f60d",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/divider-candlepower.m4a",
+      "sha256": "b1e1a90270e07c163e2c3806a23a8165ddeee25c970b12460f922901ef3c5e9b",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/divider-cgi-snake.m4a",
+      "sha256": "ace323b8ca5b2dd4dc2e4511dbeba4213e28af0b2b03423bb00ef47b34675f0c",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/divider-wonder-cycle.m4a",
+      "sha256": "9c740a902f8a776d934469e5a2a02956b37d0eb91ddfbf6da334f9de154430a3",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/divider-oxygen-garden.m4a",
+      "sha256": "325b0393650e48c3e82fa114aa17e8993db8f330110317d840f34b15bba71588",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/divider-divider.m4a",
+      "sha256": "8846d579c82cde9f0b29e1b0c67fb90dc14e59e136f8d8b7587da9bc76454859",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/thoughtless-01.m4a",
+      "sha256": "0d3f93237406344e51baec06119cde6f6c843158c959984b2f5cfce9f0c1a56a",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/thoughtless-02.m4a",
+      "sha256": "cb40cfa54e4e2e65b0e348d3b6742afd0a22cd896675997242795edb46790ee5",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/thoughtless-03.m4a",
+      "sha256": "1399f35ff5adc16eff9d2d6a681a19c42267f47425c38e67b9717c6a12a4f651",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/thoughtless-04.m4a",
+      "sha256": "29ae393df924b9bed1fc9e582ccb624640f0c6a70d9993c9afea06e91c6299e4",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    },
+    {
+      "file": "licensed-music/thoughtless-05.m4a",
+      "sha256": "57a0002574d9a60686403154e5f5ad255b13a53a22e0485b90dffbd698f4636e",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "authorStatement": "https://chriszabriskie.com/use/",
+        "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+      }
+    }
+  ],
+  "ambientBackground": {
+    "file": "licensed-music/cylinder-one.m4a",
+    "title": "Cylinder One",
+    "artist": "Chris Zabriskie",
+    "license": {
+      "name": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "authorStatement": "https://chriszabriskie.com/use/",
+      "legalcode": "https://creativecommons.org/licenses/by/4.0/legalcode.en"
+    },
+    "scope": "cleared-for-distribution"
+  }
+}

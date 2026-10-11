@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="library-title">
+  <title id="library-title">藏经</title>
+  <defs>
+    <linearGradient id="library-left" x1="16" y1="49" x2="65" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d9b473"/><stop offset=".26" stop-color="#f8e6b4"/><stop offset=".78" stop-color="#ecd197"/><stop offset="1" stop-color="#b78c4d"/>
+    </linearGradient>
+    <linearGradient id="library-right" x1="63" y1="54" x2="111" y2="62" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b28a4c"/><stop offset=".24" stop-color="#e5c989"/><stop offset=".76" stop-color="#fff0c5"/><stop offset="1" stop-color="#dfbd7d"/>
+    </linearGradient>
+    <linearGradient id="library-cover" x1="13" y1="52" x2="117" y2="95" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#97703b"/><stop offset=".48" stop-color="#e5c780"/><stop offset="1" stop-color="#ad7e3e"/>
+    </linearGradient>
+  </defs>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M13 32c19-7 35-4 51 6 16-10 32-13 51-6v67c-21-7-37-3-51 8-14-11-30-15-51-8Z" fill="url(#library-cover)" stroke="#614624" stroke-width="2.4"/>
+    <path d="M18 31c17-4 31-1 46 9v61c-15-10-30-13-46-8Z" fill="#dfc289" stroke="#fff1c4" stroke-width="1.7"/>
+    <path d="M110 31c-17-4-31-1-46 9v61c15-10 30-13 46-8Z" fill="#cfac6c" stroke="#fff1c4" stroke-width="1.7"/>
+    <path d="M19 25c17-4 32 1 45 11v60c-13-10-28-15-45-11Z" fill="url(#library-left)" stroke="#f5dfaa" stroke-width="2"/>
+    <path d="M109 25c-17-4-32 1-45 11v60c13-10 28-15 45-11Z" fill="url(#library-right)" stroke="#f5dfaa" stroke-width="2"/>
+    <path d="M64 37v56" fill="none" stroke="#826338" stroke-width="2.6"/>
+    <path d="M27 42c9-1 17 2 25 7m-25 7c9-1 17 2 25 7m-25 7c9-1 17 2 25 7m24-28c8-5 16-8 25-7m-25 21c8-5 16-8 25-7m-25 21c8-5 16-8 25-7" fill="none" stroke="#907143" stroke-width="2.8"/>
+    <path d="M89 25v31l6-5 6 2V24" fill="#ba8540" stroke="#fbe6ac" stroke-width="1.4"/>
+    <path d="M95 27v19" fill="none" stroke="#f4d697" stroke-width="1.6"/>
+    <path d="M16 102c19-5 34 0 48 9 14-9 29-14 48-9" fill="none" stroke="#ecd093" stroke-width="2.5"/>
+  </g>
+</svg>

@@ -1,0 +1,409 @@
+{
+  "voice": "zm_yunxi",
+  "sampleRate": 24000,
+  "scriptures": {
+    "heart": {
+      "files": [
+        "speech/recordings/heart/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/heart/0000.m4a",
+          "sha256": "c26e320df86ab635a8b008596a03434fd7d027d7bedeadafafbb71e508c37deb",
+          "bytes": 450406
+        }
+      ],
+      "duration": 72.425
+    },
+    "medicine": {
+      "files": [
+        "speech/recordings/medicine/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/medicine/0000.m4a",
+          "sha256": "bcb3310017e36a3e67fb7937ef58ae54dc5347b60b53967c053b8dba8727270b",
+          "bytes": 8156849
+        }
+      ],
+      "duration": 1316.675
+    },
+    "perfect-enlightenment": {
+      "files": [
+        "speech/recordings/perfect-enlightenment/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/perfect-enlightenment/0000.m4a",
+          "sha256": "11da39e48976e070b0fc8adccede608db2ba57f9410872a62b8711cc65752a6d",
+          "bytes": 19612548
+        }
+      ],
+      "duration": 3169.575
+    },
+    "ullambana": {
+      "files": [
+        "speech/recordings/ullambana/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/ullambana/0000.m4a",
+          "sha256": "b126ccbeff987a1758c344ef5f13fbad86c6a3be61e12858d0467419eb96575d",
+          "bytes": 1330396
+        }
+      ],
+      "duration": 214.875
+    },
+    "samantabhadra": {
+      "files": [
+        "speech/recordings/samantabhadra/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/samantabhadra/0000.m4a",
+          "sha256": "90bd4d52e25421fbd767677cb7f0cafe93402f0053d968feddaa28e2109fe35a",
+          "bytes": 8908637
+        }
+      ],
+      "duration": 1437.625
+    },
+    "diamond": {
+      "files": [
+        "speech/recordings/diamond/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/diamond/0000.m4a",
+          "sha256": "b8c26456c2100992c693f2f1ab87cb46f5be4c798be77fe73b895c7acfc1175c",
+          "bytes": 8923459
+        }
+      ],
+      "duration": 1443.475
+    },
+    "mahayana": {
+      "files": [
+        "speech/recordings/mahayana/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/mahayana/0000.m4a",
+          "sha256": "4161d0145f1f8e1e86f1fa388c790c81a64b77a25cc94feb87cbc14b8da9ca59",
+          "bytes": 29914175
+        }
+      ],
+      "duration": 4833.325
+    },
+    "great-man": {
+      "files": [
+        "speech/recordings/great-man/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/great-man/0000.m4a",
+          "sha256": "40bca5fff9d4571316b08bb3a31a25ae935e682341934fff20e5568f2c086e47",
+          "bytes": 24719276
+        }
+      ],
+      "duration": 3992.3
+    },
+    "repentance": {
+      "files": [
+        "speech/recordings/repentance/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/repentance/0000.m4a",
+          "sha256": "8616aff4cd4774ecd33ebaed41758938627cdd90c813c04e3003345a5cbbb50e",
+          "bytes": 1638226
+        }
+      ],
+      "duration": 267.175
+    },
+    "cbeta-t12n0366": {
+      "files": [
+        "speech/recordings/cbeta-t12n0366/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t12n0366/0000.m4a",
+          "sha256": "4188cbe3e179671d8a0b35beef11ece521245143e031693ec300d2adf18d4cbd",
+          "bytes": 3108504
+        }
+      ],
+      "duration": 502.55
+    },
+    "cbeta-t17n0779": {
+      "files": [
+        "speech/recordings/cbeta-t17n0779/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t17n0779/0000.m4a",
+          "sha256": "2a9bc65ba52e0ad2167aedc928ac25b2099909075cf2ff7372a5d8e803b43cca",
+          "bytes": 673962
+        }
+      ],
+      "duration": 108.825
+    },
+    "cbeta-t15n0600": {
+      "files": [
+        "speech/recordings/cbeta-t15n0600/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t15n0600/0000.m4a",
+          "sha256": "15d6aaaab844bbad3ba35c618380ea8aaac5031409f80b16f49e1aa2d6e196e9",
+          "bytes": 3936626
+        }
+      ],
+      "duration": 635.025
+    },
+    "cbeta-t12n0389": {
+      "files": [
+        "speech/recordings/cbeta-t12n0389/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t12n0389/0000.m4a",
+          "sha256": "914ff16bc9be4cfc62415be48ec1589725a68f2afc0bdbb917eabf89cd841090",
+          "bytes": 3844981
+        }
+      ],
+      "duration": 621.1
+    },
+    "cbeta-t02n0112": {
+      "files": [
+        "speech/recordings/cbeta-t02n0112/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t02n0112/0000.m4a",
+          "sha256": "91d6f5cc4c88a95062d8629270e3b871d562c1babf436e2cc72cba3b20007439",
+          "bytes": 1082670
+        }
+      ],
+      "duration": 175.35
+    },
+    "cbeta-t01n0027": {
+      "files": [
+        "speech/recordings/cbeta-t01n0027/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t01n0027/0000.m4a",
+          "sha256": "ec7b073e42d9650062ab53c85c98821bd5f6e94f654c5379a12670edc34289dc",
+          "bytes": 1391265
+        }
+      ],
+      "duration": 224.65
+    },
+    "cbeta-t02n0109": {
+      "files": [
+        "speech/recordings/cbeta-t02n0109/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t02n0109/0000.m4a",
+          "sha256": "7afb4e04318804cc66752749cee7e7650df395bd4b1da5c44f71a605e5b94066",
+          "bytes": 1256724
+        }
+      ],
+      "duration": 202.65
+    },
+    "cbeta-t02n0116": {
+      "files": [
+        "speech/recordings/cbeta-t02n0116/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t02n0116/0000.m4a",
+          "sha256": "5b129bccab843ddaf98508d791652fe41dcb6966b43bd02fcb15789e898a8631",
+          "bytes": 1119932
+        }
+      ],
+      "duration": 181.025
+    },
+    "cbeta-t02n0124": {
+      "files": [
+        "speech/recordings/cbeta-t02n0124/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t02n0124/0000.m4a",
+          "sha256": "784e200f24957a42e7dc3fa8900656aad7f8bd6b9bb98fba2a1308cb62669390",
+          "bytes": 1541998
+        }
+      ],
+      "duration": 249.35
+    },
+    "cbeta-t16n0693": {
+      "files": [
+        "speech/recordings/cbeta-t16n0693/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t16n0693/0000.m4a",
+          "sha256": "923bb79aece34ff5697f8be8b345bf7fa4660d6bf472d4d4ec9a867313f1adac",
+          "bytes": 2538220
+        }
+      ],
+      "duration": 410.075
+    },
+    "cbeta-t16n0700": {
+      "files": [
+        "speech/recordings/cbeta-t16n0700/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t16n0700/0000.m4a",
+          "sha256": "7b30fb2380e1121458a0226e692ee57cf10bbd296bf401d917511dc684628e08",
+          "bytes": 1572088
+        }
+      ],
+      "duration": 253.9
+    },
+    "cbeta-t16n0707": {
+      "files": [
+        "speech/recordings/cbeta-t16n0707/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t16n0707/0000.m4a",
+          "sha256": "c32a5d3d736f8c27a1c6b9a80f7374619348564d8d94fa1633e1c0014582f77c",
+          "bytes": 3561344
+        }
+      ],
+      "duration": 575.025
+    },
+    "cbeta-t17n0735": {
+      "files": [
+        "speech/recordings/cbeta-t17n0735/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t17n0735/0000.m4a",
+          "sha256": "2f2f47865ac7bdafaaaa4ca863f187c38c500853422bd9135c705157a191f14e",
+          "bytes": 1379989
+        }
+      ],
+      "duration": 223.025
+    },
+    "cbeta-t17n0758": {
+      "files": [
+        "speech/recordings/cbeta-t17n0758/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t17n0758/0000.m4a",
+          "sha256": "62802cabf3b330d9a208bdc6169199fea714e3d6da1334d1a0325e7669695e10",
+          "bytes": 1086408
+        }
+      ],
+      "duration": 175.55
+    },
+    "cbeta-t17n0780": {
+      "files": [
+        "speech/recordings/cbeta-t17n0780/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t17n0780/0000.m4a",
+          "sha256": "d78064eca569f16d610ebcbcf1817e5cc2b96dfe3c5c220e7ec8e1783cd948e9",
+          "bytes": 2197595
+        }
+      ],
+      "duration": 354.5
+    },
+    "cbeta-t17n0841": {
+      "files": [
+        "speech/recordings/cbeta-t17n0841/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t17n0841/0000.m4a",
+          "sha256": "253d13fdb7aa7d07de4dc516a6d381900f9dd4dc50550a85e549e8f963778acf",
+          "bytes": 2162203
+        }
+      ],
+      "duration": 348.85
+    },
+    "cbeta-t01n0031": {
+      "files": [
+        "speech/recordings/cbeta-t01n0031/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t01n0031/0000.m4a",
+          "sha256": "d18eb6977447a8f35842171bfd062f664ab254c03c7a9d38abada0746c664cd4",
+          "bytes": 3019837
+        }
+      ],
+      "duration": 487.7
+    },
+    "cbeta-t01n0046": {
+      "files": [
+        "speech/recordings/cbeta-t01n0046/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t01n0046/0000.m4a",
+          "sha256": "2aaf4c2fd6a9bd77242c124c401b4b657e37cf12dc8dda0f3a5d2059255bf05b",
+          "bytes": 2660101
+        }
+      ],
+      "duration": 429.05
+    },
+    "cbeta-t01n0056": {
+      "files": [
+        "speech/recordings/cbeta-t01n0056/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t01n0056/0000.m4a",
+          "sha256": "a9f9c2d6363d31a0d88f2f2c0738dbd1f54bded401064daf4589659ddadb82cd",
+          "bytes": 692349
+        }
+      ],
+      "duration": 111.25
+    },
+    "cbeta-t01n0016": {
+      "files": [
+        "speech/recordings/cbeta-t01n0016/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t01n0016/0000.m4a",
+          "sha256": "c3930238e557c5111b12992a8a5cddf88304e6a41ff1ffffce0afb1d36bb0051",
+          "bytes": 3057000
+        }
+      ],
+      "duration": 493.65
+    },
+    "cbeta-t14n0432": {
+      "files": [
+        "speech/recordings/cbeta-t14n0432/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t14n0432/0000.m4a",
+          "sha256": "7124655fb91b470fd384a7fe61925bb78d30772362dcac4950e1821554eae95d",
+          "bytes": 961651
+        }
+      ],
+      "duration": 155.125
+    },
+    "cbeta-t14n0581": {
+      "files": [
+        "speech/recordings/cbeta-t14n0581/0000.m4a"
+      ],
+      "assets": [
+        {
+          "file": "speech/recordings/cbeta-t14n0581/0000.m4a",
+          "sha256": "9eca7d626ef61c7b5b991aba826882440a195a8e2aeb7c290d342910528e56f1",
+          "bytes": 2488627
+        }
+      ],
+      "duration": 402.05
+    }
+  }
+}

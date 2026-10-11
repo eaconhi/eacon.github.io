@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="offering-title">
+  <title id="offering-title">清净供养</title>
+  <defs>
+    <linearGradient id="offering-gold" x1="24" y1="24" x2="104" y2="108" gradientUnits="userSpaceOnUse"><stop stop-color="#fff1bd"/><stop offset=".3" stop-color="#e4bd70"/><stop offset=".64" stop-color="#a96e2c"/><stop offset="1" stop-color="#f2d48e"/></linearGradient>
+    <linearGradient id="offering-ivory" x1="35" y1="35" x2="91" y2="86" gradientUnits="userSpaceOnUse"><stop stop-color="#fffdf0"/><stop offset=".55" stop-color="#f1dcae"/><stop offset="1" stop-color="#bd8a43"/></linearGradient>
+    <radialGradient id="offering-fruit" cx=".3" cy=".2" r=".8"><stop stop-color="#fff0aa"/><stop offset=".45" stop-color="#dfa03b"/><stop offset="1" stop-color="#8e5022"/></radialGradient>
+  </defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 83h92q-5 20-46 21-41-1-46-21Z" fill="url(#offering-gold)" stroke="#5e4020" stroke-width="2.4"/>
+    <path d="M16 81q48 9 96 0" fill="none" stroke="#ffe7a7" stroke-width="4"/>
+    <path d="M24 85q40 10 80 0M55 104v7m18-7v7m-27 1h36" fill="none" stroke="#6c4824" stroke-width="2"/>
+    <path d="M42 76c-20-15-13-31 1-22 12-10 23 4 3 22Z" fill="url(#offering-ivory)" stroke="#73502c" stroke-width="1.8"/>
+    <path d="M43 53q0-10 8-16" fill="none" stroke="#f3d58f" stroke-width="3"/>
+    <path d="M62 78c-10-12-8-25 3-28-1-12 10-18 16-8 10-4 18 5 12 14 11 7 6 22-8 23Z" fill="url(#offering-ivory)" stroke="#67431f" stroke-width="2"/>
+    <path d="M73 52q10 6 17 2" fill="none" stroke="#fff3c7" stroke-width="2"/>
+    <circle cx="92" cy="72" r="13" fill="url(#offering-fruit)" stroke="#67401f" stroke-width="2"/>
+    <path d="M92 54v6m0-3q10-7 16-2-7 8-16 7" fill="none" stroke="#f2d18a" stroke-width="2.4"/>
+    <path d="M29 88q34 8 70 1" fill="none" stroke="#fff1bd" stroke-width="2" opacity=".7"/>
+  </g>
+</svg>
