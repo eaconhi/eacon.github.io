@@ -1,5 +1,5 @@
 {
-  "version": "20261012-phone-background",
+  "version": "20261012-phone-source-match",
   "temple": true,
   "colorPicker": true,
   "paletteCount": 17,
@@ -7,7 +7,7 @@
   "fullAltar": true,
   "consistentCeremonyWidth": true,
   "naturalAltarProportions": true,
-  "carScene": "landscape-v5",
+  "carScene": "phone-palette-v6",
   "singleControlRail": true,
   "wideStartup": true,
   "spaciousOfferings": true,
@@ -24,5 +24,7 @@
   "readableGoldenCaption": true,
   "mobileIvoryPalette": true,
   "noPrayerBanner": true,
-  "phoneBackgroundPalette": true
+  "phoneBackgroundPalette": true,
+  "phoneSourceColorMatch": true,
+  "stackedSceneFilters": false
 }
