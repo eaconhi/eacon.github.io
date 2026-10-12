@@ -1,5 +1,5 @@
 {
-  "version": "20261012-gold-navigation",
+  "version": "20261012-readable-gold",
   "temple": true,
   "colorPicker": true,
   "paletteCount": 17,
@@ -20,5 +20,6 @@
   "clearerAtmosphere": true,
   "goldenRitualLight": true,
   "noDarkBlessingVeil": true,
-  "previewExitFixed": true
+  "previewExitFixed": true,
+  "readableGoldenCaption": true
 }
