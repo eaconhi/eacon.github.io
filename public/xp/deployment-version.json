@@ -1,5 +1,5 @@
 {
-  "version": "20261012-filled-temple",
+  "version": "20261012-clear-altar",
   "temple": true,
   "colorPicker": true,
   "paletteCount": 17,
@@ -7,12 +7,15 @@
   "fullAltar": true,
   "consistentCeremonyWidth": true,
   "naturalAltarProportions": true,
-  "carScene": "landscape-v4",
+  "carScene": "landscape-v5",
   "singleControlRail": true,
   "wideStartup": true,
   "spaciousOfferings": true,
   "largerOfferings": true,
   "statueFocalPoint": true,
   "fillsCarFrame": true,
-  "offeringLayout": "balanced-v2"
+  "offeringLayout": "candle-clearance-v4",
+  "centeredBlessings": true,
+  "levelMeal": true,
+  "clearerAtmosphere": true
 }
