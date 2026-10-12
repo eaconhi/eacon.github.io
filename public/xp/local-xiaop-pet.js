@@ -1,7 +1,7 @@
 // Plush artwork is pre-rendered in eight consistent poses; this controller
 // supplies touch gestures, spring motion and the clock's fullscreen lifecycle.
 const STORE='xiaop-clock-pet-v2';
-const VERSION='20261012-plush-fidelity';
+const VERSION='20261012-plush-fidelity-2';
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 const DEFAULTS={visible:true,size:110,prop:'hat',x:.12,y:.86,mode:'clock',moved:false,sound:true};
 const ART={none:new URL('./companions/xiaop/plush-head.png?v='+VERSION,import.meta.url).href,
