@@ -1,9 +1,11 @@
 {
-  "version": "20261012-wide-temple",
+  "version": "20261012-square-temple",
   "temple": true,
   "colorPicker": true,
   "paletteCount": 17,
   "supersamplingHigh": 2,
   "fullAltar": true,
-  "consistentCeremonyWidth": true
+  "consistentCeremonyWidth": true,
+  "naturalAltarProportions": true,
+  "carScene": "square-v1"
 }
