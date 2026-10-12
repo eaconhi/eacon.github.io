@@ -1,5 +1,5 @@
 {
-  "version": "20261012-square-temple",
+  "version": "20261012-landscape-temple",
   "temple": true,
   "colorPicker": true,
   "paletteCount": 17,
@@ -7,5 +7,10 @@
   "fullAltar": true,
   "consistentCeremonyWidth": true,
   "naturalAltarProportions": true,
-  "carScene": "square-v1"
+  "carScene": "landscape-v4",
+  "singleControlRail": true,
+  "wideStartup": true,
+  "spaciousOfferings": true,
+  "largerOfferings": true,
+  "statueFocalPoint": true
 }
