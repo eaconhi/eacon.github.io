@@ -1,5 +1,5 @@
 {
-  "version": "20261012-landscape-temple",
+  "version": "20261012-filled-temple",
   "temple": true,
   "colorPicker": true,
   "paletteCount": 17,
@@ -12,5 +12,7 @@
   "wideStartup": true,
   "spaciousOfferings": true,
   "largerOfferings": true,
-  "statueFocalPoint": true
+  "statueFocalPoint": true,
+  "fillsCarFrame": true,
+  "offeringLayout": "balanced-v2"
 }
