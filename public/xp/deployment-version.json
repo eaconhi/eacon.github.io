@@ -1,5 +1,5 @@
 {
-  "version": "20261012-gold-blessings",
+  "version": "20261012-gold-navigation",
   "temple": true,
   "colorPicker": true,
   "paletteCount": 17,
@@ -19,5 +19,6 @@
   "levelMeal": true,
   "clearerAtmosphere": true,
   "goldenRitualLight": true,
-  "noDarkBlessingVeil": true
+  "noDarkBlessingVeil": true,
+  "previewExitFixed": true
 }
