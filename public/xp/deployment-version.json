@@ -1,5 +1,5 @@
 {
-  "version": "20261012-readable-gold",
+  "version": "20261012-phone-palette",
   "temple": true,
   "colorPicker": true,
   "paletteCount": 17,
@@ -21,5 +21,7 @@
   "goldenRitualLight": true,
   "noDarkBlessingVeil": true,
   "previewExitFixed": true,
-  "readableGoldenCaption": true
+  "readableGoldenCaption": true,
+  "mobileIvoryPalette": true,
+  "noPrayerBanner": true
 }
