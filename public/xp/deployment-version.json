@@ -1,5 +1,5 @@
 {
-  "version": "20261012-phone-palette",
+  "version": "20261012-phone-background",
   "temple": true,
   "colorPicker": true,
   "paletteCount": 17,
@@ -23,5 +23,6 @@
   "previewExitFixed": true,
   "readableGoldenCaption": true,
   "mobileIvoryPalette": true,
-  "noPrayerBanner": true
+  "noPrayerBanner": true,
+  "phoneBackgroundPalette": true
 }
