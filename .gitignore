@@ -14,3 +14,6 @@ tmp/
 __pycache__/
 *.pyc
 *.tsbuildinfo
+
+# Exclude sync-generated copies of the bundled XP scripts.
+public/xp/assets/* [0-9]*.js
