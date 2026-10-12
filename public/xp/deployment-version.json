@@ -1,5 +1,5 @@
 {
-  "version": "20261012-clear-altar",
+  "version": "20261012-gold-blessings",
   "temple": true,
   "colorPicker": true,
   "paletteCount": 17,
@@ -17,5 +17,7 @@
   "offeringLayout": "candle-clearance-v4",
   "centeredBlessings": true,
   "levelMeal": true,
-  "clearerAtmosphere": true
+  "clearerAtmosphere": true,
+  "goldenRitualLight": true,
+  "noDarkBlessingVeil": true
 }
