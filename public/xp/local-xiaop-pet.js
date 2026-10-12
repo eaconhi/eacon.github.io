@@ -1,7 +1,7 @@
 // Plush artwork is pre-rendered in eight consistent poses; this controller
 // supplies touch gestures, spring motion and the clock's fullscreen lifecycle.
 const STORE='xiaop-clock-pet-v2';
-const VERSION='20261011-xiaop-clear';
+const VERSION='20261012-plush-fidelity';
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 const DEFAULTS={visible:true,size:110,prop:'hat',x:.12,y:.86,mode:'clock',moved:false,sound:true};
 const ART={none:new URL('./companions/xiaop/plush-head.png?v='+VERSION,import.meta.url).href,
@@ -24,7 +24,12 @@ export function mountXiaopPet({THREE:T,root,stage,camera,clock,scene,getClockCor
   let rot=0,sx=1,sy=1,bob=0,changed=true,lastSnapshot='',dotAction=null,boardPage=0,lastClockTouch=null,foodEffect=null,lastTargetUpdate=-1;
   const digitTouches=[0,0,0,0];let audio=null,clockTouchSerial=0;
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const cleanup=[],preloads=[],textures={},timers=new Set();let history=[];
+  const cleanup=[],preloads=[],textures={},timers=new Set(),readyWaiters=new Set();let history=[];
+  let textureRendered=false;const loadedArtwork=new Set();
+  const isReady=()=>!prefs.visible||prefs.mode!=='clock'||textureRendered||loadedArtwork.has(prefs.prop);
+  const finishReady=ready=>{for(const waiter of readyWaiters){clearTimeout(waiter.timer);timers.delete(waiter.timer);waiter.resolve(ready);}readyWaiters.clear();};
+  const whenReady=()=>isReady()?Promise.resolve(true):new Promise(resolve=>{const waiter={resolve,timer:null};waiter.timer=delay(()=>{readyWaiters.delete(waiter);resolve(false);},8000);readyWaiters.add(waiter);});
+  const didRender=()=>{if(disposed)return;if(prefs.visible&&prefs.mode==='clock'&&spriteGroup.visible&&spriteMat.map?.image?.width&&frame>=0){textureRendered=true;ui.dataset.artRendered='true';}if(isReady())finishReady(true);};
   try {history=JSON.parse(localStorage.getItem('xiaop-pet-history')||'[]').slice(-20);}catch{}
   const record=action=>{history.push({when:Date.now(),action});history=history.slice(-20);try{localStorage.setItem('xiaop-pet-history',JSON.stringify(history));}catch{}};
   const save=()=>{try {localStorage.setItem(STORE,JSON.stringify(prefs));} catch {}};
@@ -79,18 +84,18 @@ export function mountXiaopPet({THREE:T,root,stage,camera,clock,scene,getClockCor
     }catch{}};
   listen(root,'pointerdown',unlockAudio,{capture:true});listen(root,'keydown',unlockAudio,{capture:true});
   listen(ui.querySelector('[data-sound]'),'change',e=>{prefs.sound=e.target.checked;save();if(prefs.sound)sound('wave');else root.dataset.xiaopAudio=JSON.stringify({enabled:false,state:audio?.state||'uninitialized'});});
-  const sync=()=>{hit.hidden=!prefs.visible;bubble.hidden=true;ui.querySelector('[data-action="visibility"]').textContent=prefs.visible?'隐藏小 P':'显示小 P';
+  const sync=()=>{textureRendered=false;ui.dataset.artRendered='false';hit.hidden=!prefs.visible;bubble.hidden=true;ui.querySelector('[data-action="visibility"]').textContent=prefs.visible?'隐藏小 P':'显示小 P';
     ui.dataset.mode=prefs.mode;root.dataset.xiaopScene=prefs.mode;modeSelect.value=prefs.mode;board.hidden=prefs.mode!=='board';spriteGroup.visible=prefs.visible&&prefs.mode==='clock';
-    menu.querySelector('p').textContent=prefs.mode==='clock'?'摸摸探头的小 P · 连点两下进入小 P桌面':'摸摸头 · 拖动移动 · 连点两下跳舞';
+    if(isReady())finishReady(true);menu.querySelector('p').textContent=prefs.mode==='clock'?'摸摸探头的小 P · 连点两下进入小 P桌面':'摸摸头 · 拖动移动 · 连点两下跳舞';
     if(canvas)canvas.style.visibility=prefs.mode==='clock'?canvasVisibility:'hidden';
     if(corner)corner.style.display=prefs.mode==='clock'?cornerDisplay:'none';
     for(const b of ui.querySelectorAll('[data-mode]'))b.setAttribute('aria-pressed',String(b.dataset.mode===prefs.mode));needsLayout=true;changed=true;};
-  const paint=()=>{art.style.backgroundImage='url("'+ART[prefs.prop]+'")';if(textures[prefs.prop]){spriteMat.map=textures[prefs.prop];spriteMat.needsUpdate=true;frame=-1;}else spriteGroup.visible=false;};paint();sync();
+  const paint=()=>{textureRendered=false;ui.dataset.artRendered='false';art.style.backgroundImage='url("'+ART[prefs.prop]+'")';if(textures[prefs.prop]){spriteMat.map=textures[prefs.prop];spriteMat.needsUpdate=true;frame=-1;}else spriteGroup.visible=false;};paint();sync();
   for(const [name,url] of Object.entries(ART))textures[name]=loader.load(url,texture=>{
     texture.minFilter=texture.magFilter=T.LinearFilter;texture.generateMipmaps=false;
-    if(disposed){texture.dispose();return;}if(name===prefs.prop){spriteMat.map=texture;spriteMat.needsUpdate=true;frame=-1;sync();ui.dataset.artReady='true';}
+    if(disposed){texture.dispose();return;}if(name===prefs.prop){spriteMat.map=texture;spriteMat.needsUpdate=true;frame=-1;sync();changed=true;ui.dataset.artReady='true';}
   });
-  for(const [name,url] of Object.entries(ART)){const img=new Image();img.onload=()=>{if(disposed)return;if(name===prefs.prop){ui.dataset.artReady='true';changed=true;}};img.onerror=()=>{if(!disposed&&name===prefs.prop)speak('小 P 还没加载好，刷新再试试。',8);};img.src=url;preloads.push(img);}
+  for(const [name,url] of Object.entries(ART)){const img=new Image();img.onload=()=>{if(disposed)return;loadedArtwork.add(name);if(name===prefs.prop){ui.dataset.artReady='true';changed=true;if(isReady())finishReady(true);}};img.onerror=()=>{if(!disposed&&name===prefs.prop)speak('小 P 还没加载好，刷新再试试。',8);};img.src=url;preloads.push(img);}
   const act=(value,message)=>{if(!prefs.visible){prefs.visible=true;sync();save();}state=value;since=elapsed;lastTouch=elapsed;nextIdle=elapsed+16+Math.random()*8;changed=true;if(message)speak(message);};
   const messages={happy:'嘿嘿，摸摸头好开心！',wave:'小 P 在呢！',dance:'一起摇摆～',sleep:'打个盹，摸一下就醒。'};
   for(const name of ['pointerdown','pointerup','click','dblclick','keydown'])listen(ui,name,e=>e.stopPropagation());
@@ -177,7 +182,8 @@ export function mountXiaopPet({THREE:T,root,stage,camera,clock,scene,getClockCor
     hit.style.left=(targetX-petSize*.5)+'px';hit.style.top=(targetY-petSize)+'px';hit.style.width=petSize+'px';hit.style.height=petSize+'px';
     bubble.style.left=clamp(targetX,105,width-105)+'px';bubble.style.top=Math.max(12,targetY-petSize-32)+'px';
     const boardHeight=Math.min(height*.56,width*(portrait?.7:.8));board.style.height=boardHeight+'px';board.style.width=boardHeight*2/3+'px';board.style.left=(width*(portrait?.28:.36)-boardHeight/3)+'px';board.style.top=(height*.74-boardHeight)+'px';
-    if(clock){clock.scale.copy(originalScale).multiplyScalar(prefs.visible?.86:1);clock.position.copy(originalPosition);if(prefs.visible)clock.position.y+=(camera.top-camera.bottom)*(width<height?.13:.075);}
+    // Companion layout must not shrink or move the reference clock.
+    if(clock){clock.scale.copy(originalScale);clock.position.copy(originalPosition);}
     needsLayout=false;changed=true;
   };
   const position=(clientX,clientY)=>{prefs.moved=true;prefs.x=(clientX-left)/width;prefs.y=(clientY-top)/height;needsLayout=true;layout();prefs.x=targetX/width;prefs.y=targetY/height;};
@@ -285,7 +291,7 @@ export function mountXiaopPet({THREE:T,root,stage,camera,clock,scene,getClockCor
     if(snapshot!==lastSnapshot){root.dataset.xiaopPetState=snapshot;lastSnapshot=snapshot;}
     return draw;
   }
-  function dispose(){if(disposed)return;disposed=true;observer.disconnect();audio?.close().catch(()=>{});resetDots();for(const fn of cleanup)fn();for(const img of preloads){img.onload=img.onerror=null;}for(const id of timers)clearTimeout(id);for(const texture of Object.values(textures))texture.dispose();spriteGroup.removeFromParent();spriteMat.dispose();spriteGeo.dispose();
+  function dispose(){if(disposed)return;disposed=true;finishReady(false);observer.disconnect();audio?.close().catch(()=>{});resetDots();for(const fn of cleanup)fn();for(const img of preloads){img.onload=img.onerror=null;}for(const id of timers)clearTimeout(id);for(const texture of Object.values(textures))texture.dispose();spriteGroup.removeFromParent();spriteMat.dispose();spriteGeo.dispose();
     if(canvas){canvas.style.visibility=canvasVisibility;canvas.style.opacity='';canvas.style.transform='';canvas.style.transition='';}if(clock){clock.scale.copy(originalScale);clock.position.copy(originalPosition);}if(corner){corner.style.left=cornerLeft;corner.style.display=cornerDisplay;}if(originalControlsEnd)root.style.setProperty('--xiaop-controls-end',originalControlsEnd);else root.style.removeProperty('--xiaop-controls-end');ui.remove();root.classList.remove('xiaop-companion-active');delete root.dataset.xiaopPetState;delete root.dataset.xiaopScene;}
-  return {update,dispose,onClockTouch,isPetScene:()=>prefs.mode!=='clock',getState:()=>({...prefs,state,frame,lastClockTouch,tentacles:!!dotAction,boardPage,foodEffect:foodEffect?.kind||null,art:'plush-sprite-atlas'})};
+  return {update,dispose,onClockTouch,isReady,whenReady,didRender,isPetScene:()=>prefs.mode!=='clock',getState:()=>({...prefs,state,frame,lastClockTouch,tentacles:!!dotAction,boardPage,foodEffect:foodEffect?.kind||null,art:'plush-sprite-atlas',artReady:isReady(),textureRendered})};
 }

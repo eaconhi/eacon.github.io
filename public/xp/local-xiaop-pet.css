@@ -22,8 +22,8 @@
 .xiaop-pet-menu input{width:100%;margin:0;accent-color:#b8edd8;min-height:28px}.xiaop-pet-menu select{width:165px;max-width:65%;background:#243f50;color:#f1f6f9;border:1px solid #ffffff24;padding:7px 10px;border-radius:10px;font-size:14px}
 @media(max-width:600px){.xiaop-pet-launch{left:14px;bottom:max(16px,env(safe-area-inset-bottom));padding:9px 14px}.xiaop-pet-menu{left:14px;width:min(300px,calc(100% - 28px))}.xiaop-pet-bubble{max-width:170px;font-size:12px}}
 @media(prefers-reduced-motion:reduce){.xiaop-pet-ui *{animation:none!important;transition:none!important}}
-.xiaop-pet-ui[data-mode=clock] .xiaop-pet-art{visibility:hidden}
-.xiaop-pet-ui[data-mode=clock][data-moved=false] .xiaop-pet-hit{clip-path:ellipse(23% 40% at 17% 40%)}
+.xiaop-pet-ui[data-mode=clock][data-art-rendered=true] .xiaop-pet-art{visibility:hidden}
+.xiaop-pet-ui[data-mode=clock][data-moved=false][data-art-rendered=true] .xiaop-pet-hit{clip-path:ellipse(23% 40% at 17% 40%)}
 .plush-clock-viewer.xiaop-companion-active .clock-meta{bottom:148px}
 .plush-clock-viewer.xiaop-companion-active[data-xiaop-scene=companion] .clock-meta,.plush-clock-viewer.xiaop-companion-active[data-xiaop-scene=board] .clock-meta{visibility:hidden}
 .xiaop-pet-ui:not([data-mode=clock]) .xiaop-pet-hit:before{content:"";position:absolute;left:22%;right:22%;bottom:0;height:5%;background:#70636c24;border-radius:50%;filter:blur(7px);pointer-events:none}
