@@ -1,5 +1,5 @@
 {
-  "version": "20261012-phone-source-match",
+  "version": "20261012-detailed-temple",
   "temple": true,
   "colorPicker": true,
   "paletteCount": 17,
@@ -7,7 +7,7 @@
   "fullAltar": true,
   "consistentCeremonyWidth": true,
   "naturalAltarProportions": true,
-  "carScene": "phone-palette-v6",
+  "carScene": "phone-detail-v7",
   "singleControlRail": true,
   "wideStartup": true,
   "spaciousOfferings": true,
@@ -26,5 +26,12 @@
   "noPrayerBanner": true,
   "phoneBackgroundPalette": true,
   "phoneSourceColorMatch": true,
-  "stackedSceneFilters": false
+  "stackedSceneFilters": false,
+  "backgroundPixels": [
+    1536,
+    1024
+  ],
+  "backgroundFormat": "lossless PNG",
+  "detailEnhanced": true,
+  "sceneColorFilters": false
 }
