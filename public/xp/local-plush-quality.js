@@ -1,5 +1,5 @@
 const SETTINGS = 'plush-clock-settings-v3';
-const MIGRATION = 'xp-plush-fidelity-v1';
+const MIGRATION = 'xp-plush-fidelity-v2';
 
 // Preserve all style and pose choices while adopting the reference fine profile once.
 export function upgradePlushClockQuality(storage = localStorage) {

@@ -53,3 +53,13 @@
 .xiaop-pet-sheet header{display:flex;justify-content:space-between;align-items:center;font-size:20px}.xiaop-pet-sheet header button{border:0;background:none;font-size:25px;color:inherit;cursor:pointer}.xiaop-sheet-content{margin-top:16px;font-size:14px;line-height:1.8}.xiaop-sheet-content textarea{width:100%;min-height:140px;box-sizing:border-box;padding:14px;border:1px solid #d7d0c5;background:#fff9;color:#57534a;border-radius:12px;font:inherit}.xiaop-sheet-content button{padding:9px 20px;border:1px solid #d5c9b7;background:#e8dfd0;color:#665e52;border-radius:12px;font:inherit;margin-top:12px;cursor:pointer}
 @media(max-width:600px){.xiaop-desktop-cards{width:calc(100% - 24px);gap:6px;bottom:122px}.xiaop-desktop-cards>button{padding:11px 8px;min-height:58px}.xiaop-desktop-cards strong{font-size:13px}.xiaop-desktop-cards span{font-size:9px}.xiaop-desktop-cards i{display:none}.xiaop-scene-tabs{bottom:18px;left:50%}.xiaop-scene-tabs button{font-size:10px;padding:6px 7px}.xiaop-pet-launch{left:12px;bottom:68px;padding:9px 14px;font-size:12px}.xiaop-pet-menu{bottom:118px}.plush-clock-viewer.xiaop-companion-active .clock-corner-actions{bottom:68px!important}.plush-clock-viewer.xiaop-companion-active .clock-meta{bottom:204px}.plush-clock-viewer.xiaop-companion-active .local-sensor-button{bottom:182px!important;right:12px!important}}
 @media(prefers-reduced-motion:reduce){.xiaop-food-board,.xiaop-board-response,.xiaop-flying-treat{animation:none}.xiaop-flying-treat{display:none}}
+
+/* A single WebGL model stays visible through every scene. */
+.xiaop-pet-art{visibility:hidden!important}
+.xiaop-pet-ui[data-mode=clock][data-moved=false][data-art-rendered=true] .xiaop-pet-hit{clip-path:none}
+.xiaop-pet-ui:not([data-mode=clock]) .xiaop-pet-hit:before{display:none}
+.xiaop-ground-shadow{position:absolute;transform:translateX(-50%);background:radial-gradient(ellipse,#42382b 0%,#42382b70 35%,transparent 70%);filter:blur(3px);pointer-events:none}
+.xiaop-food-board,.xiaop-flying-treat{animation:none;will-change:transform}
+.xiaop-flying-treat{filter:drop-shadow(0 4px 5px #40302030)}
+.xiaop-pet-ui[data-mode=clock] .xiaop-desktop-cards{visibility:hidden}
+@media(max-width:600px){.xiaop-desktop-cards{bottom:108px}.xiaop-pet-ui[data-mode=board] .xiaop-desktop-cards{bottom:108px}}
