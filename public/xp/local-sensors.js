@@ -1,4 +1,4 @@
-import {mountSensorPanel} from './sensor-panel.js?v=20261014-simple-sensors';
+import {mountSensorPanel} from './sensor-panel.js?v=20261014-relay-domain';
 await window.__XP_PAGES_READY;
 const panel=mountSensorPanel({relayBase:"https://relay.xpeng.win",widgetHidden:true,nativeSource:window.__XP_PHONE_SOURCE||null});
 const button=document.createElement('button');button.type='button';button.textContent='海拔 / 指南针';button.className='local-sensor-button';
