@@ -193,8 +193,9 @@ export function mountXiaopPet({THREE:T,root,stage,camera,clock,scene,getClockCor
     const shifts={ArrowLeft:[-.03,0],ArrowRight:[.03,0],ArrowUp:[0,-.03],ArrowDown:[0,.03]};
     if(shifts[e.key]){e.preventDefault();position(left+targetX+shifts[e.key][0]*width,top+targetY+shifts[e.key][1]*height);save();}
   });
-  listen(root,'keydown',e=>{if(e.key==='Escape'&&!menu.hidden){menuOpen(false);launch.focus();}});
-  listen(ui,'keydown',e=>{if(e.key==='Escape'){menuOpen(false);launch.focus();}});
+  const exitPresentation=()=>{const full=document.fullscreenElement||document.webkitFullscreenElement;if(!full||!(full===root||full.contains(root)))return false;root.querySelector('.viewer-close:not(.viewer-close-left)')?.click();return true;};
+  listen(root,'keydown',e=>{if(e.key!=='Escape')return;if(exitPresentation()){e.preventDefault();e.stopPropagation();return;}if(!menu.hidden){menuOpen(false);launch.focus();}});
+  listen(ui,'keydown',e=>{if(e.key==='Escape'){if(exitPresentation()){e.preventDefault();return;}menuOpen(false);launch.focus();}});
   const observer=new ResizeObserver(()=>{needsLayout=true;});observer.observe(stage);observer.observe(launch);
   speak('我是毛绒小 P，摸摸头试试。',4);
   const durations={happy:2.4,wave:2.6,dance:4.8,bounce:1.3,feed:3.2};

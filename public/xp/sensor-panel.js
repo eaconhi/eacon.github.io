@@ -39,9 +39,11 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
   function relayAvailability(){for(const selector of ['[data-create]','[data-join]','[data-code]','[data-close-pair]','[data-view-phone]','[data-phone-code]','[data-forget-phone]'])$(selector).disabled=!base;if(!base)pairingStatus('手机转发尚未接入：需要 HTTPS 转发服务，当前无法配对。本机 GPS 和指南针仍可单独检测。');}
   relayAvailability();
   const receiverKey='xp-sensor-receiver-v1';
+  // Both hostnames address the same authenticated Durable Object. Keep pairing.
+  const knownRelayBases=new Set(['https://xp-phone-relay.connectivity-probe.workers.dev','https://relay.xpeng.win']);
   function saveReceiver(){if(pairRole==='receiver'&&pair)localStorage.setItem(receiverKey,JSON.stringify({id:pair.id,readToken:pair.readToken,base}));}
   function receiverUI(){const active=pairRole==='receiver';$('[data-phone-setup]').hidden=active;$('[data-forget-phone]').hidden=!active;$('[data-reader-title]').textContent=active?'iPhone HTTPS 实时数据':'本机传感器';for(const selector of ['[data-gps]','[data-compass]','[data-stop]'])$(selector).hidden=active;}
-  if(!nativeSource)try{const saved=JSON.parse(localStorage.getItem(receiverKey));if(saved?.base===base&&/^[0-9a-f-]{36}$/.test(saved.id)&&/^[0-9a-f-]{36}$|^[0-9a-f]{64}$/.test(saved.readToken)){pair=saved;pairRole='receiver';remote={};widget.hidden=false;receiverUI();pairingStatus('正在恢复手机连接…');}}catch{}
+  if(!nativeSource)try{const saved=JSON.parse(localStorage.getItem(receiverKey));if(saved&&(saved.base===base||(knownRelayBases.has(saved.base)&&knownRelayBases.has(base)))&&/^[0-9a-f-]{36}$/.test(saved.id)&&/^[0-9a-f-]{36}$|^[0-9a-f]{64}$/.test(saved.readToken)){pair=saved;pairRole='receiver';remote={};saveReceiver();widget.hidden=false;receiverUI();pairingStatus('正在恢复手机连接…');}}catch{}
   async function diagnostic(){
     let permission='无法查询';try{permission=(await navigator.permissions.query({name:'geolocation'})).state;}catch{}
     $('[data-diagnostic]').textContent=`目标车机：XOS 5.10.58902（需在车机实测）\n安全上下文：${window.isSecureContext?'是':'否，需要 HTTPS'}\n定位接口：${navigator.geolocation?'存在':'不存在'}\n定位权限状态：${permission}\n设备方向接口：${typeof DeviceOrientationEvent!=='undefined'?'存在':'不存在'}\n方向权限请求接口：${typeof DeviceOrientationEvent!=='undefined'&&typeof DeviceOrientationEvent.requestPermission==='function'?'存在':'无专用接口，需等待实际事件'}\n定位结果：${gpsError|| (sample.gpsAt?'已收到数据'+(sample.altitude===null?'，未提供高度':''):'未读取')}\n方向结果：${compassError|| (orientationReceived?'已收到方向事件':'未读取')}\n浏览器：${navigator.userAgent}`;
