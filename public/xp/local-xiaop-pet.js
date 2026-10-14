@@ -2,7 +2,7 @@
 import {scenePose,peekMotion,foodMotion,smooth} from "./local-pet-motion.js?v=20261014-clean-offline";
 import {createXiaopAvatar} from "./local-xiaop-avatar.js?v=20261014-clean-offline";
 const STORE='xiaop-clock-pet-v2';
-const VERSION='20261014-car-sensors';
+const VERSION='20261014-corner-exit';
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 const DEFAULTS={visible:true,size:110,prop:'hat',x:.12,y:.86,mode:'clock',moved:false,sound:true};
 const PROPS=['none','hat','dino'];

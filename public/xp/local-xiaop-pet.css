@@ -66,12 +66,15 @@
 
 .xiaop-presentation-only .clock-meta,.xiaop-presentation-only .clock-corner-actions,.xiaop-presentation-only .settings-overlay,.xiaop-presentation-only .clock-quick-settings{display:none!important}
 
-/* The exit belongs inside the fullscreen element and never auto-hides. */
-.plush-clock-viewer.xiaop-presentation-only>.viewer-close:not(.viewer-close-left){display:flex!important;align-items:center;justify-content:center;gap:8px;opacity:1!important;visibility:visible!important;pointer-events:auto!important;z-index:102!important;top:max(18px,env(safe-area-inset-top))!important;right:max(22px,env(safe-area-inset-right))!important;left:auto!important;width:108px!important;min-height:52px!important;height:auto!important;padding:12px 16px!important;border:1px solid #ffffff66!important;border-radius:28px!important;background:#14202ee8!important;box-shadow:0 3px 14px #0005!important;color:#fff!important;cursor:pointer}
-.plush-clock-viewer.xiaop-presentation-only>.viewer-close:not(.viewer-close-left)::after{content:'关闭';font:600 16px/1.2 system-ui,sans-serif;white-space:nowrap}
-.plush-clock-viewer.xiaop-presentation-only>.viewer-close:not(.viewer-close-left) .close-icon{width:18px!important;height:18px!important;filter:brightness(0) invert(1)}
+/* The exit stays available as a quiet, touch-sized corner control. */
+.plush-clock-viewer.xiaop-presentation-only>.viewer-close:not(.viewer-close-left){display:flex!important;align-items:center;justify-content:center;gap:0;opacity:1!important;visibility:visible!important;pointer-events:auto!important;z-index:102!important;top:18px!important;right:22px!important;left:auto!important;width:44px!important;min-width:44px!important;min-height:44px!important;height:44px!important;box-sizing:border-box!important;padding:0!important;border:1px solid rgba(97,101,118,.18)!important;border-radius:50%!important;background:rgba(255,255,255,.62)!important;box-shadow:none!important;color:#646677!important;backdrop-filter:blur(8px);cursor:pointer}
+.plush-clock-viewer.xiaop-presentation-only>.viewer-close:not(.viewer-close-left)::before,.plush-clock-viewer.xiaop-presentation-only>.viewer-close:not(.viewer-close-left)::after{content:'';position:absolute;left:50%;top:50%;width:17px;height:1.8px;border-radius:1px;background:currentColor;transform:translate(-50%,-50%) rotate(45deg)}
+.plush-clock-viewer.xiaop-presentation-only>.viewer-close:not(.viewer-close-left)::after{transform:translate(-50%,-50%) rotate(-45deg)}
+.plush-clock-viewer.xiaop-presentation-only>.viewer-close:not(.viewer-close-left) .close-icon{display:none!important}
+.plush-clock-viewer.xiaop-presentation-only>.viewer-close:not(.viewer-close-left):hover{background:rgba(255,255,255,.9)!important;border-color:rgba(97,101,118,.32)!important}
+.plush-clock-viewer.xiaop-presentation-only>.viewer-close:not(.viewer-close-left):active{background:rgba(231,232,239,.9)!important}
 .plush-clock-viewer.xiaop-presentation-only>.viewer-close-left{display:none!important}
-.plush-clock-viewer.xiaop-presentation-only>.viewer-close:focus-visible{outline:3px solid #b8edd8;outline-offset:4px}
+.plush-clock-viewer.xiaop-presentation-only>.viewer-close:focus-visible{outline:2px solid #8b9897;outline-offset:3px}
 
 /* Put the live card in the top margin instead of over the clock digits. */
 .plush-clock-viewer>.sensor-widget{top:18px;left:22px;right:auto}
