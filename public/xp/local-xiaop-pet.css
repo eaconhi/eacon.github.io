@@ -58,11 +58,11 @@
 
 
 
-/* Native fullscreen contains only the clock canvas and companion touch area. */
-.xiaop-presentation-only>:not(.xiaop-stage-host):not(.xiaop-pet-ui):not(.viewer-close){display:none!important}
+/* Keep live altitude, direction, and their settings inside fullscreen. */
+.xiaop-presentation-only>:not(.xiaop-stage-host):not(.xiaop-pet-ui):not(.viewer-close):not(.sensor-widget):not(.sensor-controls):not(.local-sensor-button){display:none!important}
 .xiaop-presentation-only .xiaop-pet-ui>:not(.xiaop-pet-hit){display:none!important}
 .xiaop-presentation-only .xiaop-pet-hit>*{display:none!important}
-.xiaop-clock-fullscreen .sensor-widget,.xiaop-clock-fullscreen .sensor-controls,.xiaop-clock-fullscreen .local-sensor-button{display:none!important}
+
 
 .xiaop-presentation-only .clock-meta,.xiaop-presentation-only .clock-corner-actions,.xiaop-presentation-only .settings-overlay,.xiaop-presentation-only .clock-quick-settings{display:none!important}
 
@@ -72,3 +72,7 @@
 .plush-clock-viewer.xiaop-presentation-only>.viewer-close:not(.viewer-close-left) .close-icon{width:18px!important;height:18px!important;filter:brightness(0) invert(1)}
 .plush-clock-viewer.xiaop-presentation-only>.viewer-close-left{display:none!important}
 .plush-clock-viewer.xiaop-presentation-only>.viewer-close:focus-visible{outline:3px solid #b8edd8;outline-offset:4px}
+
+/* Put the live card in the top margin instead of over the clock digits. */
+.plush-clock-viewer>.sensor-widget{top:18px;left:22px;right:auto}
+@media(max-width:600px){.plush-clock-viewer>.sensor-widget{top:84px;left:14px;right:auto;max-width:calc(100% - 28px);box-sizing:border-box}}

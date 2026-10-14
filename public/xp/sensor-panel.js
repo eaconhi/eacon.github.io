@@ -1,7 +1,7 @@
 import {finite,degrees,direction,reading} from './sensor-core.js';
 
 export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=false,nativeSource=null}={}) {
-  const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('./sensor-panel.css?v=20261014-simple-sensors',import.meta.url);document.head.append(stylesheet);
+  const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('./sensor-panel.css?v=20261014-car-sensors',import.meta.url);document.head.append(stylesheet);
   const widget=document.createElement('aside');widget.className='sensor-widget';widget.setAttribute('aria-label','海拔与方向');
   widget.innerHTML='<div><small>GPS 高度</small><strong data-alt>— m</strong><small data-accuracy>等待数据</small></div><div><small data-direction-label>方向</small><strong data-heading>—</strong><small data-source>未启用</small></div><button type="button" data-open>设置</button>';
   widget.hidden=widgetHidden||standalone;
@@ -19,10 +19,13 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
   document.body.append(widget,controls);
   // Element fullscreen only paints that element's descendants. Keep the live
   // panel and its launcher in that subtree, including the plush clock viewer.
+  let widgetDismissed=false;
   const overlays=[widget,controls];
   function syncFullscreenHost(){
     const fullscreen=document.fullscreenElement||document.webkitFullscreenElement;
     const host=fullscreen?.isConnected&&fullscreen!==document.documentElement?fullscreen:document.body;
+    const clock=fullscreen?.matches?.('.plush-clock-viewer')||fullscreen?.querySelector?.('.plush-clock-viewer');
+    if(clock&&!widgetDismissed)widget.hidden=false;
     for(const overlay of overlays)if(overlay.parentNode!==host)host.append(overlay);
   }
   for(const event of ['fullscreenchange','webkitfullscreenchange'])document.addEventListener(event,syncFullscreenHost);
@@ -118,7 +121,7 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
   $('[data-stop]').onclick=async()=>{stopGPS();stopCompass();sample={};if(pairRole==='sender')try{await api('/'+pair.id+'/stop',{body:{},token:pair.writeToken});}catch{}status('已停止读取');paint();diagnostic();};
   $('[data-close-pair]').onclick=closePair;
   w('[data-open]').onclick=()=>{controls.hidden=false;diagnostic();};$('.sensor-close').onclick=()=>{if(standalone)location.assign(new URL('./',import.meta.url));else controls.hidden=true;};
-  $('[data-hide]').onclick=()=>{widget.hidden=true;if(!standalone)controls.hidden=true;};
+  $('[data-hide]').onclick=()=>{widgetDismissed=true;widget.hidden=true;if(!standalone)controls.hidden=true;};
   $('[data-copy]').onclick=async()=>{await diagnostic();try{await navigator.clipboard.writeText($('[data-diagnostic]').textContent);status('检测结果已复制');}catch{status('复制不可用，请选中检测文字手动复制。');}};
   const params=new URLSearchParams(location.search);if(standalone&&!nativeSource){$('[data-browser-source]').hidden=false;}if(params.get('join')){$('[data-browser-forward]').hidden=false;$('[data-relay-section]').hidden=true;$('[data-code]').value=params.get('join');controls.hidden=false;const candidate=params.get('relay');try{const url=new URL(candidate);if(url.protocol==='https:'||url.origin===location.origin){base=url.origin;$('[data-base]').value=base;}}catch{}}
   relayAvailability();
@@ -128,5 +131,5 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
   if(!nativeSource&&!standalone)$('[data-status]').hidden=true;
   const timer=setInterval(()=>{paint();if(nativeSource)nativeTick();else relayTick();},1000);diagnostic();paint();
   window.addEventListener('pagehide',()=>{stopGPS();stopCompass();clearInterval(timer);hostObserver.disconnect();for(const event of ['fullscreenchange','webkitfullscreenchange'])document.removeEventListener(event,syncFullscreenHost);});
-  return {open(){syncFullscreenHost();widget.hidden=false;controls.hidden=false;diagnostic();},registerOverlay(node){overlays.push(node);for(const event of ['pointerdown','click','keydown'])node.addEventListener(event,e=>e.stopPropagation());syncFullscreenHost();}};
+  return {open(){widgetDismissed=false;syncFullscreenHost();widget.hidden=false;controls.hidden=false;diagnostic();},registerOverlay(node){overlays.push(node);for(const event of ['pointerdown','click','keydown'])node.addEventListener(event,e=>e.stopPropagation());syncFullscreenHost();}};
 }
