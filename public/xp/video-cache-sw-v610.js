@@ -3,7 +3,7 @@ const IMAGE_CACHE_NAME = 'phone2car-image-cache-v1';
 const pendingVideoCaches = new Map();
 let videoCacheWrites = Promise.resolve();
 
-const APP_CACHE_NAME='xp-clock-offline-20261014-corner-exit-5';
+const APP_CACHE_NAME='xp-clock-offline-20261014-glass-ui-6';
 const appBase=new URL('./',self.location.href);
 const appKey=url=>{const parsed=new URL(url);if(parsed.pathname===appBase.pathname)parsed.pathname+='index.html';parsed.search='';parsed.hash='';return parsed.href;};
 function isAppResource(request){

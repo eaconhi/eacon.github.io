@@ -1,7 +1,7 @@
 import {finite,degrees,direction,reading} from './sensor-core.js';
 
 export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=false,nativeSource=null}={}) {
-  const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('./sensor-panel.css?v=20261014-car-sensors',import.meta.url);document.head.append(stylesheet);
+  const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('./sensor-panel.css?v=20261014-glass-ui',import.meta.url);document.head.append(stylesheet);
   const widget=document.createElement('aside');widget.className='sensor-widget';widget.setAttribute('aria-label','海拔与方向');
   widget.innerHTML='<div><small>GPS 高度</small><strong data-alt>— m</strong><small data-accuracy>等待数据</small></div><div><small data-direction-label>方向</small><strong data-heading>—</strong><small data-source>未启用</small></div><button type="button" data-open>设置</button>';
   widget.hidden=widgetHidden||standalone;

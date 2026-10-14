@@ -55,6 +55,7 @@
     "library.json",
     "local-bootstrap.js",
     "local-car-temple.css",
+    "local-display-ui-431d652e0072.css",
     "local-mobile-media.js",
     "local-offline.js",
     "local-pet-motion.js",
@@ -73,5 +74,5 @@
     "spectrum.css",
     "style-v610.css"
   ],
-  "bytes": 10708202
+  "bytes": 10714394
 }
