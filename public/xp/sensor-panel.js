@@ -1,22 +1,20 @@
 import {finite,degrees,direction,reading} from './sensor-core.js';
 
 export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=false,nativeSource=null}={}) {
-  const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('./sensor-panel.css?v=20261012-https-relay',import.meta.url);document.head.append(stylesheet);
+  const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href=new URL('./sensor-panel.css?v=20261014-simple-sensors',import.meta.url);document.head.append(stylesheet);
   const widget=document.createElement('aside');widget.className='sensor-widget';widget.setAttribute('aria-label','海拔与方向');
   widget.innerHTML='<div><small>GPS 高度</small><strong data-alt>— m</strong><small data-accuracy>等待数据</small></div><div><small data-direction-label>方向</small><strong data-heading>—</strong><small data-source>未启用</small></div><button type="button" data-open>设置</button>';
   widget.hidden=widgetHidden||standalone;
   const controls=document.createElement('section');controls.className='sensor-controls';controls.hidden=!standalone;controls.setAttribute('role','dialog');controls.setAttribute('aria-label','海拔与指南针设置');
-  controls.innerHTML=`<div class="sensor-card"><header class="sensor-panel-header"><h2>海拔与指南针</h2><button type="button" class="sensor-close" aria-label="返回壁纸图库">返回图库</button></header>
-    <p>先在车辆停稳时设置，行驶时保留数据展示。</p>
-    <h3 data-reader-title>本机传感器</h3><div class="sensor-actions"><button data-gps>启用 GPS</button><button data-compass>启用指南针</button><button data-stop>停止读取</button></div>
-    <p class="sensor-status" data-status>尚未申请传感器权限。</p>
-    <p data-height-note>浏览器高度采用 WGS84 椭球高度；iPhone App 高度以平均海平面为参考。两者可能为空或存在误差。GPS 航向表示行进方向；手机罗盘表示手机朝向，需固定并对齐车头。罗盘未提供可靠数据时显示“—”，请远离磁干扰并校准。</p>
-    <div data-relay-section><h3>连接 iPhone 实时数据</h3><p>手机“小 P桌面”开始采集后，在这里输入手机显示的六位配对码。只需配对一次，以后直接打开 xpeng.win/xp/，开关采集后自动恢复。超过 15 秒无更新会显示失效。</p><div class="sensor-actions"><input data-phone-code aria-label="iPhone 配对码" placeholder="手机六位配对码" inputmode="numeric" maxlength="6"><button data-view-phone>连接手机</button></div>
-    <details><summary>转发服务地址</summary><p>HTTPS 实时转发已配置，通常无需修改。</p><label>服务地址 <input data-base placeholder="https://你的转发服务" type="url"></label><button data-save-base>保存地址</button></details>
-    <details><summary>手机浏览器转发 / 其他配对方式</summary><div class="sensor-actions"><button data-create>车机：生成配对码</button><input data-code aria-label="手机配对码" placeholder="输入六位配对码" inputmode="numeric" maxlength="6"><button data-join>手机：连接</button><button data-close-pair>断开配对</button></div>
-    <div class="sensor-pair" data-pair-code></div><p><a data-phone-link hidden target="_blank" rel="noopener">打开手机转发页面</a></p></details><p data-pair-status>未连接</p><button data-forget-phone>断开手机配对</button></div>
-    <h3>实时数据</h3><div class="sensor-readings" data-readings></div><p>速度采用 GPS 地面速度；手机的电量、方向和倾斜不等于车辆接口数据。位置不保存历史。</p>
-    <div data-browser-diagnostic><h3>车机检测</h3><p>接口存在不代表已经开放权限，请点击上面的启用按钮实测。</p><pre class="sensor-diagnostic" data-diagnostic></pre><button data-copy>复制检测结果</button></div><button data-hide>隐藏数据卡片</button>
+  controls.innerHTML=`<div class="sensor-card"><header class="sensor-panel-header"><h2>海拔与方向</h2><button type="button" class="sensor-close" aria-label="关闭海拔设置">完成</button></header>
+    <div class="sensor-readings" data-readings></div>
+    <p class="sensor-status" data-status role="status">等待手机数据</p>
+    <div data-relay-section><div data-phone-setup><p>手机开始采集后，输入配对码连接一次。</p><div class="sensor-actions sensor-phone-connect"><input data-phone-code aria-label="iPhone 配对码" placeholder="六位配对码" inputmode="numeric" autocomplete="off" maxlength="6"><button data-view-phone>连接</button></div></div>
+    <p data-pair-status role="status">未连接</p><button data-forget-phone hidden>断开手机</button></div>
+    <div data-browser-source hidden><h3 data-reader-title>本机传感器</h3><div class="sensor-actions"><button data-gps>启用 GPS</button><button data-compass>启用指南针</button><button data-stop>停止读取</button></div>
+    <div data-browser-forward hidden><div class="sensor-actions"><input data-code aria-label="手机配对码" placeholder="六位配对码" inputmode="numeric" maxlength="6"><button data-join>连接</button><button data-close-pair>断开配对</button></div></div></div>
+    <div hidden><input data-base type="url"><button data-save-base></button><button data-create></button><div data-pair-code></div><a data-phone-link hidden></a><div data-browser-diagnostic><pre data-diagnostic></pre><button data-copy></button></div></div>
+    <button data-hide class="sensor-hide">隐藏桌面数据卡片</button>
     </div>`;
   document.body.append(widget,controls);
   // Element fullscreen only paints that element's descendants. Keep the live
@@ -37,12 +35,12 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
   let sample={},remote=null,watch=null,orientationListening=false,orientationReceived=false,compassTimer=null,pair=null,pairRole='',gpsError='',compassError='',pollBusy=false,publishBusy=false,lastPublished=0,nextPollAt=0;
   let base=relayBase||localStorage.getItem('xp-sensor-relay-base')||''; $('[data-base]').value=base;
   const status=t=>$('[data-status]').textContent=t;
-  const pairingStatus=t=>$('[data-pair-status]').textContent=t;
+  const pairingStatus=t=>{$('[data-pair-status]').textContent=t;if(pairRole==='receiver')status(t);};
   function relayAvailability(){for(const selector of ['[data-create]','[data-join]','[data-code]','[data-close-pair]','[data-view-phone]','[data-phone-code]','[data-forget-phone]'])$(selector).disabled=!base;if(!base)pairingStatus('手机转发尚未接入：需要 HTTPS 转发服务，当前无法配对。本机 GPS 和指南针仍可单独检测。');}
   relayAvailability();
   const receiverKey='xp-sensor-receiver-v1';
   function saveReceiver(){if(pairRole==='receiver'&&pair)localStorage.setItem(receiverKey,JSON.stringify({id:pair.id,readToken:pair.readToken,base}));}
-  function receiverUI(){const active=pairRole==='receiver';$('[data-reader-title]').textContent=active?'iPhone HTTPS 实时数据':'本机传感器';for(const selector of ['[data-gps]','[data-compass]','[data-stop]'])$(selector).hidden=active;}
+  function receiverUI(){const active=pairRole==='receiver';$('[data-phone-setup]').hidden=active;$('[data-forget-phone]').hidden=!active;$('[data-reader-title]').textContent=active?'iPhone HTTPS 实时数据':'本机传感器';for(const selector of ['[data-gps]','[data-compass]','[data-stop]'])$(selector).hidden=active;}
   if(!nativeSource)try{const saved=JSON.parse(localStorage.getItem(receiverKey));if(saved?.base===base&&/^[0-9a-f-]{36}$/.test(saved.id)&&/^[0-9a-f-]{36}$|^[0-9a-f]{64}$/.test(saved.readToken)){pair=saved;pairRole='receiver';remote={};widget.hidden=false;receiverUI();pairingStatus('正在恢复手机连接…');}}catch{}
   async function diagnostic(){
     let permission='无法查询';try{permission=(await navigator.permissions.query({name:'geolocation'})).state;}catch{}
@@ -56,8 +54,7 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
     w('[data-direction-label]').textContent=r.headingKind;
     w('[data-source]').textContent=r.fresh?source+(finite(r.speed)?' · '+Math.round(r.speed*3.6)+' km/h':''):source+' · 无有效数据';
     const value=(v,unit='',digits=1)=>finite(v)?v.toFixed(digits)+unit:'—';
-    const xyz=v=>v?['x','y','z'].map(k=>k.toUpperCase()+' '+value(v[k],'',2)).join(' / '):'—';
-    const rows=[['GPS 地面速度',value(r.speed===null?null:r.speed*3.6,' km/h')],['GPS 行进方向',value(r.gpsHeading,'°')],['手机罗盘方向',value(r.compass,'°')],['高度',value(r.altitude,' m')+' · '+r.altitudeReference],['位置（WGS84）',finite(r.latitude)&&finite(r.longitude)?r.latitude.toFixed(6)+', '+r.longitude.toFixed(6):'—'],['定位精度',value(r.accuracy,' m')],['俯仰 / 横滚（手机参考）',value(r.pitch,'°')+' / '+value(r.roll,'°')],['加速度（m/s²）',xyz(r.acceleration)],['角速度（rad/s）',xyz(r.rotationRate)],['重力方向（g）',xyz(r.gravity)],['气压',value(r.pressure,' kPa')],['相对高度变化',value(r.relativeAltitude,' m')],['手机电量',value(r.battery,'%',0)]];
+    const rows=[['海拔',value(r.altitude,' m',0)],['方向',finite(r.heading)?direction(r.heading)+' '+Math.round(r.heading)+'°':'—']];
     $('[data-readings]').replaceChildren(...rows.map(([name,text])=>{const item=document.createElement('div'),label=document.createElement('small'),strong=document.createElement('strong');label.textContent=name;strong.textContent=text;item.append(label,strong);return item;}));
   }
   function stopGPS(){if(watch!==null)navigator.geolocation?.clearWatch(watch);watch=null;delete sample.gpsAt;delete sample.altitudeAt;}
@@ -102,15 +99,16 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
   }
   async function closePair(){
     if(pair)try{await api('/'+pair.id+(pairRole==='sender'?'/stop':'/close'),{body:{},token:pair.readToken||pair.writeToken});}catch{}
-    localStorage.removeItem(receiverKey);pair=null;pairRole='';receiverUI();remote=null;sample={};stopGPS();stopCompass();$('[data-pair-code]').textContent='';$('[data-phone-link]').hidden=true;pairingStatus('已断开');paint();
+    localStorage.removeItem(receiverKey);pair=null;pairRole='';receiverUI();remote=null;sample={};stopGPS();stopCompass();$('[data-pair-code]').textContent='';$('[data-phone-link]').hidden=true;pairingStatus('未连接');status('等待手机数据');paint();
   }
   $('[data-create]').onclick=async()=>{try{await closePair();pair=await api('/pair',{body:{}});pairRole='receiver';saveReceiver();receiverUI();widget.hidden=false;$('[data-pair-code]').textContent=pair.code;const url=new URL('./sensors.html',import.meta.url);url.searchParams.set('join',pair.code);url.searchParams.set('relay',base);$('[data-phone-link]').href=url;$('[data-phone-link]').hidden=false;pairingStatus('配对码 10 分钟内有效。手机浏览器打开此页并输入配对码，配对后自动恢复连接。');}catch(e){pairingStatus(e.message);}};
   $('[data-join]').onclick=async()=>{try{await closePair();pair=await api('/join',{body:{code:$('[data-code]').value.trim()}});pairRole='sender';pairingStatus('已连接。请点击“启用 GPS”和“启用指南针”，并保持手机页面在前台。');}catch(e){pairingStatus(e.message);}};
-  $('[data-view-phone]').onclick=async()=>{const code=$('[data-phone-code]').value.trim();if(!/^[0-9]{6}$/.test(code)){pairingStatus('请输入手机 App 显示的六位配对码');return;}try{const joined=await api('/view',{body:{code}});pair=joined;pairRole='receiver';remote={};saveReceiver();receiverUI();widget.hidden=false;nextPollAt=0;$('[data-phone-code]').value='';pairingStatus('手机已配对，正在接收数据…');relayTick();}catch(e){pairingStatus(e.message);}};
+  $('[data-view-phone]').onclick=async()=>{const code=$('[data-phone-code]').value.trim();if(!/^[0-9]{6}$/.test(code)){pairingStatus('请输入手机显示的六位配对码');return;}const button=$('[data-view-phone]');if(button.disabled)return;button.disabled=true;button.textContent='连接中…';try{const joined=await api('/view',{body:{code}});pair=joined;pairRole='receiver';remote={};saveReceiver();receiverUI();widget.hidden=false;nextPollAt=0;$('[data-phone-code]').value='';pairingStatus('正在接收手机数据…');relayTick();}catch(e){pairingStatus(e.status===403||e.status===404?'配对码无效或已过期，请在手机上更新':e.name==='AbortError'?'连接超时，请重试':'连接失败，请检查手机和网络');}finally{button.disabled=!base;button.textContent='连接';}};
+  $('[data-phone-code]').onkeydown=e=>{if(e.key==='Enter')$('[data-view-phone]').click();};
   $('[data-forget-phone]').onclick=closePair;
   async function relayTick(){
     if(!pair)return;
-    if(pairRole==='receiver'&&!pollBusy&&Date.now()>=nextPollAt){pollBusy=true;nextPollAt=Date.now()+2000;try{const data=await api('/'+pair.id,{token:pair.readToken});remote={...(data.sample||{})};const offset=Date.now()-data.serverNow;for(const key of ['gpsAt','altitudeAt','compassAt'])if(finite(remote[key])&&remote[key]>0)remote[key]+=offset;const message=data.paired?(data.receivedAt?'手机已连接 · 正在接收':'手机已配对 · 采集暂停或等待数据'):'等待手机连接';pairingStatus(message);status(message);}catch(e){remote={};pairingStatus('连接中断，正在自动重试：'+e.message);if(e.status===403||e.status===404){localStorage.removeItem(receiverKey);pair=null;pairRole='';receiverUI();pairingStatus('配对已失效，请重新输入手机配对码');}}finally{pollBusy=false;paint();}}
+    if(pairRole==='receiver'&&!pollBusy&&Date.now()>=nextPollAt){pollBusy=true;nextPollAt=Date.now()+2000;try{const data=await api('/'+pair.id,{token:pair.readToken});remote={...(data.sample||{})};const offset=Date.now()-data.serverNow;for(const key of ['gpsAt','altitudeAt','compassAt'])if(finite(remote[key])&&remote[key]>0)remote[key]+=offset;const message=data.paired?(reading(remote).fresh?'已连接 · 实时更新':'已配对 · 等待手机开始采集'):'等待手机连接';pairingStatus(message);status(message);}catch(e){remote={};pairingStatus('连接暂时中断，正在重连…');if(e.status===403||e.status===404){localStorage.removeItem(receiverKey);pair=null;pairRole='';receiverUI();pairingStatus('请重新输入手机配对码');}}finally{pollBusy=false;paint();}}
     if(pairRole==='sender'&&reading(sample).fresh&&!publishBusy&&Date.now()-lastPublished>=2000){publishBusy=true;try{await api('/'+pair.id+'/update',{token:pair.writeToken,body:{...sample,clientNow:Date.now()}});lastPublished=Date.now();pairingStatus('已转发 · '+new Date().toLocaleTimeString('zh-CN'));}catch(e){pairingStatus(e.message);}finally{publishBusy=false;}}
   }
   $('[data-save-base]').onclick=async()=>{try{const url=new URL($('[data-base]').value);if(url.protocol!=='https:'&&!['localhost','127.0.0.1'].includes(url.hostname)&&url.origin!==location.origin)throw new Error('远程转发服务必须使用 HTTPS');if(pair)await closePair();base=url.origin;localStorage.setItem('xp-sensor-relay-base',base);relayAvailability();pairingStatus('转发地址已保存，可尝试连接。');}catch(e){pairingStatus('地址无效：'+e.message);}};
@@ -120,11 +118,12 @@ export function mountSensorPanel({relayBase='',standalone=false,widgetHidden=fal
   w('[data-open]').onclick=()=>{controls.hidden=false;diagnostic();};$('.sensor-close').onclick=()=>{if(standalone)location.assign(new URL('./',import.meta.url));else controls.hidden=true;};
   $('[data-hide]').onclick=()=>{widget.hidden=true;if(!standalone)controls.hidden=true;};
   $('[data-copy]').onclick=async()=>{await diagnostic();try{await navigator.clipboard.writeText($('[data-diagnostic]').textContent);status('检测结果已复制');}catch{status('复制不可用，请选中检测文字手动复制。');}};
-  const params=new URLSearchParams(location.search);if(params.get('join')){$('[data-code]').value=params.get('join');controls.hidden=false;const candidate=params.get('relay');try{const url=new URL(candidate);if(url.protocol==='https:'||url.origin===location.origin){base=url.origin;$('[data-base]').value=base;}}catch{}}
+  const params=new URLSearchParams(location.search);if(standalone&&!nativeSource){$('[data-browser-source]').hidden=false;}if(params.get('join')){$('[data-browser-forward]').hidden=false;$('[data-relay-section]').hidden=true;$('[data-code]').value=params.get('join');controls.hidden=false;const candidate=params.get('relay');try{const url=new URL(candidate);if(url.protocol==='https:'||url.origin===location.origin){base=url.origin;$('[data-base]').value=base;}}catch{}}
   relayAvailability();
-  async function nativeTick(){if(!nativeSource||pollBusy)return;pollBusy=true;const abort=new AbortController(),deadline=setTimeout(()=>abort.abort(),8000);try{const response=await fetch(new URL('api/phone/sample',nativeSource.base),{headers:{Authorization:'Bearer '+nativeSource.key},cache:'no-store',signal:abort.signal});const data=await response.json();if(!response.ok||!data.ok)throw new Error(data.error||'手机服务无法连接');remote=data.sample||{};status(reading(remote).fresh?'正在接收 iPhone 数据。':'iPhone 服务已连接，等待有效传感器数据。');}catch(e){remote={};status('手机转发中断：'+e.message);}finally{clearTimeout(deadline);pollBusy=false;paint();}}
+  async function nativeTick(){if(!nativeSource||pollBusy)return;pollBusy=true;const abort=new AbortController(),deadline=setTimeout(()=>abort.abort(),8000);try{const response=await fetch(new URL('api/phone/sample',nativeSource.base),{headers:{Authorization:'Bearer '+nativeSource.key},cache:'no-store',signal:abort.signal});const data=await response.json();if(!response.ok||!data.ok)throw new Error(data.error||'手机服务无法连接');remote=data.sample||{};status(reading(remote).fresh?'已连接 · 实时更新':'已连接 · 等待手机开始采集');}catch(e){remote={};status('连接暂时中断，正在重连…');}finally{clearTimeout(deadline);pollBusy=false;paint();}}
   if(nativeSource){$('[data-relay-section]').hidden=true;$('[data-browser-diagnostic]').hidden=true;$('[data-reader-title]').textContent='iPhone 局域网数据';for(const selector of ['[data-gps]','[data-compass]','[data-stop]'])$(selector).hidden=true;nativeTick();}
   if(!nativeSource&&pair)relayTick();
+  if(!nativeSource&&!standalone)$('[data-status]').hidden=true;
   const timer=setInterval(()=>{paint();if(nativeSource)nativeTick();else relayTick();},1000);diagnostic();paint();
   window.addEventListener('pagehide',()=>{stopGPS();stopCompass();clearInterval(timer);hostObserver.disconnect();for(const event of ['fullscreenchange','webkitfullscreenchange'])document.removeEventListener(event,syncFullscreenHost);});
   return {open(){syncFullscreenHost();widget.hidden=false;controls.hidden=false;diagnostic();},registerOverlay(node){overlays.push(node);for(const event of ['pointerdown','click','keydown'])node.addEventListener(event,e=>e.stopPropagation());syncFullscreenHost();}};

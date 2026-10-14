@@ -8,3 +8,7 @@
 .sensor-panel-header{position:sticky;top:-28px;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;background:#101b30}.sensor-panel-header h2{margin:0;font-size:23px}.sensor-panel-header .sensor-close{position:static;flex-shrink:0;margin:0;min-height:44px}.sensor-only .sensor-close{display:block}.sensor-only .sensor-card{margin-top:0}.sensor-only .sensor-controls{padding-top:max(14px,env(safe-area-inset-top))}
 @media(max-width:600px){.sensor-panel-header{top:-22px}.sensor-panel-header h2{font-size:21px}.sensor-panel-header .sensor-close{font-size:14px}}
 .sensor-only .sensor-controls,.sensor-only .sensor-card{overflow:visible}.sensor-only .sensor-panel-header{top:0}
+
+/* Compact altitude/direction settings, matching the original display card. */
+.sensor-card{width:min(420px,100%);padding:24px}.sensor-readings>div{padding:18px 16px}.sensor-readings strong{font-size:30px;font-variant-numeric:tabular-nums}.sensor-phone-connect{flex-wrap:nowrap;gap:8px;margin:12px 0}.sensor-phone-connect input{width:0;flex:1;min-width:0;min-height:48px;letter-spacing:2px}.sensor-phone-connect button{margin:0;min-height:48px;padding:8px 22px}.sensor-hide{margin-top:18px!important;color:#b6c5dc!important;background:transparent!important;font-size:13px!important}.sensor-panel-header{top:-24px;padding-top:0}.sensor-card [data-pair-status]{margin-top:14px}.sensor-card [data-status][hidden]{display:none!important}
+@media(max-width:600px){.sensor-readings strong{font-size:27px}.sensor-card{padding:22px}.sensor-panel-header{top:-22px}}
