@@ -4,7 +4,7 @@ export function createXiaopAvatar(T,{renderer}={}) {
  const group=new T.Group(),head=new T.Group();group.add(head);
  const materials=new Set(),geometries=new Set();let disposed=false,ready=false,headsReady=false;
  const texture=new T.TextureLoader().load(new URL('./companions/xiaop/plush-parts-v3.png?v=20261012-ideal-motion-3',import.meta.url).href,()=>{if(disposed){texture.dispose();return;}ready=true;});
- const heads=new T.TextureLoader().load(new URL('./companions/xiaop/plush-heads-fine-v5.png?v=20261012-plush-release-1',import.meta.url).href,()=>{if(disposed){heads.dispose();return;}headsReady=true;});
+ const heads=new T.TextureLoader().load(new URL('./companions/xiaop/plush-heads-fine-v5.png?v=20261014-clean-offline',import.meta.url).href,()=>{if(disposed){heads.dispose();return;}headsReady=true;});
  const anisotropy=Math.min(8,renderer?.capabilities.getMaxAnisotropy?.()||1);heads.anisotropy=texture.anisotropy=anisotropy;
  heads.minFilter=T.LinearMipMapLinearFilter;heads.magFilter=T.LinearFilter;heads.generateMipmaps=true;
  texture.minFilter=T.LinearMipMapLinearFilter;texture.magFilter=T.LinearFilter;texture.generateMipmaps=true;

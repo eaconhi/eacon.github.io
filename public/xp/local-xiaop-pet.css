@@ -43,15 +43,9 @@
 .xiaop-charge-meter i{display:block;height:100%;background:#75d7a2;border-radius:3px;animation:xiaop-charge 3s ease-out forwards}
 @keyframes xiaop-charge{from{width:8%}to{width:100%}}
 .xiaop-pet-ui[data-food-effect=charge] .xiaop-pet-art{filter:drop-shadow(0 0 7px #85fce898)}
-.xiaop-desktop-cards{position:absolute;left:50%;bottom:75px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(680px,75%);pointer-events:auto}
-.xiaop-desktop-cards>button{position:relative;border:1px solid #ffffff70;background:#ffffff65;backdrop-filter:blur(14px);border-radius:13px;box-shadow:0 5px 16px #73695606;color:#606164;text-align:left;padding:13px 35px 13px 16px;cursor:pointer;min-height:62px}
-.xiaop-desktop-cards strong{display:block;font-weight:500;font-size:15px}.xiaop-desktop-cards span{display:block;font-size:11px;margin-top:4px;color:#949194}.xiaop-desktop-cards i{position:absolute;right:13px;top:20px;font-style:normal;font-size:22px;color:#7c7e83}
 .xiaop-scene-tabs{position:absolute;bottom:max(18px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;gap:6px;padding:4px;border-radius:20px;background:#ffffff42;backdrop-filter:blur(12px);border:1px solid #ffffff50;pointer-events:auto}
 .xiaop-scene-tabs button{font:inherit;font-size:12px;white-space:nowrap;border:0;background:transparent;color:#717076;border-radius:16px;padding:7px 12px;cursor:pointer}
 .xiaop-scene-tabs button[aria-pressed=true]{background:#fff9;color:#775f50;box-shadow:0 2px 8px #69605508}
-.xiaop-pet-sheet{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(420px,calc(100% - 36px));max-height:70%;overflow:auto;border:1px solid #ffffff90;background:#faf7f0f2;color:#5c5b5a;border-radius:22px;padding:22px;box-sizing:border-box;box-shadow:0 12px 50px #534b3622;pointer-events:auto;z-index:5}
-.xiaop-pet-sheet header{display:flex;justify-content:space-between;align-items:center;font-size:20px}.xiaop-pet-sheet header button{border:0;background:none;font-size:25px;color:inherit;cursor:pointer}.xiaop-sheet-content{margin-top:16px;font-size:14px;line-height:1.8}.xiaop-sheet-content textarea{width:100%;min-height:140px;box-sizing:border-box;padding:14px;border:1px solid #d7d0c5;background:#fff9;color:#57534a;border-radius:12px;font:inherit}.xiaop-sheet-content button{padding:9px 20px;border:1px solid #d5c9b7;background:#e8dfd0;color:#665e52;border-radius:12px;font:inherit;margin-top:12px;cursor:pointer}
-@media(max-width:600px){.xiaop-desktop-cards{width:calc(100% - 24px);gap:6px;bottom:122px}.xiaop-desktop-cards>button{padding:11px 8px;min-height:58px}.xiaop-desktop-cards strong{font-size:13px}.xiaop-desktop-cards span{font-size:9px}.xiaop-desktop-cards i{display:none}.xiaop-scene-tabs{bottom:18px;left:50%}.xiaop-scene-tabs button{font-size:10px;padding:6px 7px}.xiaop-pet-launch{left:12px;bottom:68px;padding:9px 14px;font-size:12px}.xiaop-pet-menu{bottom:118px}.plush-clock-viewer.xiaop-companion-active .clock-corner-actions{bottom:68px!important}.plush-clock-viewer.xiaop-companion-active .clock-meta{bottom:204px}.plush-clock-viewer.xiaop-companion-active .local-sensor-button{bottom:182px!important;right:12px!important}}
 @media(prefers-reduced-motion:reduce){.xiaop-food-board,.xiaop-board-response,.xiaop-flying-treat{animation:none}.xiaop-flying-treat{display:none}}
 
 /* A single WebGL model stays visible through every scene. */
@@ -61,5 +55,13 @@
 .xiaop-ground-shadow{position:absolute;transform:translateX(-50%);background:radial-gradient(ellipse,#42382b 0%,#42382b70 35%,transparent 70%);filter:blur(3px);pointer-events:none}
 .xiaop-food-board,.xiaop-flying-treat{animation:none;will-change:transform}
 .xiaop-flying-treat{filter:drop-shadow(0 4px 5px #40302030)}
-.xiaop-pet-ui[data-mode=clock] .xiaop-desktop-cards{visibility:hidden}
-@media(max-width:600px){.xiaop-desktop-cards{bottom:108px}.xiaop-pet-ui[data-mode=board] .xiaop-desktop-cards{bottom:108px}}
+
+
+
+/* Native fullscreen contains only the clock canvas and companion touch area. */
+.xiaop-presentation-only>:not(.xiaop-stage-host):not(.xiaop-pet-ui){display:none!important}
+.xiaop-presentation-only .xiaop-pet-ui>:not(.xiaop-pet-hit){display:none!important}
+.xiaop-presentation-only .xiaop-pet-hit>*{display:none!important}
+.xiaop-clock-fullscreen .sensor-widget,.xiaop-clock-fullscreen .sensor-controls,.xiaop-clock-fullscreen .local-sensor-button{display:none!important}
+
+.xiaop-presentation-only .clock-meta,.xiaop-presentation-only .clock-corner-actions,.xiaop-presentation-only .settings-overlay,.xiaop-presentation-only .clock-quick-settings{display:none!important}

@@ -1,8 +1,8 @@
 // Continuous, articulated companion in the original clock render loop.
-import {scenePose,peekMotion,foodMotion,smooth} from "./local-pet-motion.js?v=20261012-plush-release-1";
-import {createXiaopAvatar} from "./local-xiaop-avatar.js?v=20261012-plush-release-1";
+import {scenePose,peekMotion,foodMotion,smooth} from "./local-pet-motion.js?v=20261014-clean-offline";
+import {createXiaopAvatar} from "./local-xiaop-avatar.js?v=20261014-clean-offline";
 const STORE='xiaop-clock-pet-v2';
-const VERSION='20261012-plush-release-1';
+const VERSION='20261014-clean-offline';
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 const DEFAULTS={visible:true,size:110,prop:'hat',x:.12,y:.86,mode:'clock',moved:false,sound:true};
 const PROPS=['none','hat','dino'];
@@ -54,13 +54,12 @@ export function mountXiaopPet({THREE:T,root,stage,camera,clock,scene,getClockCor
       <div class="xiaop-pet-actions"><button type="button" data-action="reset">回到原位</button><button type="button" data-action="visibility"></button></div>
     </div><div class="xiaop-food-board" hidden><img alt="毛绒食物道具板" src="${BOARD}"></div>
     <div class="xiaop-scene-tabs" role="group" aria-label="桌面场景"><button type="button" data-mode="clock">毛绒时钟</button><button type="button" data-mode="companion">小 P桌面</button><button type="button" data-mode="board">道具互动</button></div>
-    <div class="xiaop-desktop-cards"><button type="button" data-card="skills"><strong>宝藏技能</strong><span>小 P陪伴</span><i>✧</i></button><button type="button" data-card="notes"><strong>备忘录</strong><span>记录此刻的灵感</span><i>▤</i></button><button type="button" data-card="history"><strong>最近对话</strong><span>和小 P的互动</span><i>↗</i></button></div>
-    <div class="xiaop-pet-sheet" role="dialog" aria-label="小 P桌面卡片" hidden><header><strong></strong><button type="button" aria-label="关闭桌面卡片">×</button></header><div class="xiaop-sheet-content"></div></div>`;
+    `;
   root.append(ui);
   const hit=ui.querySelector('.xiaop-pet-hit'),art=ui.querySelector('.xiaop-pet-art'),bubble=ui.querySelector('.xiaop-pet-bubble');
   const launch=ui.querySelector('.xiaop-pet-launch'),menu=ui.querySelector('.xiaop-pet-menu');
   const range=ui.querySelector('input[type=range]'),select=ui.querySelector('[aria-label="小 P帽子"]');select.value=prefs.prop;
-  const modeSelect=ui.querySelector('[aria-label="小 P桌面画面"]'),board=ui.querySelector('.xiaop-food-board'),sheet=ui.querySelector('.xiaop-pet-sheet');
+  const modeSelect=ui.querySelector('[aria-label="小 P桌面画面"]'),board=ui.querySelector('.xiaop-food-board');
   const canvas=stage.querySelector('canvas'),canvasVisibility=canvas?.style.visibility;
   const avatar=createXiaopAvatar(T,{renderer}),spriteGroup=avatar.group;scene.add(spriteGroup);
   const rayOrigin=new T.Vector3(),rayDirection=new T.Vector3();
@@ -150,16 +149,6 @@ export function mountXiaopPet({THREE:T,root,stage,camera,clock,scene,getClockCor
     listen(b,'click',e=>{if(e.detail===0){const box=b.getBoundingClientRect();feed(index,box.x+box.width/2,box.y+box.height/2);}});
   }
   updateBoard();
-  listen(sheet.querySelector('header button'),'click',()=>{sheet.hidden=true;});
-  for(const b of ui.querySelectorAll('[data-card]'))listen(b,'click',()=>{
-    if(b.dataset.card==='skills'){menuOpen(true);return;}
-    const content=sheet.querySelector('.xiaop-sheet-content');content.replaceChildren();sheet.hidden=false;sheet.querySelector('strong').textContent=b.dataset.card==='notes'?'备忘录':'最近对话';
-    if(b.dataset.card==='notes'){
-      const text=document.createElement('textarea');text.setAttribute('aria-label','我的备忘录');text.placeholder='记下此刻的灵感…';try{text.value=localStorage.getItem('xiaop-desktop-notes')||'';}catch{}content.append(text);
-      const button=document.createElement('button');button.textContent='保存备忘录';button.type='button';button.onclick=()=>{try{localStorage.setItem('xiaop-desktop-notes',text.value);button.textContent='已保存';}catch{button.textContent='保存失败，请重试';}};content.append(button);
-    }else if(!history.length){content.textContent='摸摸小 P，留下第一条互动。';}
-    else for(const row of [...history].reverse()){const p=document.createElement('p');p.textContent=new Date(row.when).toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'})+' · '+row.action;content.append(p);}
-  });
   const layout=()=>{
     const box=stage.getBoundingClientRect(),container=root.getBoundingClientRect();
     width=box.width;height=box.height;left=box.left;top=box.top;if(!width||!height)return;
@@ -205,7 +194,7 @@ export function mountXiaopPet({THREE:T,root,stage,camera,clock,scene,getClockCor
     if(shifts[e.key]){e.preventDefault();position(left+targetX+shifts[e.key][0]*width,top+targetY+shifts[e.key][1]*height);save();}
   });
   listen(root,'keydown',e=>{if(e.key==='Escape'&&!menu.hidden){menuOpen(false);launch.focus();}});
-  listen(ui,'keydown',e=>{if(e.key==='Escape'){menuOpen(false);sheet.hidden=true;launch.focus();}});
+  listen(ui,'keydown',e=>{if(e.key==='Escape'){menuOpen(false);launch.focus();}});
   const observer=new ResizeObserver(()=>{needsLayout=true;});observer.observe(stage);observer.observe(launch);
   speak('我是毛绒小 P，摸摸头试试。',4);
   const durations={happy:2.4,wave:2.6,dance:4.8,bounce:1.3,feed:3.2};
@@ -225,12 +214,24 @@ export function mountXiaopPet({THREE:T,root,stage,camera,clock,scene,getClockCor
     const t=transition.duration?clamp((elapsed-transition.since)/transition.duration,0,1):1;
     return transition.from+(transition.to-transition.from)*smooth(t);
   };
+  for(const child of root.children)if(child===stage||child.contains(stage))child.classList.add('xiaop-stage-host');
+  let presentationOnly=false;
+  const fullscreenPresentation=()=>{
+    const full=document.fullscreenElement||document.webkitFullscreenElement;
+    presentationOnly=!!full&&(full===root||full.contains(root));
+    root.classList.toggle('xiaop-presentation-only',presentationOnly);
+    document.documentElement.classList.toggle('xiaop-clock-fullscreen',presentationOnly);
+    if(presentationOnly){menuOpen(false);bubble.hidden=true;clearFood();resetDots();}
+    if(!presentationOnly){sceneProgress=prefs.mode==='clock'?0:1;boardProgress=prefs.mode==='board'?1:0;}
+    needsLayout=true;changed=true;
+  };
+  listen(document,'fullscreenchange',fullscreenPresentation);listen(document,'webkitfullscreenchange',fullscreenPresentation);fullscreenPresentation();
   const started=performance.now();
   function update(dt,time){
     if(disposed)return false;elapsed=(performance.now()-started)/1000;
     const currentProjection=[camera.left,camera.right,camera.top,camera.bottom].join(',');
     if(needsLayout||currentProjection!==projection){projection=currentProjection;layout();}
-    sceneProgress=sampleTransition(sceneTransition,sceneProgress);boardProgress=sampleTransition(boardTransition,boardProgress);
+    sceneProgress=presentationOnly?0:sampleTransition(sceneTransition,sceneProgress);boardProgress=presentationOnly?0:sampleTransition(boardTransition,boardProgress);
     const motion=scenePose(sceneProgress);scenePhase=motion.phase;
     if(sceneTransition&&Math.abs(sceneProgress-sceneTransition.to)<.00001){sceneProgress=sceneTransition.to;sceneTransition=null;}
     if(boardTransition&&Math.abs(boardProgress-boardTransition.to)<.00001){boardProgress=boardTransition.to;boardTransition=null;}
@@ -314,6 +315,6 @@ export function mountXiaopPet({THREE:T,root,stage,camera,clock,scene,getClockCor
     return draw;
   }
   function dispose(){if(disposed)return;disposed=true;finishReady(false);observer.disconnect();audio?.close().catch(()=>{});resetDots();for(const fn of cleanup)fn();for(const id of timers)clearTimeout(id);beforeClockUpdate();avatar.dispose();
-    if(canvas){canvas.style.visibility=canvasVisibility;canvas.style.opacity='';canvas.style.transform='';canvas.style.transition='';}if(clock){clock.scale.copy(originalScale);clock.position.copy(originalPosition);}if(corner){corner.style.left=cornerLeft;corner.style.display=cornerDisplay;}if(originalControlsEnd)root.style.setProperty('--xiaop-controls-end',originalControlsEnd);else root.style.removeProperty('--xiaop-controls-end');ui.remove();root.classList.remove('xiaop-companion-active');delete root.dataset.xiaopPetState;delete root.dataset.xiaopScene;}
+    if(canvas){canvas.style.visibility=canvasVisibility;canvas.style.opacity='';canvas.style.transform='';canvas.style.transition='';}if(clock){clock.scale.copy(originalScale);clock.position.copy(originalPosition);}if(corner){corner.style.left=cornerLeft;corner.style.display=cornerDisplay;}if(originalControlsEnd)root.style.setProperty('--xiaop-controls-end',originalControlsEnd);else root.style.removeProperty('--xiaop-controls-end');ui.remove();root.classList.remove('xiaop-companion-active');delete root.dataset.xiaopPetState;delete root.dataset.xiaopScene;document.documentElement.classList.remove('xiaop-clock-fullscreen');}
   return {update,dispose,beforeClockUpdate,onClockTouch,isReady,whenReady,didRender,isPetScene:()=>prefs.mode!=='clock',getState:()=>({...prefs,state,frame,lastClockTouch,tentacles:!!dotAction,boardPage,foodEffect:foodEffect?.kind||null,art:avatar.art,textures:avatar.textureInfo(),artReady:isReady(),textureRendered,modelReady:textureRendered,fiberCount:avatar.fiberCount,transition:scenePhase,sceneProgress,boardProgress,foodPhase})};
 }

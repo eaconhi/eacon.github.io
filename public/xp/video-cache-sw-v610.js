@@ -3,13 +3,39 @@ const IMAGE_CACHE_NAME = 'phone2car-image-cache-v1';
 const pendingVideoCaches = new Map();
 let videoCacheWrites = Promise.resolve();
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(self.skipWaiting());
-});
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
-});
+const APP_CACHE_NAME='xp-clock-offline-20261014-clean-1';
+const appBase=new URL('./',self.location.href);
+const appKey=url=>{const parsed=new URL(url);if(parsed.pathname===appBase.pathname)parsed.pathname+='index.html';parsed.search='';parsed.hash='';return parsed.href;};
+function isAppResource(request){
+ const url=new URL(request.url);
+ if(url.origin!==appBase.origin||!url.pathname.startsWith(appBase.pathname))return false;
+ const path=url.pathname.slice(appBase.pathname.length);
+ return request.mode==='navigate'&&['','index.html','sensors.html','mobile.html'].includes(path)||
+ /^(?:assets\/[^/]+\.(?:js|css)|(?:local-[^/]+|pages-bootstrap|sensor-(?:core|panel))\.(?:js|css)|(?:style-v610|clock-presets|spectrum)\.css|(?:pages-config|library|deployment-version)\.json|branding\/[^/]+\.(?:png|svg)|companions\/xiaop\/(?:plush-heads-fine-v5|plush-parts-v3|plush-food-board|plush-food-board-alt)\.png)$/.test(path);
+}
+async function prepareAppCache(){
+ const response=await fetch(new URL('offline-manifest.json',appBase),{cache:'no-store'});
+ if(!response.ok)throw Error('Offline manifest unavailable');
+ const manifest=await response.json(),cache=await caches.open(APP_CACHE_NAME);
+ const files=manifest.files;
+ if(!Array.isArray(files)||manifest.version!=='20261014-clean-offline')throw Error('Offline manifest mismatch');
+ for(let i=0;i<files.length;i+=6)await Promise.all(files.slice(i,i+6).map(async file=>{
+  const url=new URL(file,appBase);if(url.origin!==appBase.origin||!url.pathname.startsWith(appBase.pathname))throw Error('Invalid offline resource');
+  const response=await fetch(url,{cache:'reload'});if(!response.ok)throw Error('Offline resource unavailable');
+  await cache.put(appKey(url),response);
+ }));
+}
+self.addEventListener('install',event=>event.waitUntil(prepareAppCache().then(()=>self.skipWaiting())));
+self.addEventListener('activate',event=>event.waitUntil((async()=>{
+ await self.clients.claim();
+ for(const name of await caches.keys())if(name.startsWith('xp-clock-offline-')&&name!==APP_CACHE_NAME)await caches.delete(name);
+})()));
+async function readAppResource(request){
+ const cache=await caches.open(APP_CACHE_NAME),key=appKey(request.url);
+ const cached=await cache.match(key);
+ if(request.mode!=='navigate'&&cached)return cached;
+ try{const response=await fetch(request);if(response.ok)await cache.put(key,response.clone());return response;}catch(error){if(cached)return cached;throw error;}
+}
 
 function isCacheableVideoUrl(url) {
   try {
@@ -228,6 +254,7 @@ async function partialResponse(response, rangeHeader) {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   if (request.method !== 'GET') return;
+  if(isAppResource(request)){event.respondWith(readAppResource(request));return;}
   if (isCacheableImageUrl(request.url)) {
     event.respondWith(readCachedMedia(request, IMAGE_CACHE_NAME).then(cached => cached || fetch(request)));
     return;
