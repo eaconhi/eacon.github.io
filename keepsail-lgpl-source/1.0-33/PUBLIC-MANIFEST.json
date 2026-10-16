@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "libraryBuild": "1.0-33",
+  "fullArchive": {
+    "name": "Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz",
+    "bytes": 56817403,
+    "sha256": "9c018a2f6e8379b2c3bae434c9942909d839e2274a75633be24330cc91708fab"
+  },
+  "files": [
+    {
+      "name": "Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz.part01",
+      "bytes": 20971520,
+      "sha256": "82c579000896bc041d75ae167b68ea2e67265489c1309a421f871d3d64450413"
+    },
+    {
+      "name": "Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz.part02",
+      "bytes": 20971520,
+      "sha256": "de94112b48256ee3d4c50856c65b9654e1f99367ad5d85d19be629633998a762"
+    },
+    {
+      "name": "Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz.part03",
+      "bytes": 14874363,
+      "sha256": "6b9efad7eb3bc42d036eda789939680e19a02d71a9bf126dfb7b8a40454135b3"
+    },
+    {
+      "name": "README.md",
+      "bytes": 1451,
+      "sha256": "5de62031256a3f10e361cbbdf086df67db678719b925b01e3faa21777a1d9de1"
+    },
+    {
+      "name": "SHA256SUMS.json",
+      "bytes": 876,
+      "sha256": "fe02f92cf900c4868f669c14dee44f35d01a1d4b9ffa180dee5a48a9dbd0e381"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 465,
+      "sha256": "265f530ae5045bd2b2cff941062984e1a1d97dadf20d7e7241eea165bcd1fb5b"
+    },
+    {
+      "name": "reassemble.py",
+      "bytes": 2970,
+      "sha256": "61368497a5da4d339857fa85e8bec8c4f7e6538d65991ff87ae675effbdb222f"
+    }
+  ],
+  "containsApplicationSource": false,
+  "containsUserData": false,
+  "containsSigningKeys": false,
+  "applicationBinaryIncluded": false,
+  "modifiedRuntimeInstallTested": false
+}

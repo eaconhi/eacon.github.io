@@ -1,0 +1,27 @@
+{
+  "archive": {
+    "name": "Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz",
+    "bytes": 56817403,
+    "sha256": "9c018a2f6e8379b2c3bae434c9942909d839e2274a75633be24330cc91708fab"
+  },
+  "parts": [
+    {
+      "name": "Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz.part01",
+      "bytes": 20971520,
+      "sha256": "82c579000896bc041d75ae167b68ea2e67265489c1309a421f871d3d64450413"
+    },
+    {
+      "name": "Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz.part02",
+      "bytes": 20971520,
+      "sha256": "de94112b48256ee3d4c50856c65b9654e1f99367ad5d85d19be629633998a762"
+    },
+    {
+      "name": "Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz.part03",
+      "bytes": 14874363,
+      "sha256": "6b9efad7eb3bc42d036eda789939680e19a02d71a9bf126dfb7b8a40454135b3"
+    }
+  ],
+  "chunkBytes": 20971520,
+  "networkOperations": false,
+  "sourceArchiveBuildProductsExcluded": true
+}

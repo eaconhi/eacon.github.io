@@ -1,0 +1,46 @@
+{
+  "sources": [
+    {
+      "name": "ffmpeg-kit",
+      "remote": "https://github.com/arthenica/ffmpeg-kit.git",
+      "commit": "d6be56d7aec286eb3c292d6b23ff07a6b70d8693",
+      "patchSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "ffmpeg",
+      "remote": "https://github.com/arthenica/FFmpeg.git",
+      "commit": "ea3d24bbe3c58b171e55fe2151fc7ffaca3ab3d2",
+      "patchSHA256": "cdc78f4f0094b4bdca7328ecab13d062134f31e475944f8398c3f77f1285384e"
+    },
+    {
+      "name": "gnu-config",
+      "remote": "https://github.com/arthenica/gnu-config.git",
+      "commit": "805517123cbfe33d17c989a18e78c5789fab0437",
+      "patchSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "autoconf-2.71.tar.gz",
+      "sha256": "431075ad0bf529ef13cb41e9042c542381103e80015686222b8a9d4abef42a1c"
+    },
+    {
+      "name": "automake-1.16.5.tar.gz",
+      "sha256": "07bd24ad08a64bc17250ce09ec56e921d6343903943e99ccf63bbf0705e34605"
+    },
+    {
+      "name": "libtool-2.4.7.tar.gz",
+      "sha256": "04e96c2404ea70c590c546eba4202a4e12722c640016c12b9b2f1ce3d481e9a8"
+    },
+    {
+      "name": "pkg-config-0.29.2.tar.gz",
+      "sha256": "6fc69c01688c9458a57eb9a1664c9aba372ccda420a02bf4429fe610e7e7d591"
+    },
+    {
+      "name": "gas-preprocessor-v20210917.pl",
+      "sha256": "78ad06351ac8be513fb6e6291d9bb8f667899625c2649093e3b08f59fae950a2"
+    }
+  ],
+  "containsApplicationSource": false,
+  "containsUserData": false,
+  "containsSigningKeys": false,
+  "binaryIdenticalReproductionClaimed": false
+}

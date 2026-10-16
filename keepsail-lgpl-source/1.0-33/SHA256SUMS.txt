@@ -1,0 +1,4 @@
+82c579000896bc041d75ae167b68ea2e67265489c1309a421f871d3d64450413  Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz.part01
+de94112b48256ee3d4c50856c65b9654e1f99367ad5d85d19be629633998a762  Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz.part02
+6b9efad7eb3bc42d036eda789939680e19a02d71a9bf126dfb7b8a40454135b3  Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz.part03
+9c018a2f6e8379b2c3bae434c9942909d839e2274a75633be24330cc91708fab  Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz
