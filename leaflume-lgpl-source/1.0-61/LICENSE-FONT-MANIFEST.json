@@ -1,0 +1,122 @@
+{
+  "bundledLicenses": [
+    {
+      "name": "LGPL-3.0.txt",
+      "bytes": 7651,
+      "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+      "matchesSource": true
+    },
+    {
+      "name": "GPL-3.0.txt",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "matchesSource": true
+    },
+    {
+      "name": "NotoSerifSC-OFL.txt",
+      "bytes": 4350,
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+      "matchesSource": true
+    },
+    {
+      "name": "LXGWWenKaiTC-OFL.txt",
+      "bytes": 4390,
+      "sha256": "4fff27d35db0e22cd81d58da6f20e09f415cf354a3338e3cf1fc0eb9222c7174",
+      "matchesSource": true
+    }
+  ],
+  "bundledFonts": [
+    {
+      "name": "LXGWWenKaiTC-Bold.ttf",
+      "sha256": "5abc12ecb4252a81b9ddf19b4c8a303cd9fe01695d6d1681628e5a3662639220",
+      "bytes": 12879764,
+      "matchesSource": true,
+      "embeddedNameRecords": {
+        "0": [
+          "Copyright 2024 The LXGW WenKai Project Authors (https://github.com/lxgw/LxgwWenkaiTC)"
+        ],
+        "1": [
+          "LXGW WenKai TC"
+        ],
+        "2": [
+          "Bold"
+        ],
+        "13": [
+          "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org"
+        ],
+        "14": [
+          "https://openfontlicense.org"
+        ]
+      }
+    },
+    {
+      "name": "LXGWWenKaiTC-Regular.ttf",
+      "sha256": "4e1da195be9a243a1f49679c4c98332ca8b0e5ce6229e143df42b2bc3268af17",
+      "bytes": 13109228,
+      "matchesSource": true,
+      "embeddedNameRecords": {
+        "0": [
+          "Copyright 2024 The LXGW WenKai Project Authors (https://github.com/lxgw/LxgwWenkaiTC)"
+        ],
+        "1": [
+          "LXGW WenKai TC"
+        ],
+        "2": [
+          "Regular"
+        ],
+        "13": [
+          "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org"
+        ],
+        "14": [
+          "https://openfontlicense.org"
+        ]
+      }
+    },
+    {
+      "name": "NotoSerifSC-Bold.ttf",
+      "sha256": "9c6a2ba736e4b499c84f65ce366bd3625c0401885fd3e585ace50fb738b96ff6",
+      "bytes": 14806580,
+      "matchesSource": true,
+      "embeddedNameRecords": {
+        "0": [
+          "(c) 2017-2024 Adobe (http://www.adobe.com/)."
+        ],
+        "1": [
+          "Noto Serif SC"
+        ],
+        "2": [
+          "Bold"
+        ],
+        "13": [
+          "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org"
+        ],
+        "14": [
+          "https://openfontlicense.org"
+        ]
+      }
+    },
+    {
+      "name": "NotoSerifSC.ttf",
+      "sha256": "c358a69de3df5f423a8946a7b03e3126fb6ba116f1130a463455b4e39e1f0742",
+      "bytes": 14807636,
+      "matchesSource": true,
+      "embeddedNameRecords": {
+        "0": [
+          "(c) 2017-2024 Adobe (http://www.adobe.com/)."
+        ],
+        "1": [
+          "Noto Serif SC"
+        ],
+        "2": [
+          "Regular"
+        ],
+        "13": [
+          "This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org"
+        ],
+        "14": [
+          "https://openfontlicense.org"
+        ]
+      }
+    }
+  ]
+}
