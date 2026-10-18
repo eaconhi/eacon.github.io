@@ -1,0 +1,60 @@
+{
+  "app": "Leaflume",
+  "build": "62",
+  "preparedUTC": "2026-10-18T16:23:00.646365+00:00",
+  "files": [
+    {
+      "name": "LICENSE-FONT-MANIFEST.json",
+      "bytes": 3491,
+      "sha256": "c06188fb09c987f30868cb885609eddf8be433915f8d0b17eb965f035536e052"
+    },
+    {
+      "name": "README.md",
+      "bytes": 1572,
+      "sha256": "b9355fbb8ac76df926d31e6fa6660fffac8c5109c09057091a71c7fa43eacc8d"
+    },
+    {
+      "name": "REBUILD.md",
+      "bytes": 1273,
+      "sha256": "d58c9d8a387423d161563206c5f7322d9f73c3a9600a8cb2f8e2df42663dbfaa"
+    },
+    {
+      "name": "RELINKING.md",
+      "bytes": 2118,
+      "sha256": "8d41eaf7e90395c215762034d8390e6f6a6d356f3bdba15823dd327947829a88"
+    },
+    {
+      "name": "SOURCE-MAPPING.json",
+      "bytes": 6386,
+      "sha256": "c5b7e3c9a033335560fcd6212bdf99741490a559127d02a9050825280744f11f"
+    },
+    {
+      "name": "licenses/GPL-3.0.txt",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "name": "licenses/LGPL-3.0.txt",
+      "bytes": 7651,
+      "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"
+    },
+    {
+      "name": "licenses/LXGWWenKaiTC-OFL.txt",
+      "bytes": 4390,
+      "sha256": "4fff27d35db0e22cd81d58da6f20e09f415cf354a3338e3cf1fc0eb9222c7174"
+    },
+    {
+      "name": "licenses/NotoSerifSC-OFL.txt",
+      "bytes": 4350,
+      "sha256": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6"
+    }
+  ],
+  "publicPublishingPerformed": false,
+  "sourceMaterialVersion": "1.0-33",
+  "sourceArchiveDuplicated": false,
+  "applicationCodeIncluded": false,
+  "applicationBinaryIncluded": false,
+  "provisioningProfilesIncluded": false,
+  "signingKeysIncluded": false,
+  "userDataIncluded": false
+}

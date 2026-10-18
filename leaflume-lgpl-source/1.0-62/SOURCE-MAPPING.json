@@ -1,0 +1,130 @@
+{
+  "app": "Leaflume",
+  "version": "1.0",
+  "build": "62",
+  "materialVersion": "1.0-33",
+  "librarySourceUnchanged": true,
+  "sourceArchive": {
+    "name": "Keepsail-FFmpegKit-LGPL-source-1.0-33.tar.gz",
+    "bytes": 56817403,
+    "sha256": "9c018a2f6e8379b2c3bae434c9942909d839e2274a75633be24330cc91708fab",
+    "fixedPublicSourceDirectory": "https://github.com/eaconhi/eacon.github.io/tree/69c98b6ba4e418f61e85750b5621e8097a1c4bdf/keepsail-lgpl-source/1.0-33"
+  },
+  "sourceCommits": {
+    "ffmpegKit": "d6be56d7aec286eb3c292d6b23ff07a6b70d8693",
+    "ffmpeg": "ea3d24bbe3c58b171e55fe2151fc7ffaca3ab3d2"
+  },
+  "eightFrameworkCodeSectionsMatchFixedSourceBuild": true,
+  "frameworks": [
+    {
+      "framework": "ffmpegkit.framework",
+      "sourceBuildSHA256": "3affb00631cf11486e28823719f76f7a76a6383a4eb72d4def610fe8621af088",
+      "uuid": "f60a80f7-3b8b-3d1f-abb9-c53d0fc429b0",
+      "fileBackedSectionsSHA256": "e112b992bef25c84e9e3a54dfdded6c60d9a9c90b0b18f06f00dc6004b435a99",
+      "fileBackedSectionCount": 26,
+      "installName": "@rpath/ffmpegkit.framework/ffmpegkit",
+      "minimumOS": "17.0",
+      "architecture": "arm64",
+      "build62ArchiveSignedSHA256": "7ae3e9db66f69a20e24176d941bea2596902aa1169bf197989dd2026bb256d30",
+      "sourceBuildCodeSectionsMatchArchive62": true,
+      "sourceBuildUUIDMatchesArchive62": true
+    },
+    {
+      "framework": "libavcodec.framework",
+      "sourceBuildSHA256": "91a88924e7a4d0dc3524ac6983788be29408490f431f8e9294e555d33e154449",
+      "uuid": "1c619ea1-dea9-3e13-bb28-d58acc4cbac4",
+      "fileBackedSectionsSHA256": "9f0c31b8cd5fc778ceb06f69f134915ba1acd19d2def9c4f7d643c4bf1c8c965",
+      "fileBackedSectionCount": 11,
+      "installName": "@rpath/libavcodec.framework/libavcodec",
+      "minimumOS": "17.0",
+      "architecture": "arm64",
+      "build62ArchiveSignedSHA256": "0c59784a565a15044ab34bbf81e056e046da32b4abe062283d992cc83604bb54",
+      "sourceBuildCodeSectionsMatchArchive62": true,
+      "sourceBuildUUIDMatchesArchive62": true
+    },
+    {
+      "framework": "libavdevice.framework",
+      "sourceBuildSHA256": "7c19d14dfbae9e1aeba2e6536300811e9b9ed613a06de9b2b2ddd0c0da024d45",
+      "uuid": "6d2a2aab-4dd5-38f1-9611-9be87f2c2ae5",
+      "fileBackedSectionsSHA256": "aec4b70c6e1a1d938f3b75f3420964b56cc94ae81e61974e22dbb2a91c241c55",
+      "fileBackedSectionCount": 23,
+      "installName": "@rpath/libavdevice.framework/libavdevice",
+      "minimumOS": "17.0",
+      "architecture": "arm64",
+      "build62ArchiveSignedSHA256": "caa10389e59e71c6eee18a0ab4277cf472589f197c3127e265d52c98916da8e1",
+      "sourceBuildCodeSectionsMatchArchive62": true,
+      "sourceBuildUUIDMatchesArchive62": true
+    },
+    {
+      "framework": "libavfilter.framework",
+      "sourceBuildSHA256": "875cfcd4b588df707496f67d15d2ba2616c65cca9db9fc5ddc55499e3507163b",
+      "uuid": "23efe15f-e86d-3b41-bfd7-f96fc0620043",
+      "fileBackedSectionsSHA256": "12533ca0e06e4a87046d7a7140e660a0fdf0e593113d456b75895c44fddf3514",
+      "fileBackedSectionCount": 9,
+      "installName": "@rpath/libavfilter.framework/libavfilter",
+      "minimumOS": "17.0",
+      "architecture": "arm64",
+      "build62ArchiveSignedSHA256": "a121e1777d8f51de845596d0219ca29103afd268b77f52f65ba369055f44f76a",
+      "sourceBuildCodeSectionsMatchArchive62": true,
+      "sourceBuildUUIDMatchesArchive62": true
+    },
+    {
+      "framework": "libavformat.framework",
+      "sourceBuildSHA256": "ae101e0e6c8103572bc1d8a8591718a4ab45a3eafcce8416f0c36df0ee4edc84",
+      "uuid": "9a669738-b699-38c5-9b72-857a7e8a88cc",
+      "fileBackedSectionsSHA256": "85faa2d2eac8a3fe05c5083f1e877ba2b33a29801d80a738d60837fef0a74e4d",
+      "fileBackedSectionCount": 8,
+      "installName": "@rpath/libavformat.framework/libavformat",
+      "minimumOS": "17.0",
+      "architecture": "arm64",
+      "build62ArchiveSignedSHA256": "606bc3b5db9abb878e7f39c952b5c4e2e9847b74d998f1bbbd8131319cde94ba",
+      "sourceBuildCodeSectionsMatchArchive62": true,
+      "sourceBuildUUIDMatchesArchive62": true
+    },
+    {
+      "framework": "libavutil.framework",
+      "sourceBuildSHA256": "414e8f5e06dfc3f3b2eac05fca2f616acc16e537c67e71428b4d7bf95033ef9b",
+      "uuid": "b9d88b5e-6cfa-36af-8e05-8132ddb1e0fc",
+      "fileBackedSectionsSHA256": "6d05c11cc948c2f596c188b936791564ffc78ccfc670043f645565e3452e5cd8",
+      "fileBackedSectionCount": 11,
+      "installName": "@rpath/libavutil.framework/libavutil",
+      "minimumOS": "17.0",
+      "architecture": "arm64",
+      "build62ArchiveSignedSHA256": "8bd5085c95d4f9b0e1206b6df2f9080eea87af70ef1795f85471e531cf1c530a",
+      "sourceBuildCodeSectionsMatchArchive62": true,
+      "sourceBuildUUIDMatchesArchive62": true
+    },
+    {
+      "framework": "libswresample.framework",
+      "sourceBuildSHA256": "6148d18497e7168e686b904bf68d7705311e904ea23b5007efef641dab6bee9d",
+      "uuid": "3bc2f11c-93a6-3e1a-85d0-2f4aaaf3f8c0",
+      "fileBackedSectionsSHA256": "2fbcad3868bffd452150dbd87fc11dd1302a84d1e9eadbcb4031dabcd9234061",
+      "fileBackedSectionCount": 8,
+      "installName": "@rpath/libswresample.framework/libswresample",
+      "minimumOS": "17.0",
+      "architecture": "arm64",
+      "build62ArchiveSignedSHA256": "e1bcffc26b2e81188d24a8bd6fd55767203f79ea3aa21b12d666921e6633ac89",
+      "sourceBuildCodeSectionsMatchArchive62": true,
+      "sourceBuildUUIDMatchesArchive62": true
+    },
+    {
+      "framework": "libswscale.framework",
+      "sourceBuildSHA256": "3ffcc37b8cb9aff0aeef5470663b89c17504dcf4fb5ca28d53196f29340b8e5c",
+      "uuid": "f5caa4aa-72ac-32e2-a03a-a56511bf00a1",
+      "fileBackedSectionsSHA256": "925dd87c35601b0103b5af6020b7ecdbc0d021bd4d9d400a14343891b7b8b040",
+      "fileBackedSectionCount": 9,
+      "installName": "@rpath/libswscale.framework/libswscale",
+      "minimumOS": "17.0",
+      "architecture": "arm64",
+      "build62ArchiveSignedSHA256": "1cf3b467cd99429fa864299b76ccfaa865b50652991e66909dd4895a0a6a12dc",
+      "sourceBuildCodeSectionsMatchArchive62": true,
+      "sourceBuildUUIDMatchesArchive62": true
+    }
+  ],
+  "newAppSourceDisclosureIncluded": false,
+  "newApplicationBinaryIncluded": false,
+  "privateSigningMaterialIncluded": false,
+  "userDataIncluded": false,
+  "publicPublishingPerformed": false,
+  "scope": "Build62 archive static identity and corresponding-source mapping only; not legal clearance or modified-library installation/runtime proof."
+}
