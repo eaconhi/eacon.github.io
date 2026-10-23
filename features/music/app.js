@@ -1,4 +1,5 @@
 import { VERSION, LAYOUTS, LYRIC_STYLES, PALETTES, preferences, MusicStore, trackKey, formatTime, formatBytes, parseLyrics, lyricIndex } from './core.mjs';
+import { observeDisplayState } from '../display-state.js';
 
 const API = 'https://music.xpeng.win';
 const PREF_KEY = 'xp-music-preferences-v1';
@@ -75,20 +76,20 @@ root.innerHTML = `<link rel="stylesheet" href="${new URL('./style.css?v=' + VERS
 function range(key, label, min, max, unit, step = 1) { return `<label class="field">${label}<span class="range-value" data-value="${key}"></span><input type="range" data-pref="${key}" min="${min}" max="${max}" step="${step}" data-unit="${unit}"></label>`; }
 const $ = selector => root.querySelector(selector), $$ = selector => [...root.querySelectorAll(selector)];
 document.body.append(host);
-function relocate() { const parent = document.fullscreenElement || document.body; if (host.parentElement !== parent) parent.append(host); }
-document.addEventListener('fullscreenchange', relocate); document.addEventListener('webkitfullscreenchange', relocate);
+let presenting = false;
 function showToast(message) { status = message; const box = $('.toast'); box.textContent = message; box.hidden = false; clearTimeout(showToast.timer); showToast.timer = setTimeout(() => box.hidden = true, 6000); }
 function persistPreferences() { try { localStorage.setItem(PREF_KEY, JSON.stringify(pref)); } catch { showToast('显示设置暂时无法保存'); } }
 function applyPreferences() {
   const [, , bg, ink] = PALETTES.find(x => x[0] === pref.palette), widget = $('.widget');
   widget.dataset.layout = pref.layout; widget.style.setProperty('--music-bg', bg); widget.style.setProperty('--music-ink', ink);
   widget.style.setProperty('--panel-alpha', pref.opacity / 100); widget.style.setProperty('--player-scale', pref.scale / 100);
-  widget.hidden = !pref.enabled || !current; $('.launcher').hidden = !!current && pref.enabled;
-  if(!widget.hidden&&widget.offsetWidth)widget.style.setProperty('--player-scale',Math.min(pref.scale/100,(innerWidth-32)/widget.offsetWidth,(innerHeight-32)/widget.offsetHeight));
+  widget.hidden = !presenting || !pref.enabled || !current; $('.launcher').hidden = presenting && !!current && pref.enabled;
+  host.dataset.presentation = String(presenting);
+  if(!widget.hidden&&widget.offsetWidth)widget.style.setProperty('--player-scale',Math.max(.1,Math.min(pref.scale/100,(innerWidth-32)/widget.offsetWidth,Math.max(1,innerHeight-165)/widget.offsetHeight)));
   const lyrics = $('.lyrics'); lyrics.dataset.style = pref.lyricStyle; lyrics.dataset.shadow = pref.lyricShadow;
   lyrics.style.setProperty('--lyric-size', pref.lyricSize + 'px'); lyrics.style.setProperty('--lyric-color', pref.lyricColor);
   lyrics.style.opacity = pref.lyricOpacity / 100; lyrics.style.top = pref.lyricY + '%';
-  lyrics.hidden = !pref.enabled || !pref.lyrics || !current || !rows.length;
+  lyrics.hidden = !presenting || !pref.enabled || !pref.lyrics || !current || !rows.length;
   for (const input of $$('[data-pref]')) { const key = input.dataset.pref; if (input.type === 'checkbox') input.checked = pref[key]; else input.value = pref[key]; }
   for (const out of $$('[data-value]')) { const key = out.dataset.value, input = $(`[data-pref="${key}"]`); out.textContent = pref[key] + (input?.dataset.unit || ''); }
   for (const button of $$('[data-layout]')) button.setAttribute('aria-pressed', String(button.dataset.layout === pref.layout));
@@ -321,6 +322,14 @@ $('.navidrome-form').onsubmit = async event => { event.preventDefault(); const d
 window.XPMusic = Object.freeze({ open: openPanel, pause: () => audio.pause(), version: VERSION });
 document.addEventListener('xp:open-music', () => openPanel());
 window.addEventListener('resize',applyPreferences);
+const stopDisplayObserver=observeDisplayState(state=>{
+  presenting=state.active;
+  if(host.parentElement!==state.host)state.host.append(host);
+  applyPreferences();
+});
+// Keep keys and taps on the player from triggering the wallpaper/clock controls.
+for(const event of ['pointerdown','click','keydown'])host.addEventListener(event,event=>event.stopPropagation());
+window.addEventListener('pagehide',stopDisplayObserver,{once:true});
 applyPreferences(); showList('home');
 try{const savedSource=localStorage.getItem('xp-music-source-v1');if(['kugou','qq','netease','qishui'].includes(savedSource))$('.provider').value=savedSource;}catch{}
 $('.provider').onchange=()=>{try{localStorage.setItem('xp-music-source-v1',$('.provider').value);}catch{}};

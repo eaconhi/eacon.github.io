@@ -55,7 +55,6 @@
     "library.json",
     "local-bootstrap.js",
     "local-car-temple.css",
-    "local-display-ui-431d652e0072.css",
     "local-mobile-media.js",
     "local-offline.js",
     "local-pet-motion.js",
@@ -73,9 +72,15 @@
     "sensor-panel.js",
     "spectrum.css",
     "style-v610.css",
+    "display-state.js",
+    "display-state-66e67203cbb9.js",
+    "sensor-panel-20aae8d6f4bc.css",
+    "sensor-panel-7c8fbbf672f0.js",
+    "local-sensors-851ca58736e0.js",
+    "local-display-ui-7acd5f61879a.css",
     "music/core-596ac8d7ad85.mjs",
-    "music/style-5a1f5706f281.css",
-    "music/app-623572aa6179.js"
+    "music/style-eecd7b4ecae3.css",
+    "music/app-5df578954412.js"
   ],
   "bytes": 10714394
 }

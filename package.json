@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "NEXT_DIST_DIR=.next-dev next dev",
-    "build": "node scripts/build-music.mjs && next build",
-    "build:music": "node scripts/build-music.mjs",
+    "build": "node scripts/build-display.mjs && node scripts/build-music.mjs && next build",
+    "build:music": "node scripts/build-display.mjs && node scripts/build-music.mjs",
     "test:music": "node --test server/music/test/music.test.mjs",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:display": "node --test features/display/state.test.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

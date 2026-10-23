@@ -11,6 +11,8 @@ function isAppResource(request){
  if(url.origin!==appBase.origin||!url.pathname.startsWith(appBase.pathname))return false;
  const path=url.pathname.slice(appBase.pathname.length);
  if(/^music\/(?:app-[a-f0-9]+\.js|core-[a-f0-9]+\.mjs|style-[a-f0-9]+\.css)$/.test(path))return true;
+ if(/^(?:display-state|sensor-panel|local-sensors)-[a-f0-9]{12}\.(?:js|css)$/.test(path))return true;
+ if(path==='display-state.js')return true;
  return request.mode==='navigate'&&['','index.html','sensors.html','mobile.html'].includes(path)||
  /^(?:assets\/[^/]+\.(?:js|css)|(?:local-[^/]+|pages-bootstrap|sensor-(?:core|panel))\.(?:js|css)|(?:style-v610|clock-presets|spectrum)\.css|(?:pages-config|library|deployment-version)\.json|branding\/[^/]+\.(?:png|svg)|companions\/xiaop\/(?:plush-heads-fine-v5|plush-parts-v3|plush-food-board|plush-food-board-alt)\.png)$/.test(path);
 }

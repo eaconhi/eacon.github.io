@@ -8,7 +8,8 @@ const hash = text => createHash('sha256').update(text).digest('hex').slice(0, 12
 const core = await readFile(path.join(source, 'core.mjs'), 'utf8');
 const css = await readFile(path.join(source, 'style.css'), 'utf8');
 const coreName = `core-${hash(core)}.mjs`, cssName = `style-${hash(css)}.css`;
-const app = (await readFile(path.join(source, 'app.js'), 'utf8')).replace("'./core.mjs'", `'./${coreName}'`).replace("'./style.css?v='", `'./${cssName}?v='`);
+const display=JSON.parse(await readFile(path.join(root,'public/xp/display-version.json'),'utf8'));
+const app = (await readFile(path.join(source, 'app.js'), 'utf8')).replace("'./core.mjs'", `'./${coreName}'`).replace("'./style.css?v='", `'./${cssName}?v='`).replace("'../display-state.js'", `'../${display.state}'`);
 const appName = `app-${hash(app)}.js`;
 await mkdir(output, { recursive: true });
 for (const file of await readdir(output)) if (/^(?:app|core|style)-[a-f0-9]+\.(?:js|mjs|css)$/.test(file) && ![coreName, cssName, appName].includes(file)) await unlink(path.join(output, file));
