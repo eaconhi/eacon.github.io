@@ -10,6 +10,7 @@ function isAppResource(request){
  const url=new URL(request.url);
  if(url.origin!==appBase.origin||!url.pathname.startsWith(appBase.pathname))return false;
  const path=url.pathname.slice(appBase.pathname.length);
+ if(/^music\/(?:app-[a-f0-9]+\.js|core-[a-f0-9]+\.mjs|style-[a-f0-9]+\.css)$/.test(path))return true;
  return request.mode==='navigate'&&['','index.html','sensors.html','mobile.html'].includes(path)||
  /^(?:assets\/[^/]+\.(?:js|css)|(?:local-[^/]+|pages-bootstrap|sensor-(?:core|panel))\.(?:js|css)|(?:style-v610|clock-presets|spectrum)\.css|(?:pages-config|library|deployment-version)\.json|branding\/[^/]+\.(?:png|svg)|companions\/xiaop\/(?:plush-heads-fine-v5|plush-parts-v3|plush-food-board|plush-food-board-alt)\.png)$/.test(path);
 }
@@ -21,6 +22,8 @@ async function prepareAppCache(){
  if(!Array.isArray(files)||manifest.version!=='20261014-clean-offline')throw Error('Offline manifest mismatch');
  for(let i=0;i<files.length;i+=6)await Promise.all(files.slice(i,i+6).map(async file=>{
   const url=new URL(file,appBase);if(url.origin!==appBase.origin||!url.pathname.startsWith(appBase.pathname))throw Error('Invalid offline resource');
+  // Reuse immutable compiled chunks; mutable bootstrap/configuration files still refresh on upgrade.
+  if(/^(?:assets|music)\/.*-[A-Za-z0-9_-]{8,}\.(?:m?js|css)$/.test(file)&&await cache.match(appKey(url)))return;
   const response=await fetch(url,{cache:'reload'});if(!response.ok)throw Error('Offline resource unavailable');
   await cache.put(appKey(url),response);
  }));

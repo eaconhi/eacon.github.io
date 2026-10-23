@@ -72,7 +72,10 @@
     "sensor-panel.css",
     "sensor-panel.js",
     "spectrum.css",
-    "style-v610.css"
+    "style-v610.css",
+    "music/core-596ac8d7ad85.mjs",
+    "music/style-5a1f5706f281.css",
+    "music/app-623572aa6179.js"
   ],
   "bytes": 10714394
 }

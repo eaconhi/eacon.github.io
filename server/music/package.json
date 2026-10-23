@@ -1,0 +1,17 @@
+{
+  "name": "xiaop-music-service",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@yakult-green-tea/qq-music-api": "3.3.3",
+    "qishui-music-api": "0.2.2"
+  },
+  "devDependencies": {
+    "wrangler": "4.149.0"
+  }
+}

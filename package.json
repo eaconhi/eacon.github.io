@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "NEXT_DIST_DIR=.next-dev next dev",
-    "build": "next build",
+    "build": "node scripts/build-music.mjs && next build",
+    "build:music": "node scripts/build-music.mjs",
+    "test:music": "node --test server/music/test/music.test.mjs",
     "start": "next start",
     "lint": "next lint"
   },
